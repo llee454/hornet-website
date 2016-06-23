@@ -7,6 +7,9 @@
  *    without disabling user zoom.
  */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic);
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:400";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:600";
 html {
   font-family: sans-serif;
   /* 1 */
@@ -1339,7 +1342,7 @@ li[data-menu-level="5"] {
   text-align: center;
   width: 100%; }
   .presentation_nav tr {
-    background-color: white; }
+    background-color: white !important; }
   .presentation_nav td {
     padding: 0px;
     width: 30%; }
@@ -1776,10 +1779,11 @@ ol.search_results {
   #video_content {
     padding: 0px 20px; } }
 /* General Standard Theme Styles */
-/* I. General Elements */
+/* External Fonts */
+/* General Elements */
 body {
   background-color: #5C5C5C;
-  font-family: "Open Sans" sans-serif;
+  font-family: "Open Sans", sans-serif;
   min-width: 300px; }
 
 a {
@@ -1788,7 +1792,7 @@ a {
 
 h1, h2, h3, h4, h5 {
   color: #ed1c24;
-  font-family: "Open Sans" sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   margin: 0px;
   padding: 0.5em 0em; }
@@ -1909,7 +1913,7 @@ tr:nth-child(even) {
         background-repeat: no-repeat;
         background-position: 0px 50%;
         padding: 0px 0px 0px 45px;
-        margin: 17px 0px 0px 25px;
+        margin: 12px 0px 0px 25px;
         display: block;
         z-index: 10000;
         position: relative;
