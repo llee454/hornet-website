@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database>
+  <index>
+    <name>search</name>
+    <!-- <lunrIndexURL>data/books_index.json</lunrIndexURL> -->
+    <setIds>
+      <setId>book_search_source/modules%2Fbook%2Fdatabase.xml</setId>
+      <setId>video_library_search_source/example_library</setId>
+    </setIds>
+  </index>
+  <index>
+    <name>video_search</name>
+    <!-- <lunrIndexURL>data/books_index.json</lunrIndexURL> -->
+    <setIds>
+      <setId>video_library_search_source/example_library</setId>
+    </setIds>
+  </index>
+</database>
+

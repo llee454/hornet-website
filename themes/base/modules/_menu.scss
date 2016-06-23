@@ -1,0 +1,13 @@
+/* Menu Module Styles */
+
+ol[data-menu-level="3"] {
+  color: $red;
+}
+ol[data-menu-level="3"] > li {
+  list-style-type: decimal;
+}
+
+li[data-menu-level="5"] {
+  list-style-image: url(images/liArrow.png);
+}
+
