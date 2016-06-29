@@ -552,8 +552,6 @@ function book_getSnippet (text) {
   tags have been removed.
 */
 function book_stripHTMLTags (html) {
-  var strippedHTML = search_removeBlockElements (html);
-  if (strippedHTML) { html = strippedHTML; }
   return html.replace (/<[^>]*>/g, '');
 }
 ```
