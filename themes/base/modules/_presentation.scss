@@ -12,16 +12,19 @@
   .presentation_step {
     opacity: 0;
   }
+
+  .presentation_previous_input_view {
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .presentation_previous_input_view.presentation_visible {
+    opacity: 1;
+  }
 }
 
 .presentation_overlay_inset_text {
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
-}
-
-.presentation_presentation.presentation_active {
-  .presentation_input_step {
-    opacity: 1;
-  }
 }
 
 .presentation_nav_step, .presentation_nav_total {
@@ -51,6 +54,7 @@
   }
 }
 
+.presentation_input_step.introjs-showElement,
 .presentation_quiz_step.introjs-showElement,
 .presentation_blank_step.introjs-showElement,
 .presentation_button_step.introjs-showElement {
