@@ -8,6 +8,7 @@
   border-width: 1px;
   border-style: solid;
   margin: auto;
+  margin-bottom: 20px;
 
   .presentation_step {
     opacity: 0;
@@ -84,6 +85,7 @@
 
 .presentation_disabled {
   color: #BBBBBB;
+  cursor: not-allowed;
 }
 
 .presentation_error_message {
@@ -98,12 +100,6 @@
   padding: 20px;
 }
 
-/*.presentation_error_message:before {
-    content: 'hello';
-    content: url('images/x-close.png');
-    padding-right: 10px;
-  }
-*/
 .presentation_exit {
   cursor:           pointer;
   float:            right;

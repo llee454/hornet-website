@@ -1,18 +1,22 @@
 /* eOffer eMod Online Styles */
 
-// Import Reset
-@import "../base/reset";
+$base_theme_path: "../../themes/base";
+
+// Import Fonts
+@import "../../themes/base/fonts/opensans";
+// Import 
+@import "../../themes/base/reset";
 // Import General Variables
-@import "../base/general-variables";
+@import "../../themes/base/general-variables";
 // Import Guide Specific Variables
 @import "guide-variables";
 // Import Bourbon
-@import "../base/lib/bourbon/bourbon";
+@import "../../themes/base/lib/bourbon/bourbon";
 // Import Neat
-@import "../base/lib/neat/neat";
+@import "../../themes/base/lib/neat/neat";
 // Import Mixins
-@import "../base/mixins";
+@import "../../themes/base/mixins";
 // Import Module Styles
-@import "../base/modules";
+@import "../../themes/base/modules";
 // Import General Styles
-@import "../base/general-theme"; 
+@import "../../themes/base/general-theme"; 

@@ -51,7 +51,7 @@
         <height>21px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>03_type_a_manufacturer_part_number</inputStepName>
+            <inputStepName>3_type_a_manufacturer_part_number</inputStepName>
             <top>232px</top>
             <left>128px</left>
             <width>160px</width>

@@ -44,7 +44,7 @@ $medium_gray: rgb(221, 221, 221);
 
 $dark_gray: rgb(178, 178, 178);
 
-$darkest_gray: #5C5C5C;
+$darkest_gray: #222222;
 
 $text_gray: rgb(51, 51, 51);
 
@@ -66,10 +66,6 @@ $ors-nav-highlight-2: rgba(180, 214, 210, 1);
 $sws-nav-highlight-1: rgba(255, 242, 217, 1);
 $sws-nav-highlight-2: rgba(255, 242, 217, 1);
 
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic);  
-
-
 $default_header_font: "Open Sans", sans-serif;
 
 $default_header_weight: 200;
@@ -78,9 +74,9 @@ $default_header_weight: 200;
 
 $header_height: 70px;
 
-$header_top_height: 27px;
+$header_top_height: 0px;
 
-$header_bottom_height: $header_height;
+$header_bottom_height: $header_height - $header_top_height;
 
 /*
   The Sidr nav menu content area width.

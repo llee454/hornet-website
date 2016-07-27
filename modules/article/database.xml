@@ -1,6 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <articles>
   <article>
+    <id>additions-009</id>
+    <title>New Formatted Product Tool</title>
+    <date>06-24-2016</date>
+    <summary><![CDATA[
+      <p>GSA has is introducing the new Formatted Product Tool process which will change how you enter in products.</p>
+      <a href="index.html#article_article_page/additions-009">Read More</a>]]></summary>
+    <body><![CDATA[
+      <p>On June 27, 2016, GSA is introducing the <strong>Formatted Product Tool process</strong> into the eOffer/eMod system. You will be able to enter detailed pricing information for each of your products and accessories, including discounts, warranties, delivery options, photos, and more. This will allow you to capture the most comprehensive data so that your CO can more accurately evaluate your offer. The new Formatted Product Tool streamlines multiple sections of eOffer/eMod</p>
+      <p>The guides have interactive training now embedded throughout many of the new Formatted Product Tool Sections.  </p>
+      <ul>
+        <li>
+          <p>
+            <strong>Updated eOffer Sections</strong>
+          </p>
+          <ul>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/adding-your-goods-and-services-sins">Goods and Services</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/product-template-wizard">Product Template Wizard</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/zonal-pricing">Zonal Pricing Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/special-charges">Special Charges</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/special-features">Special Features</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/discounts">Discounts</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/contractor-warranty">Contractor Warranty</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/capture-and-generate-pricing/capture-and-generate-pricing-overview">Capture and Generate Pricing Overview</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/capture-and-generate-pricing/choosing-a-pricing-template-method">Choosing a Pricing Template Method</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/download-template-overview">Download/Upload Template Method Overview</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/downloading-your-template">Downloading Your Template</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/reference-tabs">Download/Upload Template: Reference Tabs</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/template-pricing-tab">Pricing Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/non-pricing-tab">Non-Pricing Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/special-charges-tab">Special Charges Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/special-features-tab">Special Features Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/template-delivery-tab">Delivery Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/zonal-pricing-tab">Zonal Pricing Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/photos-tab">Photos Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/options-tab">Options Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/accessories-tab">Accessories Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/uploading-your-template-file-tab">Uploading Your Template File Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/on-screen-data-entry-overview">On-Screen Data Entry</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/on-screen-data-entry-overview">Get Started Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/pricing-tab">Pricing Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/additional-photos-tab">Additional Photos Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/zonal-offer-price-tab">Zonal Offer Price Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/accessories-tab">Accessories Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/special-charges-tab">Special Charges Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/delivery-tab">Delivery Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/special-features-tab">Special Features Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/dimensions-and-shipping-tab">Dimensions &amp; Shipping Tab</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/upload-additional-photos">Upload Additional Photos</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/generate-offer-analysis-report">Generate Offer Analysis Report</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/generate-pricing-document">Generate Pricing Document</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <strong>Updated eMod Sections</strong>
+          </p>
+          <ul>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-product-s">Add Product(s)</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-sin">Add SIN</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/temporary-price-reduction">Delete Product(s)</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/temporary-price-reduction">Temporary Price Reduction</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/capture-formatted-pricing">Capture Formatted Pricing</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/create-manage-discounts">Create/Manage Discounts</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-based-on-most-favored-customer">Permanent Price Reduction (Based on Most Favored Customer)</a>
+            </li>
+            <li>
+              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-industry-partner-requested">Permanent Price Reduction (Industry Partner Requested</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    ]]></body>
+  </article>
+  <article>
     <id>additions-008</id>
     <title>February 2016 Release Notes Updates</title>
     <date>02-25-2016</date>
@@ -31,8 +188,7 @@
       <ul>
         <li>
           <p>In support of category management, all professional services schedules have been consolidated under one schedule called the Professional Services Schedule.</p>
-          <p>You can learn more about the Professional Services Schedule (PSS) on the <a href="https://interact.gsa.gov/groups/professionalservicescategory">Professional Service Category Community</a> on <a href="https://interact.gsa.gov/">Interact</a> or the PSS portal page, <a href="http://www.gsa.gov/portal/content/200063">Professional Service Schedule</a>.
-                  </p>
+          <p>You can learn more about the Professional Services Schedule (PSS) on the <a href="https://interact.gsa.gov/groups/professionalservicescategory">Professional Service Category Community</a> on <a href="https://interact.gsa.gov/">Interact</a> or the PSS portal page, <a href="http://www.gsa.gov/portal/content/200063">Professional Service Schedule</a>.</p>
         </li>
         <li>
           <p>The Help Links throughout ORS have been updated to send users to this guide on the <a href="http://amsystemssupport.fas.gsa.gov/">AM Systems Support site</a>.  The Help On This Page video links have also been removed as the videos will be migrated and maintained on the ORS Guide within the AM Systems Support site. </p>
@@ -122,36 +278,7 @@
         </li>
       </ul>
     ]]></body>
-  </article>
-  <article>
-    <id>additions-003</id>
-    <title>May 2014 Release Notes Updates</title>
-    <date>05-01-2014</date>
-    <summary><![CDATA[
-      <p>In May 2014, GSA implemented changes to the eOffer/eMod System.</p>
-      <a href="index.html#article_article_page/additions-003">Read More</a>
-    ]]></summary>
-    <body><![CDATA[
-      <p>In May 2014, GSA implemented changes to the eOffer/eMod System. You can read a detailed description of each update on the <a href="../../release-notes/index.html" target="_blank">Release Notes</a> website.</p>
-      <ul>
-        <li>
-          <p>In situations where you would have needed to exercise a <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/legal-modifications/novation-agreement-modification" target="_blank">Novation Agreement Modification</a>, a <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/legal-modifications/change-of-name-agreement-modification" target="_blank">Name Change Modification</a>, or an <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/administrative-modifications/address-change" target="_blank">Address Change Modification</a>, you may have also needed to update your DUNS number. Previously, you would have needed to reach out to your Contracting Officer, whereas now eMod gives you the option to modify your DUNS within the system.</p>
-          <p>Learn more by clicking on the links for each respective Modification: </p>
-          <ul>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/legal-modifications/novation-agreement-modification" target="_blank">Novation Agreement Modification</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/legal-modifications/change-of-name-agreement-modification" target="_blank">Name Change Modification</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/administrative-modifications/address-change" target="_blank">Address Change Modification</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    ]]></body>
-  </article>
+  </article>  
   <article>
     <id>additions-002</id>
     <title><![CDATA[Release of the eOffer/eMod Online User Guide]]></title>
