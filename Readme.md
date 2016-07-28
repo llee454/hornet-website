@@ -1,98 +1,54 @@
-Lucidity Readme
-===============
+Lucidity Demo Readme
+====================
 
-## Introduction
+Welcome to the Lucidity Demo site! This site was created to highlight the capabilities provided by the Lucidity content publishing platform.
 
-Lucidity is a simple content management system designed to run within a minimalistic server environment. It requires no database backend, no PHP interpreter - nothing more than a web accessible directory.
+Lucidity is an open source publishing platform written entirely in JavaScript. Lucidity was designed to be extremely light-weight, running entirely within the client's browser and requiring no server-side back-end services such as databases and interpreters. Sites built using Lucidity can be served from a simple web accessible directory.
 
-Lucidity was designed to run within the client's browser and is written entirely in JavaScript. It's modular design allows it to be adapted seamlessly to any server environment and to any use case.
+Despite its small footprint, Lucidity provides a wealth of sophisticated features including search, video libraries, and analytics. Lucidity uses a modular architecture and includes a number of sophisticated features within its core modules.
 
-Despite it's lean design and minimal footprint, Lucidity's modular system provides it with features rarely found outside of larger content management systems such as Drupal and Wordpress.
+This site was created to highlight some of those features.
 
-Lucidity's core modules enable video streaming, sophisticated search, and Google Analytics integration.
+Elucid Solutions hosts the Lucidity Demo site which can be found here: http://demo.elucidsolutions.com. We invite you to view some of the features highlighted on this site:
 
-Lucidity also includes two modules for representing textual content. Its Article module can be used to quickly create and publish articles while its Book module can be used to publish larger works divided into parts, chapters, and sections.
+* Video Library
 
-Using Lucidity's module system, developers can cleanly extend the core platform through an intuitive API and powerful interface.
+  http://demo.elucidsolutions.com/#video_library_page/example_library/eoffer/getting-started-with-eoffer/https:%2F%2Fs3.amazonaws.com%2Felucid-demo-videos%2Feoffer_sign_in.mp4
 
-What's more, features provided by modules can be reused and combined flexibly through Lucidity's block system. Briefly, Lucidity enables developers to define new features in modules and expose and combine those features through blocks.     
+  Lucidity's Video Library module allows site creators to organize videos into collections, provide video and collection summaries, transcript navigation, and video search all in a user-friendly interface and design.
 
-Web designers can quickly customize those blocks through Lucidity's theme system and non-programmers can leverage the features provided by those blocks using Lucidity's template system.
+* Embedded Videos with Transcript Highlighting and Navigation
 
-If you're looking for a platform that can seamlessly deliver content within a minimal server environment, you will find Lucidity to be a gratifying option. 
+  http://demo.elucidsolutions.com/#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-labor-category-and-or-service-offerings
 
-## How To
+  Lucidity's Embedded Video module goes beyond simple video playback. Using Lucidity, site creators can present auto-scrolling video transcripts and allow users to navigate within videos by clicking on various phrases within transcripts. The demo site includes numerous embedded video player examples.
 
-### Installation
+* Search
 
-Because Lucidity has no external dependencies, you can install Lucidity by simply copying it's package into any web accessible directory.
+  http://demo.elucidsolutions.com/#search_page_block/search/eoffer/0/20
 
-Once you have installed Lucidity, you need only to update its configuration file, settings.xml, and you're done. 
+  Lucidity's Search module uses Lunr to provide sophisticated search results based on frequency term analysis. The demo site includes a simple implementation of Lucidity's Search module.
 
-### Configuration
+* Interactive Lessons
 
-Lucidity has a single configuration file, settings.xml. This file specifies three parameters:
+  http://demo.elucidsolutions.com/#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/template-pricing-tab
 
-* The error handling mode
+  We created Lucidity's Presentation module to help users learn how to use complex software systems. Each presentation provides an interactive simulation of the eOffer/eMod system and a walkthrough of some process within it. The demo site includes numerous presentations created for the General Services Administration (GSA).
 
-  Lucidity was designed to be fault-less. As a result, it aggressively reports any errors that it encounters by default. While this is great during development and testing, in production Lucidity can be instructed to seamlessly recover from any errors that it encounters and degrade as gracefully as possible.
+* Nested Pages
 
-  The *errorMode* parameter instructs Lucidity as to how to handle errors. errorMode should equal "strict" during development and "nonstrict" while in production.
+  http://demo.elucidsolutions.com/#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-sin
 
-* The theme file
+  Lucidity's Page slocks allow pages to be nested within each other allowing sophisticated content reuse.
 
-  Lucidity separates structure from presentation. Structure is handled by its module system; presentation, by its theme system. By default, themes are stored within the ./theme directory while modules are stored under ./modules. The *theme* parameter specifies the location of the currently enabled theme's CSS file.
+* Analytics
 
-* Enabled modules
+  Track visits to pages within your site using Lucidity's Analytics module. Page visits and search events are automatically recorded using Google Analytics.
 
-  settings.xml lists the modules that have been installed on the system under *modules*. Every module has an associated *module* element whose attributes specify the module's internal name, status, and location.
+* Page Ratings
 
-  You can enable and disable modules simply by setting the *enabled* attribute to "true" or "false" respectively.
+  Every page includes a user feedback section. User responses are collected and reported as Google Analytics events, providing page level usability feedback.
 
-### Creating Pages
+* Mobile Responsiveness
 
-The simplest way to create a new page is to use the Page module.
-
-To create a new page using the Page module:
-
-1. Enable the Page module in settings.xml
-
-  See "Configuration" for more information about how to enable modules.
-
-2. Create a new page template
-
-  A page template is just an HTML file containing the content that you want the page to display. This file may be placed anywhere, but usually it is placed under ./templates.
-
-3. Register your page template
-
-  The page module directory (./modules/page) includes a file named templates.xml. This file is referred to as the Page Template List file and lists all of the page templates registered with Lucidity. Simply add a new entry within the templates XML element that includes a name for your template and its URL. See ./modules/page/example_templates.xml for an example.
-
-4. Validate templates.xml 
-
-  Whenever you modify an XML file, you should validate it against its XML schema. Simply use an XML validator to validate templates.xml against ./modules/page/templates.xsd.
-
-5. Visit your page
-
-  Once you have registered your page template you should now be able to view your new page. Simply enter "HOST/index.html?id=page/PAGENAME" into your browser where HOST is your site's host name and PAGENAME is the name you entered in templates.xml. For example "www.example.org/index.html?page/Example_Page".
-
-Note: your page template's internal name must not contain any spaces (use underscores instead) and should avoid any special characters that are not allowed in URLs. 
-
-### Using Blocks
-
-Page templates can include blocks. Blocks are HTML elements that instruct Lucidity to perform special actions. This action might simply replace the block with a new HTML element or it might do something more abstract.
-
-These actions are performed by *Block Handlers*. When applied, block handlers may either replace, modify, or remove the block element.
-
-Blocks handlers are defined by modules and, when registered, every block handler is associated with an HTML class.
-
-Developers tell Lucidity which block handler it should apply to a block element by adding the handler's class to the element.
-
-It's important to note that every block must be associated with only one block handler.
-
-Blocks can include text, nested HTML elements, and even other blocks inside of them. Many block handlers treat these nested elements as arguments that they need to perform their actions.
-
-The Example Page Template defined by the Example module provides an illustration of how you can use blocks within page templates.
-
-### Installing Modules
-
-Installing modules in Lucidity is easy. Simply copy the module directory into ./modules/ and add an entry to the modules element in settings.xml that gives the internal name and URL of the module and its directory.
+  The demo site illustrates, the care that we have taken in creating a mobile-first user experience. All of the features presented above reflow across and adapt to mobile devices.
