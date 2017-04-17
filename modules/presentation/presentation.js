@@ -30,60 +30,68 @@ MODULE_LOAD_HANDLERS.add (
     // I. Load the external libraries.
     loadScripts ([
         'modules/presentation/lib/intro/intro.js-2.0.0/intro.js',
-        'modules/presentation/lib/materialize/materialize-0.97.6/js/bin/materialize.js',
-        'http://code.responsivevoice.org/responsivevoice.js'
+        'modules/presentation/lib/materialize/materialize-0.97.6/js/bin/materialize.js'
       ],
       function (error) {
         if (error) { return done (error); }
 
-        // II. Load the Materialize stylesheet.
-        $.getCSS ('modules/presentation/lib/materialize/materialize-0.97.6/css/materialize.css');
-
-        // III. Load the Presentation database.
-        presentation_loadDatabase (
-          presentation_DATABASE_URL,
-          function (error, database) {
-            if (error) { return done (error); }
-
-            // IV. Cache the Presentation database.
-            presentation_DATABASE = database;
-
-            // V. Register the block handlers.
-            block_HANDLERS.add ('presentation_block', presentation_block);
-
-            // VI. Cancel text to speech playback and empty the presentation_INSTANCES array on page load.
-            PAGE_LOAD_HANDLERS.add (
-              function (id, done) {
-                responsiveVoice && responsiveVoice.cancel ();
-                presentation_INSTANCES = {};
-                done ();
-            });
-
-            // VII. Wait for Responsive Voice and continue.
-            if (responsiveVoice) {
-              var responsiveVoiceTimedOut = null;
-              setTimeout (
-                function () {
-                  if (responsiveVoiceTimedOut === null) {
-                    responsiveVoiceTimedOut = true;
-                    responsiveVoice = null;
-                    console.log ('Warning: The Responsive Voice library failed to load before the timeout. Audio playback has been disabled.');
-                    done (null);
-                  }
-                }, 500
-              );
-
-              responsiveVoice.addEventListener ('OnLoad',
-                function () {
-                  if (responsiveVoiceTimedOut === null) {
-                    responsiveVoiceTimedOut = false;
-                    done (null);
-                  }
-               });
-            } else {
-              done (null);
+        loadScripts ([
+            'https://code.responsivevoice.org/responsivevoice.js'
+          ],
+          function (error) {
+            if (error) {
+              strictError (new Error ('[presentation] Error: an error occured while trying to load the responsive voice module.'));
             }
-        });      
+
+            // II. Load the Materialize stylesheet.
+            $.getCSS ('modules/presentation/lib/materialize/materialize-0.97.6/css/materialize.css');
+
+            // III. Load the Presentation database.
+            presentation_loadDatabase (
+              presentation_DATABASE_URL,
+              function (error, database) {
+                if (error) { return done (error); }
+
+                // IV. Cache the Presentation database.
+                presentation_DATABASE = database;
+
+                // V. Register the block handlers.
+                block_HANDLERS.add ('presentation_block', presentation_block);
+
+                // VI. Cancel text to speech playback and empty the presentation_INSTANCES array on page load.
+                PAGE_LOAD_HANDLERS.add (
+                  function (id, done) {
+                    responsiveVoice && responsiveVoice.cancel ();
+                    presentation_INSTANCES = {};
+                    done ();
+                });
+
+                // VII. Wait for Responsive Voice and continue.
+                if (responsiveVoice) {
+                  var responsiveVoiceTimedOut = null;
+                  setTimeout (
+                    function () {
+                      if (responsiveVoiceTimedOut === null) {
+                        responsiveVoiceTimedOut = true;
+                        responsiveVoice = null;
+                        console.log ('Warning: The Responsive Voice library failed to load before the timeout. Audio playback has been disabled.');
+                        done (null);
+                      }
+                    }, 500
+                  );
+
+                  responsiveVoice.addEventListener ('OnLoad',
+                    function () {
+                      if (responsiveVoiceTimedOut === null) {
+                        responsiveVoiceTimedOut = false;
+                        done (null);
+                      }
+                   });
+                } else {
+                  done (null);
+                }
+            });      
+      });
   });
 });
 

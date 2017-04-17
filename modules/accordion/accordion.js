@@ -3,6 +3,9 @@
   display content within accordion elements.
 */
 
+// Declares the QUnit test module.
+QUnit.module ('Accordion');
+
 // Registers the block handlers.
 MODULE_LOAD_HANDLERS.add (
   function (done) {
@@ -30,6 +33,33 @@ function accordion_block (context, done) {
   context.element.addClass ('accordion');
   done (null);
 }
+
+/*
+  Unittests for accordion_block.
+
+  Confirms that the function adds the accordion
+  class to context.element.
+*/
+unittest ('accordion_block',
+  {
+    globals: [
+      { variableName: 'block_HANDLERS', value: new block_HandlerStore () }
+    ],
+    elements: [$('<div class="accordion_block_container"><div class="accordion_block"></div></div>')]
+  },
+  function (assert, elements) {
+    assert.expect (1);
+    block_HANDLERS.add ('accordion_block', accordion_block);
+    var done = assert.async ();
+
+    block_expandBlock (new block_Context (12, elements [0]),
+      function () { 
+        assert.ok ($('.accordion_block_container .accordion').length > 0, 'accordion_block added the .accordion class to context.element'); 
+        done ();
+      }
+    ); 
+  }
+)
 
 /*
   Accepts two arguments:
@@ -107,3 +137,46 @@ function accordion_itemBlock (context, done, expand) {
       done (null, null);
   });
 }
+
+/*
+  Unitttests for accordion_itemBlock.
+
+  Confirms that the function created the
+  .accordion_item element, and that the 
+  item's number, title, and body are correctly
+  displayed.
+*/
+unittest ('accordion_itemBlock',
+  {
+    globals: [{variableName: 'block_HANDLERS', value: new block_HandlerStore ()}],
+    elements: [$('<div class="accordion_item_block_container">\
+      <div class="accordion_item_block">\
+        <div class="accordion_item_number">8</div>\
+        <div class="accordion_item_title">Sample Title</div>\
+        <div class="accordion_item_body">Sample Body</div>\
+      </div>\
+    </div>')]
+  },
+  function (assert, elements) {
+    assert.expect (4);
+    var done = assert.async ();
+    block_HANDLERS.add ('accordion_item_block', accordion_itemBlock);
+
+    /* 
+      Store the contents of accordion_item_number
+      in a variable before that element is
+      replaced
+    */
+    var accordion_item_number = $('.accordion_item_number', elements [0]).text ().trim ();
+
+    block_expandBlock (new block_Context (12, elements [0]),
+      function () {   
+        assert.ok ($('.accordion_item_block_container .accordion_item').length > 0, 'accordion_itemBlock created the .accordion_item');
+        assert.strictEqual ($('.accordion_item_block_container .accordion_item_header_left').text ().trim (), accordion_item_number, 'accordion_itemBlock has placed the item number  into the left header')
+        assert.strictEqual ( $('.accordion_item_block_container .accordion_item_title').text ().trim (), $('.accordion_item_title', elements [0]).text ().trim (), 'accordion_itemBlock correctly outputs the item title.')
+        assert.strictEqual ( $('.accordion_item_block_container .accordion_item_body').text ().trim (), $('.accordion_item_body', elements [0]).text ().trim (), 'accordion_itemBlock correctly outputs the item body.')
+        done ();
+      }
+    ); 
+  }
+)

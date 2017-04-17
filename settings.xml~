@@ -24,7 +24,7 @@
     the app load handlers do not execute. If false, 
     the app load handlers execute normally.
   -->
-  <runUnittests>false</runUnittests>
+  <runUnittests>true</runUnittests>
 
   <!--
     The theme element gives the location of the CSS
