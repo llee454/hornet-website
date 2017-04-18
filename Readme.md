@@ -39,7 +39,7 @@ Elucid Solutions hosts the Lucidity Demo site which can be found here: http://de
 
   http://demo.elucidsolutions.com/#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-sin
 
-  Lucidity's Page slocks allow pages to be nested within each other allowing sophisticated content reuse.
+  Lucidity's Page blocks allow pages to be nested within each other allowing sophisticated content reuse.
 
 * Analytics
 
