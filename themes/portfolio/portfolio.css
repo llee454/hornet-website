@@ -2718,6 +2718,9 @@ table.padded-list tbody tr td {
   margin: 25px 0; }
 
 @media screen and (max-width: 1050px) {
+  #hero-video {
+    transform: translateX(-30%); }
+
   .header-menu-container {
     width: 100%; }
 

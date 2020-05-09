@@ -151,12 +151,16 @@ $hero-height: 100vh;
     margin: 25px 0;
   }
 }
-
 @include media(max-width $medium-width) {
+  #hero-video {
+    transform: translateX(-30%);
+  }
   .header-menu-container {
     width: 100%;
   }
   .header-menu-item {
     width: 100%;
   }
+}
+@include media(max-width $small-width) {
 }
