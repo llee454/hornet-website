@@ -37,6 +37,7 @@ $content-max-width: 900px;
 }
 
 .header-menu-item {
+  cursor: pointer;
   display: inline-block;
   height: 100%;
   padding: 10px 20px;
@@ -108,11 +109,21 @@ $content-max-width: 900px;
   background-color: $text-gray;
   color: white;
 
+  a, h1, p {
+    color: white;
+  }
+}
+
+.form_block {
+  display: none;
+}
+
+#contact {
   .contact-label {
     display: inline-block;
     width: 70px;
   }
-  a, h1 {
-    color: white;
+  input, textarea {
+    color: $text-gray;
   }
 }

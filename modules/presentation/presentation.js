@@ -61,13 +61,13 @@ MODULE_LOAD_HANDLERS.add (
                 // VI. Cancel text to speech playback and empty the presentation_INSTANCES array on page load.
                 PAGE_LOAD_HANDLERS.add (
                   function (id, done) {
-                    responsiveVoice && responsiveVoice.cancel ();
+                    declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ();
                     presentation_INSTANCES = {};
                     done ();
                 });
 
                 // VII. Wait for Responsive Voice and continue.
-                if (responsiveVoice) {
+                if (declared ('responsiveVoice') && responsiveVoice) {
                   var responsiveVoiceTimedOut = null;
                   setTimeout (
                     function () {
@@ -105,7 +105,7 @@ MODULE_LOAD_HANDLERS.add (
   context.element must contain a single text
   node representing a presentation ID.
 
-  replaces context.element with a JQuery
+  Replaces context.element with a JQuery
   HTML Element that represents the referenced
   presentation and calls done.
 */
@@ -223,7 +223,7 @@ function presentation_Step (id, image, text, position, top, left, width, height,
   this.image              = image;
   this.text               = text;
   this.position           = position;
-  this.top                = top;
+  this.top                = top;      
   this.left               = left;
   this.width              = width;
   this.height             = height;
@@ -232,7 +232,7 @@ function presentation_Step (id, image, text, position, top, left, width, height,
 
 /*
   Accepts no arguments and reads this step's
-  text aloud.
+  text aloud. Returns undefined.
 */
 presentation_Step.prototype.speak = function () {
   presentation_speak (this.text);
@@ -291,10 +291,19 @@ function presentation_BlankStep (id, image, text, position, top, left, width, he
 }
 
 /*
+  Create a new prototype object for
+  presentation_BlankStep and set 
+  presentation_Step's prototype as the object's
+  prototype.
 */
 presentation_BlankStep.prototype = Object.create (presentation_Step.prototype);
 
 /*
+  Assign the presentation_BlankStep prototype's
+  constructor property so that any functions that
+  read it can determine which constructor
+  function was used to create its instance
+  objects.
 */
 presentation_BlankStep.prototype.constructor = presentation_BlankStep;
 
@@ -364,10 +373,19 @@ function presentation_ButtonStep (id, image, text, position, top, left, width, h
 }
 
 /*
+  Create a new prototype object for 
+  presentation_ButtonStep and set 
+  presentation_Step's prototype as the object's
+  prototype.
 */
 presentation_ButtonStep.prototype = Object.create (presentation_Step.prototype);
 
 /*
+  Assign the presentation_ButtonStep prototype's
+  constructor property so that any functions
+  that read it can determine which constructor
+  function was used to create its instance 
+  objects.
 */
 presentation_ButtonStep.prototype.constructor = presentation_ButtonStep;
 
@@ -446,10 +464,19 @@ function presentation_InputStep (id, image, text, position, top, left, width, he
 }
 
 /*
+  Create a new prototype object for 
+  presentation_InputStep and set 
+  presentation_Step's prototype as the object's
+  prototype.
 */
 presentation_InputStep.prototype = Object.create (presentation_Step.prototype);
 
 /*
+  Assign the presentation_InputStep prototype's
+  constructor property so that any functions
+  that read it can determine which constructor
+  function was used to create its instance 
+  objects.
 */
 presentation_InputStep.prototype.constructor = presentation_InputStep;
 
@@ -523,10 +550,19 @@ function presentation_QuizStep (id, image, text, position, top, left, width, hei
 }
 
 /*
+  Create a new prototype object for 
+  presentation_QuizStep and set 
+  presentation_Step's prototype as the object's
+  prototype.
 */
 presentation_QuizStep.prototype = Object.create (presentation_Step.prototype);
 
 /*
+  Assign the presentation_QuizStep prototype's
+  constructor property so that any functions
+  that read it can determine which constructor
+  function was used to create its instance 
+  objects.
 */
 presentation_QuizStep.prototype.constructor = presentation_QuizStep;
 
@@ -543,7 +579,8 @@ presentation_QuizStep.prototype.createInstance = function (presentationInstance)
 
 /*
   Accepts no arguments and reads this step's
-  text and answer options aloud.
+  text and answer options aloud. Returns
+  undefined.
 */
 presentation_QuizStep.prototype.speak = function () {
   presentation_speak ($('<p></p>')
@@ -826,7 +863,8 @@ presentation_PreviousInputViewInstance.prototype.getElement = function () {
 
 /*
   Accepts no arguments and displays and updates
-  this view instance's element.
+  this view instance's element. 
+  Returns undefined.
 */
 presentation_PreviousInputViewInstance.prototype.show = function () {
   var element = this.getElement ();
@@ -840,7 +878,7 @@ presentation_PreviousInputViewInstance.prototype.show = function () {
 
 /*
   Accepts no arguments and hides this view
-  instance's element.
+  instance's element. Returns undefined.
 */
 presentation_PreviousInputViewInstance.prototype.hide = function () {
   var element = this.getElement ();
@@ -872,7 +910,7 @@ function presentation_StepInstance (step, presentationInstance) {
 /*
   Accepts no arguments and reads this instance's
   step's text aloud and marks this instance as
-  having been read.
+  having been read. Returns undefined.
 */
 presentation_StepInstance.prototype.speak = function () {
   this.step.speak ();
@@ -884,7 +922,7 @@ presentation_StepInstance.prototype.speak = function () {
   Accepts no arguments, marks this step instance
   as having been completed, and updates the
   nav element associated with this instance's
-  presentation instance.
+  presentation instance. Returns undefined.
 
   This function is called when a user
   completes stepElement.
@@ -896,7 +934,8 @@ presentation_StepInstance.prototype.onComplete = function () {
 
 /*
   Accepts no arguments and updates this step
-  instance and its presentation instance.
+  instance and its presentation instance. 
+  Returns undefined.
 
   This function is be called when IntroJS
   highlights this step instance.
@@ -906,8 +945,9 @@ presentation_StepInstance.prototype.onHighlight = function () {
 }
 
 /*
-  Accepts no arguments an updates this step
+  Accepts no arguments and updates this step
   instance and its presentation instance.
+  Returns undefined.
 
   This function is called when IntroJS
   unhighlights this step instance.
@@ -973,7 +1013,7 @@ presentation_StepInstance.prototype.getPreviousInputViewInstances = function () 
 /*
   Accepts no arguments and updates and shows the
   Previous Input View Instances associated with
-  this step instance.
+  this step instance. Returns undefined.
 */
 presentation_StepInstance.prototype.showPreviousInputViewInstances = function () {
   var previousInputViewInstances = this.getPreviousInputViewInstances ();
@@ -986,7 +1026,7 @@ presentation_StepInstance.prototype.showPreviousInputViewInstances = function ()
 /*
   Accepts no arguments and hides the Previous
   Input View Instances associated with this
-  step instance.
+  step instance. Returns undefined.
 */
 presentation_StepInstance.prototype.hidePreviousInputViewInstances = function () {
   var previousInputViewInstances = this.getPreviousInputViewInstances ();
@@ -1014,16 +1054,25 @@ function presentation_BlankStepInstance (blankStep, presentationInstance) {
 }
 
 /*
+  Create a new prototype object for 
+  presentation_BlankStepInstance and set 
+  presentation_StepInstance's prototype as the
+  object's prototype.
 */
 presentation_BlankStepInstance.prototype = Object.create (presentation_StepInstance.prototype);
 
 /*
+  Assign the presentation_BlankStepInstance 
+  prototype's constructor property so that any
+  functions that read it can determine which 
+  constructor function was used to create its
+  instance objects.
 */
 presentation_BlankStepInstance.prototype.constructor = presentation_BlankStepInstance;
 
 /*
   Accepts no arguments and marks this blank step
-  instance as complete.
+  instance as complete. Returns undefined.
 
   This function is called when IntroJS highlights
   this step instance.
@@ -1060,10 +1109,19 @@ function presentation_ButtonStepInstance (buttonStep, presentationInstance) {
 }
 
 /*
+  Create a new prototype object for 
+  presentation_ButtonStepInstance and set 
+  presentation_StepInstance's prototype as the
+  object's prototype.
 */
 presentation_ButtonStepInstance.prototype = Object.create (presentation_StepInstance.prototype);
 
 /*
+  Assign the presentation_ButtonStepInstance
+  prototype's constructor property so that any
+  functions that read it can determine which
+  constructor function was used to create its
+  instance objects.  
 */
 presentation_ButtonStepInstance.prototype.constructor = presentation_ButtonStepInstance;
 
@@ -1073,7 +1131,7 @@ presentation_ButtonStepInstance.prototype.constructor = presentation_ButtonStepI
   as having been completed, updates the
   nav element associated with this instance's
   presentation instance, and highlights the next
-  step.
+  step. Returns undefined.
 
   This function is called when a user
   completes this step instance. 
@@ -1085,7 +1143,8 @@ presentation_ButtonStepInstance.prototype.onComplete = function () {
 
 /*
   Accepts no arguments and enables tab focus on
-  this step instance's focus element.
+  this step instance's focus element. Returns
+  undefined.
 
   This function is be called when IntroJS
   highlights this step instance.
@@ -1097,7 +1156,8 @@ presentation_ButtonStepInstance.prototype.onHighlight = function () {
 
 /*
   Accepts no arguments and disables tab focus
-  on this step instance's focus element.
+  on this step instance's focus element. Returns
+  undefined.
 
   This function is called when IntroJS
   unhighlights this step instance.
@@ -1143,17 +1203,26 @@ function presentation_InputStepInstance (inputStep, presentationInstance) {
 }
 
 /*
+  Create a new prototype object for 
+  presentation_InputStepInstance and set 
+  presentation_StepInstance's prototype as the 
+  object's prototype.
 */
 presentation_InputStepInstance.prototype = Object.create (presentation_StepInstance.prototype);
 
 /*
+  Assign the presentation_InputStep prototype's
+  constructor property so that any functions
+  that read it can determine which constructor
+  function was used to create its instance 
+  objects.
 */
 presentation_InputStepInstance.prototype.constructor = presentation_InputStepInstance;
 
 /*
   Accepts no arguments and enables tab focus
   on the input element in this step instance's
-  focus element.
+  focus element. Returns undefined.
 
   This function is be called when IntroJS
   highlights this step instance.
@@ -1167,7 +1236,7 @@ presentation_InputStepInstance.prototype.onHighlight = function () {
 /*
   Accepts no arguments and disables tab focus
   on the input element in this step instance's
-  focus element.
+  focus element. Returns undefined.
 
   This function is called when IntroJS
   unhighlights this step instance.
@@ -1247,10 +1316,19 @@ function presentation_QuizStepInstance (quizStep, presentationInstance) {
 }
 
 /*
+  Create a new prototype object for 
+  presentation_QuizStepInstance and set 
+  presentation_StepInstance's prototype as the 
+  object's prototype.
 */
 presentation_QuizStepInstance.prototype = Object.create (presentation_StepInstance.prototype);
 
 /*
+  Assign the presentation_QuizStepInstance 
+  prototype's constructor property so that any
+  functions that read it can determine which
+  constructor function was used to create its
+  instance objects.
 */
 presentation_QuizStepInstance.prototype.constructor = presentation_QuizStepInstance;
 
@@ -1546,7 +1624,7 @@ presentation_PresentationInstance.prototype._createAudioToggleElement = function
         var checked = $(this).prop ('checked');
         presentation_AUDIO = checked
 
-        checked || (responsiveVoice && responsiveVoice.cancel ());
+        checked || (declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ());
 
         var stepInstance = self.getCurrentStepInstance ();
         if (stepInstance) {
@@ -1649,6 +1727,7 @@ presentation_PresentationInstance.prototype.getNavElement = function () {
   Accepts no arguments and updates this
   presentation instance's nav element to
   represent this instance's current state.
+  Returns undefined.
 */
 presentation_PresentationInstance.prototype.updateNavElement = function () {
   var stepInstances = this.getStepInstances ();
@@ -1689,6 +1768,7 @@ presentation_PresentationInstance.prototype._createIntro = function () {
   var self = this;
   var presentationElement = this.getElement ();
   return introJs (presentationElement.get (0))
+    // Set introJs options and prepare steps
     .setOptions ({
         keyboardNavigation: false,
         exitOnOverlayClick: false,
@@ -1705,13 +1785,14 @@ presentation_PresentationInstance.prototype._createIntro = function () {
               };
           })
       })
+    // When moving between steps  
     .onafterchange (
         function () {
           if ($('.presentation_nav', presentationElement).length === 0) {
             $('.introjs-tooltip', presentationElement)
               .prepend (self.createExitButton ())
               .append (self.getMessageElement ())
-              .append (responsiveVoice ? self.getAudioToggleElement () : null)
+              .append (declared ('responsiveVoice') && responsiveVoice ? self.getAudioToggleElement () : null)
               .append (self.getNavElement ());
           }
 
@@ -1735,9 +1816,10 @@ presentation_PresentationInstance.prototype._createIntro = function () {
           stepInstance.spoken = false;
           presentation_AUDIO && stepInstance.speak ();
       })
+    // When last step is finished  
     .onexit (
         function () {
-          responsiveVoice && responsiveVoice.cancel ();
+          declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ();
 
           presentationElement.css ('background-image', 'url(' + self.presentation.getImage () + ')');
           presentationElement.removeClass ('presentation_active');
@@ -1818,7 +1900,7 @@ presentation_PresentationInstance.prototype.currentStepInstanceCompleted = funct
 
 /*
   Accepts no arguments and starts this
-  presentation instance.
+  presentation instance. Returns undefined.
 */
 presentation_PresentationInstance.prototype.start = function () {
   this.getIntro ().start ();
@@ -1826,7 +1908,7 @@ presentation_PresentationInstance.prototype.start = function () {
 
 /*
   Accepts no arguments and exits this
-  presentation instance.
+  presentation instance. Returns undefined.
 */
 presentation_PresentationInstance.prototype.exit = function () {
   this.getIntro ().exit ();
@@ -1843,6 +1925,8 @@ presentation_PresentationInstance.prototype.running = function () {
 /*
   Accepts no arguments and highlights the next
   step instance in this presentation instance.
+  Returns true if the current step is finished,
+  and a following one exists.
 */
 presentation_PresentationInstance.prototype.nextStep = function () {
   return this.currentStepInstanceCompleted () && this.getIntro ().nextStep ();
@@ -1851,7 +1935,8 @@ presentation_PresentationInstance.prototype.nextStep = function () {
 /*
   Accepts no arguments and highlights the
   previous step instance in this presentation
-  instance.
+  instance. Returns true if the current step is
+  not the first, and a previous step exists.
 */
 presentation_PresentationInstance.prototype.previousStep = function () {
   return this.getCurrentStepInstanceIndex () > 0 && this.getIntro ().previousStep ();
@@ -1967,5 +2052,5 @@ presentation_punctuate = function (htmlTranscript) {
   synthesizer.
 */
 presentation_speak = function (htmlTranscript) {
-  responsiveVoice && responsiveVoice.speak (presentation_punctuate (htmlTranscript), 'UK English Male');
+  declared ('responsiveVoice') && responsiveVoice && responsiveVoice.speak (presentation_punctuate (htmlTranscript), 'UK English Male');
 }

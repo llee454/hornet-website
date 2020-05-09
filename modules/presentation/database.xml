@@ -390,11 +390,11 @@
           <p><strong>Open the Discounts drop-down menu.</strong></p>
           <p>Click on the downward-facing arrow to open the <em>Discounts</em> drop-down menu.</p>
         ]]></text>
-        <position>top</position>
-        <top>112px</top>
-        <left>157px</left>
-        <width>43px</width>
-        <height>20px</height>
+        <position>right</position>
+        <top>58px</top>
+        <left>296px</left>
+        <width>70px</width>
+        <height>26px</height>
         <previousInputViews/>
       </buttonStep>      
       <buttonStep>
@@ -404,11 +404,11 @@
           <p><strong>Respond to the Discounts section.</strong></p>
           <p>For this lesson, select <em>Yes</em>.</p>
         ]]></text>
-        <position>top</position>
-        <top>112px</top>
-        <left>157px</left>
-        <width>43px</width>
-        <height>50px</height>
+        <position>right</position>
+        <top>56px</top>
+        <left>295px</left>
+        <width>70px</width>
+        <height>61px</height>
         <previousInputViews/>
       </buttonStep>        
       <buttonStep>
@@ -417,13 +417,13 @@
         <text><![CDATA[
           <p><strong>Select the Discounts Level.</strong></p>
           <p>You will click the radio button next to the level that applies to your SIN.</p>
-          <p>For this lesson, click the radio button next to <em>Offer Level</em>.</p>
+          <p>For this lesson, click the radio button next to <em>Offer</em>.</p>
         ]]></text>
-        <position>top</position>
-        <top>114px</top>
-        <left>207px</left>
-        <width>64px</width>
-        <height>18px</height>
+        <position>bottom</position>
+        <top>58px</top>
+        <left>428px</left>
+        <width>61px</width>
+        <height>24px</height>
         <previousInputViews/>
       </buttonStep>      
       <buttonStep>
@@ -432,13 +432,13 @@
         <text><![CDATA[
           <p><strong>Select the Delivery Level.</strong></p>
           <p>Because the Delivery section is mandatory, <em>Yes</em> will automatically be selected in this field, so you will only need to indicate the level.</p>
-          For this lesson, click the radio button next to <em>SIN Level</em>.</p>
+          For this lesson, click the radio button next to <em>SIN</em>.</p>
         ]]></text>
-        <position>top</position>
-        <top>142px</top>
-        <left>272px</left>
-        <width>64px</width>
-        <height>18px</height>
+        <position>bottom</position>
+        <top>106px</top>
+        <left>492px</left>
+        <width>52px</width>
+        <height>24px</height>
         <previousInputViews/>
       </buttonStep>    
       <blankStep>
@@ -449,11 +449,11 @@
           <p>For the purpose of this lesson, the remaining fields have been completed for you. <em>Yes</em> has been selected for each section.</p>
           <p>You will also note that the <em>Level</em> has been predetermined for each field.</p>
         ]]></text>
-        <position>bottom-middle-aligned</position>
-        <top>88px</top>
-        <left>23px</left>
-        <width>713</width>
-        <height>135px</height>
+        <position>right</position>
+        <top>143px</top>
+        <left>18px</left>
+        <width>479px</width>
+        <height>288px</height>
         <previousInputViews/>
       </blankStep>
       <buttonStep>
@@ -461,13 +461,13 @@
         <image>modules/presentation/images/wizard_management_lesson/wizard_management_006.jpg</image>
         <text><![CDATA[
           <p><strong>Save your responses.</strong></p>
-          <p>You <u>MUST</u> click the <strong>Save Wizard Responses</strong> button first or all of your data will be lost.</p>
+          <p>You <u>MUST</u> click the <strong>Save Responses</strong> button first or all of your data will be lost.</p>
         ]]></text>
-        <position>top</position>
-        <top>235px</top>
-        <left>304px</left>
-        <width>152px</width>
-        <height>21px</height>
+        <position>top-right-aligned</position>
+        <top>440px</top>
+        <left>750px</left>
+        <width>132px</width>
+        <height>35px</height>
         <previousInputViews/>
       </buttonStep>    
       <buttonStep>
@@ -475,13 +475,13 @@
         <image>modules/presentation/images/wizard_management_lesson/wizard_management_006.jpg</image>
         <text><![CDATA[
           <p><strong>Save your work.</strong></p>
-          <p>Only after you have clicked the <strong>Save Wizard Responses</strong> button should you then click the <strong>Save and Continue</strong> button to continue to the next section.</p>
+          <p>Only after you have clicked the <strong>Save Responses</strong> button should you then click the <strong>Continue</strong> button to continue to the next section.</p>
         ]]></text>
-        <position>top</position>
-        <top>235px</top>
-        <left>619px</left>
-        <width>122px</width>
-        <height>21px</height>
+        <position>top-right-aligned</position>
+        <top>440px</top>
+        <left>891px</left>
+        <width>84px</width>
+        <height>35px</height>
         <previousInputViews/>
       </buttonStep>      
       <blankStep>
@@ -490,7 +490,7 @@
         <text><![CDATA[
           <p><strong>Your left-hand navigation has changed.</strong></p>
           <p>You will notice that your left-hand navigational menu has changed.</p>
-          <p>Based on your selections in Wizard Management, new sections will be added to your menu as well as in the <em>Capture Pricing</em> section.</p>
+          <p>Based on your selections in Wizard Management, new sections will be added to your menu.</p>
         ]]></text>
         <position>floating</position>
         <top>435px</top>
@@ -707,6 +707,7 @@
       </blankStep>  
     </steps>
   </presentation>
+  <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->     
   <presentation>
     <name>special_charges_lesson</name>
     <image>modules/presentation/images/special_charges_lesson/special_charges_001.jpg</image>
@@ -1036,13 +1037,13 @@
         <text><![CDATA[
           <p><strong>Option 1: The Download/Upload Template.</strong></p>
           <p>This method allows you to download an Excel template created by the system and work on it offline. After entering your data, you will need to upload the file back into the system to validate against any errors.<p>
-          <p>This method is best for entering more than 100 items<./p>
+          <p>This method is best for entering more than 100 items.</p>
         ]]></text>
-        <position>right</position>
-        <top>83px</top>
-        <left>16px</left>
-        <width>312px</width>
-        <height>190px</height>
+        <position>bottom-middle-aligned</position>
+        <top>209px</top>
+        <left>30px</left>
+        <width>925px</width>
+        <height>45px</height>
         <previousInputViews/>  
       </blankStep>
       <blankStep>
@@ -1053,11 +1054,11 @@
           <p>This method allows you enter product information into the template within the system. You are required to be online while working in this template.</p>
           <p>This method is best for entering 100 items or fewer.</p>
         ]]></text>
-        <position>right</position>
-        <top>83px</top>
-        <left>329px</left>
-        <width>312px</width>
-        <height>190px</height>
+        <position>top-middle-aligned</position>
+        <top>287px</top>
+        <left>30px</left>
+        <width>925px</width>
+        <height>45px</height>
         <previousInputViews/>  
       </blankStep>
       <blankStep>
@@ -1068,11 +1069,11 @@
           <p>This method allows you to download a template created by the system and work on it offline. You will be required to generate a transaction key and use it in the EDI system to upload your files.</p>
           <p>This method is best for entering more than 100 items.</p>
         ]]></text>
-        <position>left</position>
-        <top>83px</top>
-        <left>643px</left>
-        <width>320px</width>
-        <height>190px</height>
+        <position>top-middle-aligned</position>
+        <top>365px</top>
+        <left>30px</left>
+        <width>925px</width>
+        <height>45px</height>
         <previousInputViews/>  
       </blankStep>
       <blankStep>
@@ -1083,7 +1084,7 @@
           <p>When you have chosen the method that most appropriately suits your need, click on the button within the option box to proceed.</p>
         ]]></text>
         <position>floating</position>
-        <top>400px</top>
+        <top>120px</top>
         <left>500px</left>
         <width>0px</width>
         <height>0px</height>
@@ -1097,7 +1098,7 @@
           <p>Click <strong>Done</strong> to complete this lesson.</p>
         ]]></text>
         <position>floating</position>
-        <top>400px</top>
+        <top>120px</top>
         <left>500px</left>
         <width>0px</width>
         <height>0px</height>
@@ -1106,6 +1107,7 @@
       </blankStep>
     </steps>
   </presentation> 
+  <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->    
   <presentation>
     <name>get_started_tab_lesson</name>
     <image>modules/presentation/images/get_started_tab_lesson/get_started_001.jpg</image>
@@ -1387,6 +1389,7 @@
       </blankStep>
     </steps>
   </presentation>    
+  <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->   
   <presentation>
     <name>pricing_tab_lesson</name>
     <image>modules/presentation/images/pricing_tab_lesson/pricing_001.jpg</image>
@@ -1965,10 +1968,10 @@
           <p>You will notice that some of the fields have auto-populated with information you entered in other fields. Ensure this data is correct before moving on.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>289px</top>
+        <top>135px</top>
         <left>16px</left>
-        <width>930px</width>
-        <height>140px</height>
+        <width>571px</width>
+        <height>275px</height>
         <previousInputViews/>  
       </blankStep>
       <inputStep>
@@ -1980,9 +1983,9 @@
           <p>For this lesson, type <strong><em>photo_001.jpg</em></strong> into the textbox. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>left</position>
-        <top>317px</top>
-        <left>778px</left>
-        <width>163px</width>
+        <top>192px</top>
+        <left>577px</left>
+        <width>179px</width>
         <height>26px</height>
         <previousInputViews/>
         <expression><![CDATA[^photo_001.jpg$]]></expression>
@@ -1993,19 +1996,19 @@
         <image>modules/presentation/images/additional_photos_lesson/additional_photos_001.jpg</image>
         <text><![CDATA[
           <p><strong>Save your work.</strong></p>
-          <p>Click the <strong>Save Photos</strong> button, located at the top of the table.</p>
+          <p>Click the <strong>Save Photos</strong> button, located at the bottom of the table.</p>
         ]]></text>
         <position>top</position>
-        <top>260px</top>
-        <left>21px</left>
-        <width>85px</width>
-        <height>20px</height>
+        <top>448px</top>
+        <left>23px</left>
+        <width>126px</width>
+        <height>56px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_your_first_photos_filename</inputStepName>
-            <top>317px</top>
-            <left>778px</left>
-            <width>163px</width>
+            <top>192px</top>
+            <left>577px</left>
+            <width>179px</width>
             <height>26px</height>
           </previousInputView>
         </previousInputViews>
@@ -2018,16 +2021,16 @@
           <p>When the <em>Product Confirmation</em> message pops up, click <strong>OK</strong>.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>162px</top>
+        <top>188px</top>
         <left>311px</left>
-        <width>326px</width>
-        <height>134px</height>
+        <width>349px</width>
+        <height>172px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_your_first_photos_filename</inputStepName>
-            <top>317px</top>
-            <left>778px</left>
-            <width>163px</width>
+            <top>192px</top>
+            <left>577px</left>
+            <width>179px</width>
             <height>26px</height>
           </previousInputView>
         </previousInputViews>
@@ -2041,16 +2044,16 @@
           <p>For this lesson, the remaining rows have been completed for you.</p>
         ]]></text>
         <position>left</position>
-        <top>338px</top>
-        <left>775px</left>
-        <width>171px</width>
-        <height>92px</height>
+        <top>245px</top>
+        <left>566px</left>
+        <width>201px</width>
+        <height>150px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_your_first_photos_filename</inputStepName>
-            <top>317px</top>
-            <left>778px</left>
-            <width>163px</width>
+            <top>192px</top>
+            <left>577px</left>
+            <width>179px</width>
             <height>26px</height>
           </previousInputView>
         </previousInputViews>
@@ -2070,9 +2073,9 @@
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_your_first_photos_filename</inputStepName>
-            <top>317px</top>
-            <left>778px</left>
-            <width>163px</width>
+            <top>192px</top>
+            <left>577px</left>
+            <width>179px</width>
             <height>26px</height>
           </previousInputView>
         </previousInputViews>
@@ -2092,9 +2095,9 @@
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_your_first_photos_filename</inputStepName>
-            <top>317px</top>
-            <left>778px</left>
-            <width>163px</width>
+            <top>192px</top>
+            <left>577px</left>
+            <width>179px</width>
             <height>26px</height>
           </previousInputView>
         </previousInputViews>
@@ -2129,15 +2132,15 @@
           <p>Some of the data you entered in previous tabs has been auto-populated into this tab. Double check that this information is correct before moving on.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>248px</top>
+        <top>154px</top>
         <left>15px</left>
-        <width>930px</width>
-        <height>139px</height>
+        <width>967px</width>
+        <height>262px</height>
         <previousInputViews/>  
       </blankStep>    
       <inputStep>
         <name>03_enter_the_first_offer_price</name>
-        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_002.jpg</image>
+        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_003.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the first Offer Price.</strong></p>
           <p>The offer price is the price you will sell this product or accessory to government buyers, not including the Industrial Funding Fee (IFF).</p>
@@ -2145,9 +2148,9 @@
           <p>Type <strong><em>100</em></strong> into the cell under <em>01 Offer Price ($)</em>. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>top</position>
-        <top>276px</top>
-        <left>404px</left>
-        <width>101px</width>
+        <top>211px</top>
+        <left>200px</left>
+        <width>173px</width>
         <height>22px</height>
         <previousInputViews/> 
         <expression><![CDATA[^100$]]></expression>
@@ -2155,7 +2158,7 @@
       </inputStep>    
       <blankStep>
         <name>04_note_the_final_price</name>
-        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_003.jpg</image>
+        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_004.jpg</image>
         <text><![CDATA[
           <p><strong>Note the Final Price.</strong></p>
           <p>The final price including industrial funding fee (IFF) is automatically calculated based on your offer price. It includes the IFF, which you will later remit to the government.</p>
@@ -2163,104 +2166,152 @@
           <p>Click <strong>Next</strong>.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>248px</top>
-        <left>510px</left>
+        <top>210px</top>
+        <left>375px</left>
         <width>164px</width>
-        <height>138px</height>
+        <height>42px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_the_first_offer_price</inputStepName>
-            <top>276px</top>
-            <left>404px</left>
-            <width>101px</width>
+            <top>211px</top>
+            <left>200px</left>
+            <width>173px</width>
             <height>22px</height>
           </previousInputView>
         </previousInputViews>
       </blankStep>    
-      <inputStep>
-        <name>05_enter_the_second_offer_price</name>
+      <blankStep>
+        <name>05_note_the_markup_and_discount_to_gsa_fields</name>
         <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_004.jpg</image>
         <text><![CDATA[
-          <p><strong>Enter the second Offer Price.</strong></p>
-          <p>The second offer price corresponds to the zone we labeled "02."</p>
-          <p>Type <strong><em>105</em></strong> into the cell under <em>02 Offer Price ($)</em>. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+          <p><strong>Note the Markup and Discount to GSA fields.</strong></p>
+          <p>These fields correspond to the markup and GSA discount for the zone labelled "01," and are optional.</p>
+          <p>Click <strong>Next</strong>.</p>
         ]]></text>
-        <position>top</position>
-        <top>276px</top>
-        <left>675px</left>
-        <width>105px</width>
-        <height>22px</height>
+        <position>top-middle-aligned</position>
+        <top>154px</top>
+        <left>529px</left>
+        <width>371px</width>
+        <height>244px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>03_enter_the_first_offer_price</inputStepName>
-            <top>276px</top>
-            <left>404px</left>
-            <width>101px</width>
+            <top>211px</top>
+            <left>200px</left>
+            <width>173px</width>
             <height>22px</height>
           </previousInputView>
         </previousInputViews>
-        <expression><![CDATA[^105$]]></expression>
+      </blankStep>
+      <inputStep>
+        <name>06_enter_the_second_offer_price</name>
+        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_006.jpg</image>
+        <text><![CDATA[
+          <p><strong>Enter the second Offer Price.</strong></p>
+          <p>The second offer price corresponds to the zone we labeled "02."</p>
+          <p>Type <strong><em>100</em></strong> into the cell under <em>02 Offer Price ($)</em>. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+        ]]></text>
+        <position>top</position>
+        <top>213px</top>
+        <left>267px</left>
+        <width>173px</width>
+        <height>22px</height>
+        <previousInputViews>
+        </previousInputViews>
+        <expression><![CDATA[^100$]]></expression>
         <errorAlert>ERROR: You must enter "105" for this lesson.</errorAlert>            
       </inputStep>   
       <blankStep>
-        <name>06_note_the_second_final_price</name>
-        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_006.jpg</image>
+        <name>07_note_the_second_final_price</name>
+        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_007.jpg</image>
         <text><![CDATA[
           <p><strong>Note the second Final Price.</strong></p>
           <p>The <em>02 Final Price (IFF) ($)</em> field will be automatically calculated for you.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>274px</top>
-        <left>782px</left>
-        <width>163px</width>
-        <height>25px</height>
+        <top>213px</top>
+        <left>441px</left>
+        <width>164px</width>
+        <height>22px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>05_enter_the_second_offer_price</inputStepName>
-            <top>276px</top>
-            <left>675px</left>
-            <width>105px</width>
+            <inputStepName>06_enter_the_second_offer_price</inputStepName>
+            <top>213px</top>
+            <left>267px</left>
+            <width>173px</width>
             <height>22px</height>
           </previousInputView>          
+        </previousInputViews>
+      </blankStep>    
+      <blankStep>
+        <name>08_note_the_markup_and_discount_to_gsa_fields</name>
+        <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_007.jpg</image>
+        <text><![CDATA[
+          <p><strong>Note the Markup and Discount to GSA fields.</strong></p>
+          <p>These fields correspond to the markup and GSA discount for the zone labelled "01," and are optional.</p>
+          <p>Click <strong>Next</strong>.</p>
+        ]]></text>
+        <position>top-middle-aligned</position>
+        <top>154px</top>
+        <left>595px</left>
+        <width>371px</width>
+        <height>244px</height>
+        <previousInputViews>
           <previousInputView>
-            <inputStepName>03_enter_the_first_offer_price</inputStepName>
-            <top>276px</top>
-            <left>404px</left>
-            <width>101px</width>
+            <inputStepName>06_enter_the_second_offer_price</inputStepName>
+            <top>213px</top>
+            <left>267px</left>
+            <width>173px</width>
             <height>22px</height>
           </previousInputView>
         </previousInputViews>
-      </blankStep>    
+      </blankStep>
       <buttonStep>
-        <name>07_save_your_work</name>
+        <name>09_save_your_work</name>
         <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_007.jpg</image>
         <text><![CDATA[
           <p><strong>Save your work.</strong></p>
           <p>Click the <strong>Save Zonal Pricing</strong> button to ensure your data is not lost.</p>
         ]]></text>
         <position>top</position>
-        <top>217px</top>
-        <left>15px</left>
-        <width>117px</width>
-        <height>20px</height>
-        <previousInputViews/>  
+        <top>453px</top>
+        <left>22px</left>
+        <width>164px</width>
+        <height>54px</height>
+        <previousInputViews>  
+          <previousInputView>
+            <inputStepName>06_enter_the_second_offer_price</inputStepName>
+            <top>213px</top>
+            <left>267px</left>
+            <width>173px</width>
+            <height>22px</height>
+          </previousInputView>          
+        </previousInputViews>
       </buttonStep>    
       <buttonStep>
-        <name>08_click_ok</name>
+        <name>10_click_ok</name>
         <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_008.jpg</image>
         <text><![CDATA[
           <p><strong>Click OK.</strong></p>
           <p>On the <em>Product Confirmation</em> pop-up message, click <strong>OK</strong>.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>165px</top>
+        <top>193px</top>
         <left>311px</left>
         <width>326px</width>
-        <height>131px</height>
-        <previousInputViews/>
+        <height>158px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>06_enter_the_second_offer_price</inputStepName>
+            <top>213px</top>
+            <left>267px</left>
+            <width>173px</width>
+            <height>22px</height>
+          </previousInputView>          
+        </previousInputViews>
       </buttonStep>    
       <blankStep>
-        <name>09_end_of_zonal_offer_price_on-screen_data_entry</name>
+        <name>11_end_of_zonal_offer_price_on-screen_data_entry</name>
         <image>modules/presentation/images/zonal_offer_lesson/zonal_offer_007.jpg</image>
         <text><![CDATA[
           <p><strong>End of Zonal Offer Price: On-Screen Data Entry.</strong></p>
@@ -2303,10 +2354,10 @@
           <p>Some of the data you entered in previous tabs has been auto-populated into this tab. Double check that this information is correct before moving on.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>225px</top>
+        <top>149px</top>
         <left>15px</left>
-        <width>935px</width>
-        <height>194px</height>
+        <width>970px</width>
+        <height>286px</height>
         <previousInputViews/>  
       </blankStep>    
       <buttonStep>
@@ -2317,10 +2368,10 @@
           <p>Click the <strong>Add/View Special Charges</strong> button.</p>
         ]]></text>
         <position>top</position>
-        <top>253px</top>
-        <left>764px</left>
-        <width>168px</width>
-        <height>29px</height>
+        <top>200px</top>
+        <left>605px</left>
+        <width>183px</width>
+        <height>34px</height>
         <previousInputViews/>  
       </buttonStep>   
       <inputStep>
@@ -2332,10 +2383,10 @@
           <p>For this lesson, enter a number in the <em>Charges</em> column corresponding to <em>One Day Service</em>. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>bottom</position>
-        <top>136px</top>
-        <left>320px</left>
-        <width>147px</width>
-        <height>22px</height>
+        <top>127px</top>
+        <left>305px</left>
+        <width>140px</width>
+        <height>20px</height>
         <previousInputViews/>  
         <expression><![CDATA[^\d+(\.\d{2,4})?$]]></expression>
         <errorAlert><![CDATA[ERROR: Prices must match the following format: "DOLLARS . CENTS". Where "DOLLARS" cannot include a "$" prefix or commas and "CENTS" can only have two to four digits. For example, "1234.12" and "1234.1234" are valid dollar amounts, but "$1,234.12" is not.]]></errorAlert>
@@ -2348,17 +2399,17 @@
           <p>Click on the down-facing arrow in the <em>Per</em> column to open the drop-down menu.</p>
         ]]></text>
         <position>top</position>
-        <top>136px</top>
-        <left>471px</left>
-        <width>196px</width>
+        <top>127px</top>
+        <left>444px</left>
+        <width>186px</width>
         <height>20px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>04_enter_your_charges</inputStepName>
-            <top>136px</top>
-            <left>320px</left>
-            <width>147px</width>
-            <height>22px</height>
+            <top>127px</top>
+            <left>307px</left>
+            <width>140px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews> 
       </buttonStep>   
@@ -2371,16 +2422,16 @@
           <P>For this lesson, select <strong>EACH</strong>.</p>
         ]]></text>
         <position>top</position>
-        <top>136px</top>
-        <left>669px</left>
-        <width>193px</width>
-        <height>227px</height>
+        <top>127px</top>
+        <left>442px</left>
+        <width>207px</width>
+        <height>239px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>04_enter_your_charges</inputStepName>
-            <top>136px</top>
-            <left>320px</left>
-            <width>147px</width>
+            <top>127px</top>
+            <left>307px</left>
+            <width>140px</width>
             <height>20px</height>
           </previousInputView>
         </previousInputViews> 
@@ -2393,17 +2444,17 @@
           <p><em>Example: A product includes One Day Service which costs $7.00 per item but is only applicable in the contiguous US.</em></p>
           <p>Enter your Descriptions/Conditions. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
-        <position>top</position>
-        <top>136px</top>
-        <left>671px</left>
-        <width>196px</width>
-        <height>24px</height>
+        <position>left</position>
+        <top>127px</top>
+        <left>631px</left>
+        <width>186px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>04_enter_your_charges</inputStepName>
-            <top>136px</top>
-            <left>320px</left>
-            <width>147px</width>
+            <top>127px</top>
+            <left>307px</left>
+            <width>140px</width>
             <height>20px</height>
           </previousInputView>
         </previousInputViews> 
@@ -2418,23 +2469,23 @@
           <p>Click the <strong>Save Special Charges</strong> button to ensure your work is not lost.</p>
         ]]></text>
         <position>top</position>
-        <top>458px</top>
-        <left>739px</left>
-        <width>136px</width>
-        <height>20px</height>
+        <top>434px</top>
+        <left>651px</left>
+        <width>155px</width>
+        <height>33px</height>
         <previousInputViews>
           <previousInputView>
             <inputStepName>07_enter_your_descriptions_conditions</inputStepName>
-            <top>136px</top>
-            <left>671px</left>
-            <width>196px</width>
-            <height>24px</height>
+            <top>127px</top>
+            <left>633px</left>
+            <width>186px</width>
+            <height>20px</height>
           </previousInputView>
           <previousInputView>
             <inputStepName>04_enter_your_charges</inputStepName>
-            <top>136px</top>
-            <left>320px</left>
-            <width>147px</width>
+            <top>127px</top>
+            <left>307px</left>
+            <width>140px</width>
             <height>20px</height>
           </previousInputView>
         </previousInputViews> 
@@ -2447,15 +2498,15 @@
           <p>Click <strong>OK</strong> on the <em>Product Confirmation</em> pop-up message.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>206px</top>
-        <left>282px</left>
+        <top>145px</top>
+        <left>287px</left>
         <width>328px</width>
-        <height>152px</height>
+        <height>154px</height>
         <previousInputViews/>
       </buttonStep>    
       <blankStep>
         <name>10_end_of_special_charges_lesson</name>
-        <image>modules/presentation/images/special_charges_tab_lesson/special_charges_tab_006.jpg</image>
+        <image>modules/presentation/images/special_charges_tab_lesson/special_charges_tab_001.jpg</image>
         <text><![CDATA[
           <p><strong>End of Special Charges lesson.</strong></p>
           <p>Click <strong>Done</strong> to complete this lesson.</p>
@@ -2498,10 +2549,10 @@
           <p>Ensure each field is correct before moving on.</p>
         ]]></text>
         <position>top</position>
-        <top>223px</top>
-        <left>67px</left>
-        <width>505px</width>
-        <height>130px</height>
+        <top>206px</top>
+        <left>75px</left>
+        <width>885px</width>
+        <height>132px</height>
         <previousInputViews/>  
       </blankStep>      
       <buttonStep>
@@ -2512,24 +2563,24 @@
           <p>For this lesson, click in the box under the <em>Green Seal Item</em> column to indicate this feature is associated with the product in the first row.</p>
         ]]></text>
         <position>left</position>
-        <top>247px</top>
-        <left>769px</left>
-        <width>88px</width>
-        <height>17px</height>
+        <top>206px</top>
+        <left>775px</left>
+        <width>22px</width>
+        <height>22px</height>
         <previousInputViews/>  
       </buttonStep>
       <buttonStep>
         <name>04_check_the_box_under_the_ergonomic_item_column</name>
-        <image>modules/presentation/images/special_features_tab_lesson/special_features_tab_002.jpg</image>
+        <image>modules/presentation/images/special_features_tab_lesson/special_features_tab_002a.jpg</image>
         <text><![CDATA[
           <p><strong>Check the box under the Ergonomic Item column.</strong></p>
           <p>For this lesson, click in the box under the <em>Ergonomic Item</em> column to indicate this feature is associated with the product in the first row.</p>
         ]]></text>
         <position>left</position>
-        <top>247px</top>
-        <left>864px</left>
-        <width>88px</width>
-        <height>17px</height>
+        <top>206px</top>
+        <left>782px</left>
+        <width>22px</width>
+        <height>22px</height>
         <previousInputViews/>  
       </buttonStep>  
       <blankStep>
@@ -2541,10 +2592,10 @@
           <p>Click <strong>Next<strong>.</p>
         ]]></text>
         <position>left</position>
-        <top>217px</top>
-        <left>763px</left>
-        <width>192px</width>
-        <height>138px</height>
+        <top>249px</top>
+        <left>608px</left>
+        <width>352px</width>
+        <height>112px</height>
         <previousInputViews/>  
       </blankStep>
       <buttonStep>
@@ -2554,11 +2605,11 @@
           <p><strong>Save your work.</strong></p>
           <p>Click the <strong>Save Special Features</strong> button to ensure your data is not lost.</p>
         ]]></text>
-        <position>right</position>
-        <top>187px</top>
-        <left>15px</left>
-        <width>141px</width>
-        <height>20px</height>
+        <position>top</position>
+        <top>450px</top>
+        <left>26px</left>
+        <width>167px</width>
+        <height>32px</height>
         <previousInputViews/>  
       </buttonStep>  
       <buttonStep>
@@ -2569,10 +2620,10 @@
           <p>When the <em>Product Confirmation</em> box pops up, click <strong>OK</strong>.</p>
         ]]></text>
         <position>top-middle-aligned</position>
-        <top>190px</top>
-        <left>340px</left>
-        <width>324px</width>
-        <height>131px</height>
+        <top>148px</top>
+        <left>299px</left>
+        <width>328px</width>
+        <height>152px</height>
         <previousInputViews/>  
       </buttonStep>
       <blankStep>
@@ -2590,19 +2641,20 @@
         <previousInputViews/>  
       </blankStep>                    
     </steps>
-  </presentation>    
+  </presentation>   
+   <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->        
   <presentation>
-    <name>download_reference_tabs_lesson</name>
-    <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+    <name>download_reference_tab_lesson</name>
+    <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
     <width>1000px</width>
     <height>500px</height>
     <steps>
       <blankStep>
         <name>01_introduction_to_the_references_tabs</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
           <p><strong>Introduction to the References tabs.</strong></p>
-          <p>On these tabs, you will find lists of names and codes for various fields, including <em>Production Points</em>, <em>Unit of Issue</em>, <em>Special Features</em>, and <em>Delivery</em>. You will need to refer to these tabs when completing these fields in the <em>Download/Upload Template</em> Excel spreadsheet.</p>
+          <p>The Reference tab is the last tab in the Excel spreadsheet. In this tab you will find lists of names and codes for various fields, including <em>Option Code</em>, <em>Unit of Issue</em>, <em>Special Features</em>, and <em>Delivery</em>. You can refer to these lists when completing these fields in other tabs of the spreadsheet.</p>
         ]]></text>
         <position>floating</position>
         <top>200px</top>
@@ -2612,111 +2664,174 @@
         <previousInputViews/>  
       </blankStep> 
       <blankStep>
-        <name>02_the_code_lookup_tab</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <name>02_product_type</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>The Code Lookup tab.</strong></p>
-          <p>This tab contains codes related to Production Point, Unit of Issue, and Special Features.</p>
-        ]]></text>
-        <position>top</position>
-        <top>450px</top>
-        <left>101px</left>
-        <width>103px</width>
-        <height>22px</height>
-        <previousInputViews/>  
-      </blankStep> 
-      <blankStep>
-        <name>03_production_point_codes_1</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
-        <text><![CDATA[
-          <p><strong>Production Point Codes.</strong></p>
-          <p>To locate the code you will need to enter, first refer to the <em>Production Point Name</em> column and locate the the country in which your product/accessory was manufactured.</p>
-          <p>For example, to locate the code for Belgium, first find that country under the Name column.</p>
+          <p><strong>Product Type.</strong></p>
+          <p>The Product Type field informs you that you can enter with "Product" or "Accessory" in any column named "Product Type".</p>
         ]]></text>
         <position>right</position>
-        <top>136px</top>
-        <left>173px</left>
-        <width>199px</width>
-        <height>303px</height>
+        <top>135px</top>
+        <left>36px</left>
+        <width>214px</width>
+        <height>62px</height>
         <previousInputViews/>  
       </blankStep> 
       <blankStep>
-        <name>04_production_point_codes_2</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <name>03_warranty_periods</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>Production Point Codes</strong></p>
-          <p>Directly to the left of "Belgium" is that country’s corresponding code, which you will see is "BE."</p>
+          <p><strong>Warranty Periods.</strong></p>
+          <p>This field indicates the options for both the Warranty Period and Extended Warranty Period.</p>
         ]]></text>
         <position>right</position>
-        <top>237px</top>
-        <left>26px</left>
-        <width>345px</width>
-        <height>17px</height>
+        <top>203px</top>
+        <left>36px</left>
+        <width>214px</width>
+        <height>113px</height>
         <previousInputViews/>  
       </blankStep> 
       <blankStep>
-        <name>05_unit_of_issue_names</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <name>04_discount_type</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>Unit of Issue Names</strong></p>
-          <p>A Unit of Issue describes in what format, quantity, or packaging a product will be sold. To locate the code you will need to enter, first refer to the Unit of Issue Name column.</p>
-          <p>For example, to locate the code for 100-PACK, first find that under the Name column.</p>
+          <p><strong>Discount Type.</strong></p>
+          <p>This field indicates that there are two types of discounts: Volume/Quantity discounts and Dollar discounts.</p>
         ]]></text>
-        <position>top-middle-aligned</position>
-        <top>136px</top>
-        <left>521px</left>
-        <width>126px</width>
-        <height>303px</height>
+        <position>right</position>
+        <top>323px</top>
+        <left>36px</left>
+        <width>214px</width>
+        <height>62px</height>
+        <previousInputViews/>  
+      </blankStep> 
+      <blankStep>
+        <name>05_option_code</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
+        <text><![CDATA[
+          <p><strong>Option Code.</strong></p>
+          <p>The Option Code defines how the option relates to the base product. There are four potential values, which are defined as follows:</p>
+          <ul>
+            <li>I - option is included as a feature of product, and cannot be removed</li>
+            <li>S - option can be substituted for another option</li>
+            <li>A - option can be added to the base product; it is not required to be selected</li>
+            <li>O - none can be selected.</li>
+          </ul>
+          <br/>
+        ]]></text>
+        <position>right</position>
+        <top>135px</top>
+        <left>254px</left>
+        <width>223px</width>
+        <height>96px</height>
         <previousInputViews/>  
       </blankStep>       
       <blankStep>
-        <name>06_unit_of_issue_codes</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <name>06_delivery_lead_time</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>Unit of Issue Codes</strong></p>
-          <p>Directly to the left of "100-PACK" is that unit’s corresponding code, which you will see is "4F."</p>
+          <p><strong>Delivery Lead Time</strong></p>
+          <p>The <em>Delivery Lead Time Code</em> field helps you identify the method in which your company determines delivery lead time. The choices are as follows:</p>
+          <ul>
+            <li>AF - delivered after receipt of order</li>
+            <li>AE - shipped after receipt of order</li>
+          </ul>
+          <br/>
         ]]></text>
-        <position>top</position>
-        <top>288px</top>
-        <left>436px</left>
-        <width>212px</width>
-        <height>17px</height>
+        <position>right</position>
+        <top>236px</top>
+        <left>254px</left>
+        <width>223px</width>
+        <height>63px</height>
         <previousInputViews/>  
       </blankStep> 
       <blankStep>
-        <name>07_special_feature_messages</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_001.jpg</image>
+        <name>07_delivery_fob_conus</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>Special Feature Messages</strong></p>
-          <p>This is simply a list of the names of all the Special Features.</p>
+          <p><strong>Delivery FOB - CONUS</strong></p>
+          <p>Within the <em>Delivery FOB - CONUS</em> field, Free On Board (FOB) defines delivery options. Use these columns to help you determine the codes for the type of delivery you offer within the continental United States.</p>
+          <ul>
+            <li>O - Origin - shipping is paid by the seller</li>
+            <li>D - Destination - shipping is paid by the buyer</li>
+          </ul>
+          <br/>
         ]]></text>
-        <position>left</position>
-        <top>136px</top>
-        <left>791px</left>
-        <width>161px</width>
-        <height>303px</height>
+        <position>right</position>
+        <top>304px</top>
+        <left>254px</left>
+        <width>223px</width>
+        <height>63px</height>
         <previousInputViews/>  
       </blankStep> 
       <blankStep>
-        <name>08_type</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_002.jpg</image>
+        <name>08_delivery_fob_nonconus</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_001.jpg</image>
         <text><![CDATA[
-          <p><strong>Type</strong></p>
-          <p>This field refers to whether a feature is a Special Feature or an Environmental Feature.</p>
+          <p><strong>Delivery FOB - NonCONUS</strong></p>
+          <p>Within this field, Free On Board (FOB) defines delivery options. Use these columns to help you determine the codes for the type of delivery you offer within the non-contiguous US territories.</p>
+          <ul>
+            <li>O - Origin - shipping is paid by the seller</li>
+            <li>D - Destination - shipping is paid by the buyer</li>
+            <li>ND - No Delivery - delivery is not offered to this destination</li>
+          </ul>
+          <br/>
         ]]></text>
-        <position>left</position>
-        <top>136px</top>
-        <left>608px</left>
-        <width>134px</width>
-        <height>303px</height>
+        <position>right</position>
+        <top>373px</top>
+        <left>254px</left>
+        <width>223px</width>
+        <height>79px</height>
         <previousInputViews/>  
       </blankStep>           
       <blankStep>
-        <name>09_finished</name>
-        <image>modules/presentation/images/download_reference_tabs_lesson/reference_tabs_002.jpg</image>
+        <name>09_country_of_origin</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_002.jpg</image>
         <text><![CDATA[
-          <p><strong>End of Download/Upload: Reference Tabs Lesson</strong></p>
-          <p>Click <strong>Done</strong> to complete this lesson.</p>
+          <p><strong>Country of Origin</strong></p>
+          <p>Locate the country in which your product/accessory was manufactured in the <em>Country of Origin Name</em> field. Directly to the left of the country's name is the corresponding code.</p>
+        ]]></text>
+        <position>right</position>
+        <top>135px</top>
+        <left>36px</left>
+        <width>278px</width>
+        <height>320px</height>
+        <previousInputViews/>  
+      </blankStep>
+      <blankStep>
+        <name>10_unit_of_issue</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_002.jpg</image>
+        <text><![CDATA[
+          <p><strong>Unit of Issue</strong></p>
+          <p>Unit of Issue describes the format, quantity, or packaging in which a product will be sold. To locate the code you will need to enter, first find the name of the unit you wish to enter, and look to the left for its corresponding code.</p>
+        ]]></text>
+        <position>right</position>
+        <top>135px</top>
+        <left>318px</left>
+        <width>432px</width>
+        <height>320px</height>
+        <previousInputViews/>  
+      </blankStep>
+      <blankStep>
+        <name>11_special_feature</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_003.jpg</image>
+        <text><![CDATA[
+          <p><strong>Special Feature</strong></p>
+          <p>To locate the Special Feature Code, first locate the feature in the <em>Special Feature Message</em> column. Directly to the left of the message, you will find the corresponding Special Feature Code. To the right, the <em>Type</em> column specifies if the feature is a Special Feature or an Environmental Feature.</p>
+        ]]></text>
+        <position>right</position>
+        <top>135px</top>
+        <left>35px</left>
+        <width>644px</width>
+        <height>320px</height>
+        <previousInputViews/>  
+      </blankStep>
+      <blankStep>
+        <name>12_special_feature</name>
+        <image>modules/presentation/images/download_reference_tab_lesson/reference_tab_003.jpg</image>
+        <text><![CDATA[
+          <p><strong>End of Reference Tab lesson.</strong></p>
+          <p>Click the <strong>Done</strong> button to complete this lesson.</p>
         ]]></text>
         <position>floating</position>
         <top>200px</top>
@@ -2726,7 +2841,8 @@
         <previousInputViews/>  
       </blankStep>
     </steps>
-  </presentation>  
+  </presentation>
+  <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->  
   <presentation>
     <name>download_pricing_tab_lesson</name>
     <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
@@ -2738,8 +2854,7 @@
         <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
         <text><![CDATA[
           <p><strong>Introduction to the Pricing Tab</strong></p>
-          <p>The <em>Pricing</em> tab is the first tab in the Excel spreadsheet and will capture basic information like the Manufacturer Name and Part Number.</p>
-          <p>In this lesson, we will cover how to complete the first part of the <em>Pricing</em> tab.</p>
+          <p>This is a lesson on completing the <em>Pricing</em> tab in the <em>Download/Upload Template</em>. This template is where you will capture all of the pricing data for your products and/or accessories. This method allows you to download an Excel file created by the system and work on it offline. You should use this template if you have more than 100 items to enter.</p>
         ]]></text>
         <position>floating</position>
         <top>200px</top>
@@ -2749,64 +2864,78 @@
         <previousInputViews/>
       </blankStep>
       <blankStep>
-        <name>02_open_the_downloaded_excel_file</name>
+        <name>02_intro_to_the_pricing_tab</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
+        <text><![CDATA[
+          <p><strong>Introduction to the Pricing Tab</strong></p>
+          <p>The <em>Pricing</em> tab is the first tab in the Excel spreadsheet and will capture basic information like the Manufacturer Name and Part Number.</p>
+        ]]></text>
+        <position>floating</position>
+        <top>200px</top>
+        <left>500px</left>
+        <width>0px</width>
+        <height>0px</height>
+        <previousInputViews/>
+      </blankStep>
+      <blankStep>
+        <name>03_open_the_downloaded_excel_file</name>
         <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
         <text><![CDATA[
           <p><strong>Open the downloaded Excel file.</strong></p>
           <p>After downloading the template created by the system, open the Excel file (which will be named "PricingData.xls") to the <em>Pricing</em> tab.</p>
         ]]></text>
         <position>top</position>
-        <top>451px</top>
-        <left>418px</left>
-        <width>64px</width>
-        <height>21px</height>
+        <top>444px</top>
+        <left>193px</left>
+        <width>78px</width>
+        <height>35px</height>
         <previousInputViews/>
       </blankStep>  
       <inputStep>
-        <name>03_enter_the_sin</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_002.jpg</image>
+        <name>04_enter_the_sin</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the SIN.</strong></p>
           <p>You can enter multiple SINs into this document, but we recommend completing each tab for one SIN at a time.</p>
           <p>For this lesson, type <strong><em>34 500</em></strong> into the first cell under the <em>*SIN</em> heading. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>right</position>
-        <top>150px</top>
-        <left>29px</left>
-        <width>71px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>27px</left>
+        <width>63px</width>
+        <height>20px</height>
         <previousInputViews/>
         <expression><![CDATA[^34 500$]]></expression>
         <errorAlert>ERROR: You must enter "34" SPACE "500" for this lesson.</errorAlert>
       </inputStep>  
       <inputStep>
-        <name>04_enter_the_manufacturer_part_number</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_003.jpg</image>
+        <name>05_enter_the_manufacturer_part_number</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the Manufacturer Part Number.</strong></p>
           <p><em>Example: HSC0424PP</em></p>
           <p>This field should be entered exactly as provided by the manufacturer, and should not be edited in any way. You can enter up to 40 characters. Enter a Manufacturer Part Number into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>right</position>
-        <top>150px</top>
-        <left>106px</left>
-        <width>174px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>91px</left>
+        <width>136px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>03_enter_the_sin</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>71px</width>
-            <height>21px</height>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^.{1,40}$]]></expression>
         <errorAlert>ERROR: There is a 40 character limit.</errorAlert>     
       </inputStep>  
       <inputStep>
-        <name>05_type_a_manufacturer_name</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_004.jpg</image>
+        <name>06_type_a_manufacturer_name</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_001.jpg</image>
         <text><![CDATA[
           <p><strong>Type a Manufacturer Name.</strong></p>
           <p><em>Examples: Honeywell, or Samsung, or DeWalt</em></p>
@@ -2814,71 +2943,110 @@
           <p>Enter a name, with a maximum of 40 characters, into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>bottom</position>
-        <top>150px</top>
-        <left>284px</left>
-        <width>133px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>228px</left>
+        <width>171px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>04_enter_the_manufacturer_part_number</inputStepName>
-            <top>150px</top>
-            <left>106px</left>
-            <width>174px</width>
-            <height>21px</height>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
           </previousInputView>          
           <previousInputView>
-            <inputStepName>03_enter_the_sin</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>71px</width>
-            <height>21px</height>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^.{1,40}$]]></expression>
         <errorAlert>ERROR: There is a 40 character limit.</errorAlert>
       </inputStep>  
-      <inputStep>
-        <name>06_enter_either_product_or_accessory</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_005.jpg</image>
+      <buttonStep>
+        <name>07_enter_either_product_or_accessory</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_002.jpg</image>
         <text><![CDATA[
           <p><strong>Enter either Product or Accessory.</strong></p>
-          <p>For this field, you will need to type either "Product" or "Accessory."</p>
-          <p>For this lesson, type <strong><em>Product</em></strong> into this cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+          <p>For this field, you will need to select either "Product" or "Accessory."</p>
+          <p>For this lesson, select <strong><em>Product</em></strong> from the dropdown menu and click <strong>Next</strong>.</p>
         ]]></text>
         <position>bottom</position>
-        <top>150px</top>
-        <left>420px</left>
-        <width>92px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>400px</left>
+        <width>85px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>05_type_a_manufacturer_name</inputStepName>
-            <top>150px</top>
-            <left>284px</left>
-            <width>133px</width>
-            <height>21px</height>
+            <inputStepName>06_type_a_manufacturer_name</inputStepName>
+            <top>180px</top>
+            <left>228px</left>
+            <width>171px</width>
+            <height>20px</height>
           </previousInputView>              
           <previousInputView>
-            <inputStepName>04_enter_the_manufacturer_part_number</inputStepName>
-            <top>150px</top>
-            <left>106px</left>
-            <width>174px</width>
-            <height>21px</height>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
           </previousInputView>          
           <previousInputView>
-            <inputStepName>03_enter_the_sin</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>71px</width>
-            <height>21px</height>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^Product$]]></expression>
         <errorAlert>ERROR: You must enter "Product" (with a capital "P") for this lesson.</errorAlert>
-      </inputStep>  
+      </buttonStep>  
+      <buttonStep>
+        <name>08_enter_either_product_or_accessory</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_003.jpg</image>
+        <text><![CDATA[
+          <p><strong>Enter either Product or Accessory.</strong></p>
+          <p>For this field, you will need to select either "Product" or "Accessory."</p>
+          <p>For this lesson, select <strong><em>Product</em></strong> from the dropdown menu and click <strong>Next</strong>.</p>
+        ]]></text>
+        <position>bottom</position>
+        <top>200px</top>
+        <left>400px</left>
+        <width>85px</width>
+        <height>20px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>06_type_a_manufacturer_name</inputStepName>
+            <top>180px</top>
+            <left>228px</left>
+            <width>171px</width>
+            <height>20px</height>
+          </previousInputView>              
+          <previousInputView>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
+          </previousInputView>          
+          <previousInputView>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
+          </previousInputView>
+        </previousInputViews>
+        <expression><![CDATA[^Product$]]></expression>
+        <errorAlert>ERROR: You must enter "Product" (with a capital "P") for this lesson.</errorAlert>
+      </buttonStep>  
       <inputStep>
-        <name>07_enter_the_product_name</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_006.jpg</image>
+        <name>09_enter_the_product_name</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_005.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the Product Name.</strong></p>
           <p><em>Examples: laptop bag, refrigerator, laptop.</em></p>
@@ -2886,141 +3054,276 @@
           <p>For this lesson, type a Product Name into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>left</position>
-        <top>150px</top>
-        <left>516px</left>
-        <width>173px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>467px</left>
+        <width>151px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>06_enter_either_product_or_accessory</inputStepName>
-            <top>150px</top>
-            <left>420px</left>
-            <width>92px</width>
-            <height>21px</height>
+            <inputStepName>07_enter_either_product_or_accessory</inputStepName>
+            <top>180px</top>
+            <left>400px</left>
+            <width>67px</width>
+            <height>20px</height>
           </previousInputView>            
           <previousInputView>
-            <inputStepName>05_type_a_manufacturer_name</inputStepName>
-            <top>150px</top>
-            <left>284px</left>
-            <width>133px</width>
-            <height>21px</height>
+            <inputStepName>06_type_a_manufacturer_name</inputStepName>
+            <top>180px</top>
+            <left>228px</left>
+            <width>171px</width>
+            <height>20px</height>
           </previousInputView>              
           <previousInputView>
-            <inputStepName>04_enter_the_manufacturer_part_number</inputStepName>
-            <top>150px</top>
-            <left>106px</left>
-            <width>174px</width>
-            <height>21px</height>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
           </previousInputView>          
           <previousInputView>
-            <inputStepName>03_enter_the_sin</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>71px</width>
-            <height>21px</height>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[.*]]></expression>
         <errorAlert></errorAlert>   
       </inputStep>  
       <inputStep>
-        <name>08_enter_the_upc</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_007.jpg</image>
+        <name>10_enter_the_upc</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_005.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the UPC.</strong></p>
           <p>A Universal Product Code (UPC) is a unique identification code that is assigned to a product by a governing organization.</p>
           <p>Type a UPC between 8 and 14 digits into the cell, with no special characters. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>left</position>
-        <top>150px</top>
-        <left>691px</left>
-        <width>238px</width>
-        <height>21px</height>
+        <top>180px</top>
+        <left>617px</left>
+        <width>139px</width>
+        <height>20px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>07_enter_the_product_name</inputStepName>
-            <top>150px</top>
-            <left>516px</left>
-            <width>173px</width>
-            <height>21px</height>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>467px</left>
+            <width>151px</width>
+            <height>20px</height>
           </previousInputView>             
           <previousInputView>
-            <inputStepName>06_enter_either_product_or_accessory</inputStepName>
-            <top>150px</top>
-            <left>417px</left>
-            <width>92px</width>
-            <height>21px</height>
-          </previousInputView>            
-          <previousInputView>
-            <inputStepName>05_type_a_manufacturer_name</inputStepName>
-            <top>150px</top>
-            <left>282px</left>
-            <width>133px</width>
-            <height>21px</height>
+            <inputStepName>06_type_a_manufacturer_name</inputStepName>
+            <top>180px</top>
+            <left>228px</left>
+            <width>171px</width>
+            <height>20px</height>
           </previousInputView>              
           <previousInputView>
-            <inputStepName>04_enter_the_manufacturer_part_number</inputStepName>
-            <top>150px</top>
-            <left>106px</left>
-            <width>174px</width>
-            <height>21px</height>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
           </previousInputView>          
           <previousInputView>
-            <inputStepName>03_enter_the_sin</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>71px</width>
-            <height>21px</height>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^[0-9]{8,14}$]]></expression>
         <errorAlert>ERROR: You must enter an 8 - 14 digit number.</errorAlert>
       </inputStep>  
       <inputStep>
-        <name>09_enter_the_vendors_product_description</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_008.jpg</image>
+        <name>11_vendor_part_number</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_005.jpg</image>
+        <text><![CDATA[
+          <p><strong>Note the Vendor Part Number field.</strong></p>
+          <p>The vendor part number is an optional field used to identify a company specific part number. This term is also known as the contractor's part number. Click <strong>Next</strong>.</p>
+        ]]></text>
+        <position>left</position>
+        <top>180px</top>
+        <left>752px</left>
+        <width>85px</width>
+        <height>20px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>617px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>467px</left>
+            <width>151px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>06_type_a_manufacturer_name</inputStepName>
+            <top>180px</top>
+            <left>228px</left>
+            <width>171px</width>
+            <height>20px</height>
+          </previousInputView>              
+          <previousInputView>
+            <inputStepName>05_enter_the_manufacturer_part_number</inputStepName>
+            <top>180px</top>
+            <left>91px</left>
+            <width>136px</width>
+            <height>20px</height>
+          </previousInputView>          
+          <previousInputView>
+            <inputStepName>04_enter_the_sin</inputStepName>
+            <top>180px</top>
+            <left>27px</left>
+            <width>63px</width>
+            <height>20px</height>
+          </previousInputView>
+        </previousInputViews>
+        <expression><![CDATA[.*]]></expression>
+        <errorAlert></errorAlert>  
+      </inputStep>  
+      <inputStep>
+        <name>12_enter_the_vendors_product_description</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_006.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the Vendor’s Product Description.</strong></p>
           <p>The vendor's product or accessory description is the description of the product or accessory, as created or provided by the seller. This description may be different than the description provided by the manufacturer.</p>
           <p>Type a Vendor Product Description into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>right</position>
-        <top>150px</top>
-        <left>29px</left>
-        <width>271px</width>
-        <height>21px</height>
-        <previousInputViews/>
+        <top>180px</top>
+        <left>468px</left>
+        <width>171px</width>
+        <height>20px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>383px</left>
+            <width>85px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>245px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>96px</left>
+            <width>151px</width>
+            <height>20px</height>
+          </previousInputView>             
+        </previousInputViews>
         <expression><![CDATA[.*]]></expression>
         <errorAlert></errorAlert>  
       </inputStep>  
-      <inputStep>
-        <name>10_enter_the_unit_of_issue</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_009.jpg</image>
+      <buttonStep>
+        <name>13_enter_the_unit_of_issue</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_007.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the Unit of Issue.</strong></p>
           <p><em>Examples: each, box, or dozen.</em></p>
-          <p>The Unit of Issue describes in what format, quantity, or packaging a product will be sold. For a complete list of every Unit of Issue, see the <em>Code Lookup</em> tab, copy the code that applies to your product, and paste it into the cell under <em>Unit of Issue</em>.</p>
-          <p>For this lesson, enter "box" into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+          <p>The Unit of Issue describes in what format, quantity, or packaging a product will be sold. For a complete list of every Unit of Issue, see also the <em>Reference</em> tab.</p>
+          <p>For this lesson, select "EA - EACH" from the dropdown menu and click <strong>Next</strong>.</p>
         ]]></text>
-        <position>right</position>
-        <top>150px</top>
-        <left>301px</left>
-        <width>90px</width>
+        <position>left</position>
+        <top>180px</top>
+        <left>637px</left>
+        <width>120px</width>
         <height>21px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>09_enter_the_vendors_product_description</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>271px</width>
-            <height>21px</height>
+            <inputStepName>12_enter_the_vendors_product_description</inputStepName>
+            <top>180px</top>
+            <left>468px</left>
+            <width>171px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>383px</left>
+            <width>85px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>245px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>96px</left>
+            <width>151px</width>
+            <height>20px</height>
           </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^box$]]></expression>
         <errorAlert>ERROR: You must enter "box" for this lesson.</errorAlert>  
-      </inputStep>  
+      </buttonStep>  
+      <buttonStep>
+        <name>14_enter_the_unit_of_issue</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_008.jpg</image>
+        <text><![CDATA[
+          <p><strong>Enter the Unit of Issue.</strong></p>
+          <p><em>Examples: each, box, or dozen.</em></p>
+          <p>The Unit of Issue describes in what format, quantity, or packaging a product will be sold. For a complete list of every Unit of Issue, see also the <em>Reference</em> tab.</p>
+          <p>For this lesson, select "EA - EACH" from the dropdown menu and click <strong>Next</strong>.</p>
+        ]]></text>
+        <position>left</position>
+        <top>196px</top>
+        <left>571px</left>
+        <width>118px</width>
+        <height>21px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>12_enter_the_vendors_product_description</inputStepName>
+            <top>180px</top>
+            <left>401px</left>
+            <width>166px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>317px</left>
+            <width>80px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>177px</left>
+            <width>136px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>29px</left>
+            <width>145px</width>
+            <height>20px</height>
+          </previousInputView>
+        </previousInputViews>
+        <expression><![CDATA[^box$]]></expression>
+        <errorAlert>ERROR: You must enter "box" for this lesson.</errorAlert>  
+      </buttonStep>  
       <inputStep>
-        <name>11_enter_the_quantity_per_unit</name>
+        <name>15_enter_the_quantity_per_unit</name>
         <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_010.jpg</image>
         <text><![CDATA[
           <p><strong>Enter the Quantity Per Unit.</strong></p>
@@ -3029,32 +3332,46 @@
           <p>For this lesson, type a number into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>bottom</position>
-        <top>150px</top>
-        <left>393px</left>
-        <width>120px</width>
+        <top>180px</top>
+        <left>739px</left>
+        <width>65px</width>
         <height>21px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>10_enter_the_unit_of_issue</inputStepName>
-            <top>151px</top>
-            <left>301px</left>
-            <width>90px</width>
-            <height>207px</height>
-          </previousInputView>
+            <inputStepName>12_enter_the_vendors_product_description</inputStepName>
+            <top>180px</top>
+            <left>468px</left>
+            <width>171px</width>
+            <height>20px</height>
+          </previousInputView>             
           <previousInputView>
-            <inputStepName>09_enter_the_vendors_product_description</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>271px</width>
-            <height>21px</height>
-          </previousInputView>  
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>383px</left>
+            <width>85px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>245px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>96px</left>
+            <width>151px</width>
+            <height>20px</height>
+          </previousInputView>
         </previousInputViews>
         <expression><![CDATA[^[0-9]+$]]></expression>
         <errorAlert>ERROR: You must enter a number such as "4" for this lesson.</errorAlert> 
       </inputStep>  
       <blankStep>
-        <name>12_note_the_quantity_of_product_unit_field</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_011.jpg</image>
+        <name>16_note_the_quantity_of_product_unit_field</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_010.jpg</image>
         <text><![CDATA[
           <p><strong>Note the Quantity of Product/Unit field.</strong></p>
           <p><em>Example: If you are selling a package of markers that contains 8 markers, then the unit of issue would be "package," the quantity per unit would be "8," and the quantity of product/unit would be "each."</em></p>
@@ -3062,189 +3379,53 @@
           <p>Click <strong>Next</strong>.</p>
         ]]></text>
         <position>left</position>
-        <top>134px</top>
-        <left>513px</left>
-        <width>172px</width>
-        <height>314px</height>
+        <top>122px</top>
+        <left>802px</left>
+        <width>88px</width>
+        <height>328px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>11_enter_the_quantity_per_unit</inputStepName>
-            <top>150px</top>
-            <left>393px</left>
-            <width>120px</width>
+            <inputStepName>15_enter_the_quantity_per_unit</inputStepName>
+            <top>180px</top>
+            <left>739px</left>
+            <width>65px</width>
             <height>21px</height>
-          </previousInputView>
+          </previousInputView>             
           <previousInputView>
-          <inputStepName>10_enter_the_unit_of_issue</inputStepName>
-            <top>150px</top>
-            <left>301px</left>
-            <width>90px</width>
-            <height>21px</height>
-          </previousInputView>
+            <inputStepName>12_enter_the_vendors_product_description</inputStepName>
+            <top>180px</top>
+            <left>468px</left>
+            <width>171px</width>
+            <height>20px</height>
+          </previousInputView>             
           <previousInputView>
-            <inputStepName>09_enter_the_vendors_product_description</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>271px</width>
-            <height>21px</height>
-          </previousInputView>           
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>383px</left>
+            <width>85px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>245px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>96px</left>
+            <width>151px</width>
+            <height>20px</height>
+          </previousInputView>
         </previousInputViews>    
       </blankStep>  
       <blankStep>
-        <name>13_note_the_vendor_part_number_field</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_012.jpg</image>
+        <name>17_end_of_pricing_tab_lesson</name>
+        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_010.jpg</image>
         <text><![CDATA[
-          <p><strong>Note the Vendor Part Number field.</strong></p>
-          <p>The vendor part number is an optional field used to identify a company specific part number. This term is also known as the contractor's part number.</p>
-          <p>Click <strong>Next</strong>.</p>
-        ]]></text>
-        <position>left</position>
-        <top>134px</top>
-        <left>686px</left>
-        <width>133px</width>
-        <height>314px</height>
-        <previousInputViews>
-          <previousInputView>
-            <inputStepName>11_enter_the_quantity_per_unit</inputStepName>
-            <top>150px</top>
-            <left>393px</left>
-            <width>120px</width>
-            <height>21px</height>
-          </previousInputView>    
-          <previousInputView>                 
-            <inputStepName>10_enter_the_unit_of_issue</inputStepName>
-            <top>150px</top>
-            <left>301px</left>
-            <width>90px</width>
-            <height>21px</height>
-          </previousInputView>
-          <previousInputView>
-            <inputStepName>09_enter_the_vendors_product_description</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>271px</width>
-            <height>21px</height>
-          </previousInputView>           
-        </previousInputViews> 
-      </blankStep>        
-      <inputStep>
-        <name>14_enter_the_commercial_list_price</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_013.jpg</image>
-        <text><![CDATA[
-          <p><strong>Enter the Commercial List Price.</strong></p>
-          <p>The Commercial List Price is the price the product is offered to non-government entities.</p>
-          <p>For this lesson, enter a price, press <strong>Enter</strong> to validate, and click <strong>Next</strong>.</p>
-        ]]></text>
-        <position>left</position>
-        <top>150px</top>
-        <left>821px</left>
-        <width>148px</width>
-        <height>21px</height>
-        <previousInputViews>
-          <previousInputView>
-            <inputStepName>11_enter_the_quantity_per_unit</inputStepName>
-            <top>150px</top>
-            <left>393px</left>
-            <width>120px</width>
-            <height>21px</height>
-          </previousInputView>
-          <previousInputView>                
-            <inputStepName>10_enter_the_unit_of_issue</inputStepName>
-            <top>150px</top>
-            <left>301px</left>
-            <width>90px</width>
-            <height>21px</height>
-          </previousInputView>
-          <previousInputView>
-            <inputStepName>09_enter_the_vendors_product_description</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>271px</width>
-            <height>21px</height>
-          </previousInputView>           
-        </previousInputViews> 
-        <expression><![CDATA[^\d+(\.\d{2,4})?$]]></expression>
-        <errorAlert><![CDATA[ERROR: Prices must match the following format: "DOLLARS . CENTS". Where "DOLLARS" cannot include a "$" prefix or commas and "CENTS" can only have two to four digits. For example, "1234.12" and "1234.1234" are valid dollar amounts, but "$1,234.12" is not.]]></errorAlert>
-      </inputStep>  
-      <inputStep>
-        <name>15_enter_the_best_priced_customer_name</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_014.jpg</image>
-        <text><![CDATA[
-          <p><strong>Enter the Best Priced Customer Name.</strong></p>
-          <p>The Best Priced Customer is the name of the customer or category of customers (commercial or government) in which your company offers the absolute best price, independent of terms and conditions, discounts, and/or concessions.</p>
-          <p>Enter the name of a Best Priced Customer. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
-        ]]></text>
-        <position>right</position>
-        <top>150px</top>
-        <left>29px</left>
-        <width>187px</width>
-        <height>21px</height>
-        <previousInputViews/>
-        <expression><![CDATA[.*]]></expression>
-        <errorAlert></errorAlert>           
-      </inputStep>        
-      <inputStep>
-        <name>16_enter_the_price_offered_to_best_priced_customer</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_015.jpg</image>
-        <text><![CDATA[
-          <p><strong>Enter the Price Offered to Best Priced Customer.</strong></p>
-          <p>The Price Offered to Best Priced Customer is the best price your company offers a product to the customer identified as the best priced customer.</p>
-          <p>For this lesson, enter a price, press <strong>Enter</strong> to validate, and click <strong>Next</strong>.</p>
-        ]]></text>
-        <position>bottom</position>
-        <top>150px</top>
-        <left>218px</left>
-        <width>248px</width>
-        <height>21px</height>
-        <previousInputViews>
-          <previousInputView>
-            <inputStepName>15_enter_the_best_priced_customer_name</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>187px</width>
-            <height>21px</height>
-          </previousInputView>
-        </previousInputViews> 
-        <expression><![CDATA[^\d+(\.\d{2,4})?$]]></expression>
-        <errorAlert><![CDATA[ERROR: Prices must match the following format: "DOLLARS . CENTS". Where "DOLLARS" cannot include a "$" prefix or commas and "CENTS" can only have two to four digits. For example, "1234.12" and "1234.1234" are valid dollar amounts, but "$1,234.12" is not.]]></errorAlert>
-      </inputStep>  
-      <inputStep>
-        <name>17_enter_the_discount_offered_to_best_priced_customer</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_016.jpg</image>
-        <text><![CDATA[
-          <p><strong>Enter the Discount Offered to Best Priced Customer.</strong></p>
-          <p><em>Example: If the price you offer to your Best Priced Customer is 5% less than your Commercial List Price, you should enter "5" in this field.</em></p>
-          <p>For this lesson, type a discount percentage into the cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
-        ]]></text>
-        <position>bottom</position>
-        <top>150px</top>
-        <left>467px</left>
-        <width>272px</width>
-        <height>21px</height>
-        <previousInputViews>
-          <previousInputView>
-            <inputStepName>16_enter_the_price_offered_to_best_priced_customer</inputStepName>
-            <top>150px</top>
-            <left>218px</left>
-            <width>248px</width>
-            <height>21px</height>
-          </previousInputView>           
-          <previousInputView>
-            <inputStepName>15_enter_the_best_priced_customer_name</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>187px</width>
-            <height>20px</height>
-          </previousInputView>              
-        </previousInputViews> 
-        <expression><![CDATA[^([1-9])?\d$]]></expression>
-        <errorAlert><![CDATA[ERROR: Discount percentages must be whole numbers less than 100 and cannot include either decimal points, percentage signs, or other special characters. For example, "4" is a valid discount percentage while "5%", "2.4", and "25.4%" are not.]]></errorAlert>        
-      </inputStep>      
-      <blankStep>  
-        <name>18_end_of_download_upload_template_pricing_tab_lesson</name>
-        <image>modules/presentation/images/download_pricing_tab_lesson/download_pricing_016.jpg</image>
-        <text><![CDATA[
-          <p><strong>End of Download/Upload Template: Pricing Tab Lesson.</strong></p>
+          <p><strong>End of Pricing Tab lesson.</strong></p>
           <p>Click the <strong>Done</strong> button to complete this lesson.</p>
         ]]></text>
         <position>floating</position>
@@ -3254,42 +3435,56 @@
         <height>0px</height>
         <previousInputViews>
           <previousInputView>
-            <inputStepName>17_enter_the_discount_offered_to_best_priced_customer</inputStepName>
-            <top>150px</top>
-            <left>467px</left>
-            <width>272px</width>
+            <inputStepName>15_enter_the_quantity_per_unit</inputStepName>
+            <top>180px</top>
+            <left>739px</left>
+            <width>65px</width>
             <height>21px</height>
-          </previousInputView>           
+          </previousInputView>             
           <previousInputView>
-            <inputStepName>16_enter_the_price_offered_to_best_priced_customer</inputStepName>
-            <top>150px</top>
-            <left>218px</left>
-            <width>248px</width>
-            <height>21px</height>
-          </previousInputView>           
-          <previousInputView>
-            <inputStepName>15_enter_the_best_priced_customer_name</inputStepName>
-            <top>150px</top>
-            <left>29px</left>
-            <width>187px</width>
+            <inputStepName>12_enter_the_vendors_product_description</inputStepName>
+            <top>180px</top>
+            <left>468px</left>
+            <width>171px</width>
             <height>20px</height>
-          </previousInputView>              
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>11_vendor_part_number</inputStepName>
+            <top>180px</top>
+            <left>383px</left>
+            <width>85px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>10_enter_the_upc</inputStepName>
+            <top>180px</top>
+            <left>245px</left>
+            <width>139px</width>
+            <height>20px</height>
+          </previousInputView>             
+          <previousInputView>
+            <inputStepName>09_enter_the_product_name</inputStepName>
+            <top>180px</top>
+            <left>96px</left>
+            <width>151px</width>
+            <height>20px</height>
+          </previousInputView>
         </previousInputViews> 
-      </blankStep>      
+      </blankStep>        
     </steps>
   </presentation>
   <presentation>
     <name>download_special_charges_lesson</name>
-    <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_001.jpg</image>
+    <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_001.jpg</image>
     <width>1000px</width>
     <height>500px</height>
     <steps>
       <blankStep>
         <name>01_introduction_to_the_download_upload_template_special_charges_tab</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_001.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_001.jpg</image>
         <text><![CDATA[
           <p><strong>Introduction to the Download/Upload Template: Special Charges tab.</strong></p>
-          <p>For this tab, you will need to enter each item’s basic information and refer to the <em>Code Lookup</em> tab of your Excel spreadsheet.</p>
+          <p>For this tab, you will need to enter basic information for each special charge.</p>
         ]]></text>
         <position>floating</position>
         <top>200px</top>
@@ -3300,7 +3495,7 @@
       </blankStep>
       <inputStep>
         <name>02_enter_your_sin</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_002.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_002.jpg</image>
         <text><![CDATA[
           <p><strong>Enter your SIN.</strong></p>
           <p>Type a SIN into the first empty cell. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
@@ -3316,7 +3511,7 @@
       </inputStep>
       <inputStep>
         <name>03_enter_your_manufacturer_part_number</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_003.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_003.jpg</image>
         <text><![CDATA[
           <p><strong>Enter your Manufacturer Part Number.</strong></p>
           <p>This field should be entered exactly as provided by the manufacturer, and should not be edited in any way. You can enter up to 40 characters.</p>
@@ -3341,7 +3536,7 @@
       </inputStep>
       <inputStep>
         <name>04_enter_your_manufacturer_name</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_004.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_004.jpg</image>
         <text><![CDATA[
           <p><strong>Enter your Manufacturer Name.</strong></p>
           <p>The manufacturer name is the name of the original manufacturer of the product and is a maximum of 40 characters.</p>
@@ -3373,7 +3568,7 @@
       </inputStep>
       <blankStep>
         <name>05_recall_your_earlier_selections</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_005.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_005.jpg</image>
         <text><![CDATA[
           <p><strong>Recall your earlier selections.</strong></p>
           <p>You will need to complete the rows for the charge(s) you indicated in the previous Special Charges section.</p>
@@ -3388,7 +3583,7 @@
       </blankStep>
       <blankStep>
         <name>06_scroll_to_the_charge_that_applies_to_your_offer</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_005.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_005.jpg</image>
         <text><![CDATA[
           <p><strong>Scroll to the charge that applies to your offer.</strong></p>
           <p>You only need to complete the columns pertaining to the charges that apply to your items. For any charge that does not apply to your items, you can leave that column blank.</p>
@@ -3403,7 +3598,7 @@
       </blankStep>
       <inputStep>
         <name>07_enter_your_one_day_service_charges</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_005.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_005.jpg</image>
         <text><![CDATA[
           <p><strong>Enter your One Day Service charges.</strong></p>
           <p>Enter the number (in dollars) that you will charge for this service. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
@@ -3417,12 +3612,12 @@
         <expression><![CDATA[^\d+(\.\d{2,4})?$]]></expression>
         <errorAlert><![CDATA[ERROR: Prices must match the following format: "DOLLARS . CENTS". Where "DOLLARS" cannot include a "$" prefix or commas and "CENTS" can only have two to four digits. For example, "1234.12" and "1234.1234" are valid dollar amounts, but "$1,234.12" is not.]]></errorAlert>
       </inputStep>
-      <inputStep>
+      <buttonStep>
         <name>08_enter_your_one_day_service_per</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_006.jpg</image>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_006.jpg</image>
         <text><![CDATA[
           <p><strong>Enter your One Day Service - Per.</strong></p>
-          <p>You will need to use the Code Lookup tab to locate the Unit of Issue that pertains to your item and enter the corresponding code in this field. For this lesson, type <strong><em>EACH</strong></em>. Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+          <p>Using the drop-down menu, locate the Unit of Issue that pertains to your item and enter the corresponding code in this field. For a complete list of every Unit of Issue, see also the <em>Reference</em> tab.</p>
         ]]></text>
         <position>right</position>
         <top>150px</top>
@@ -3440,12 +3635,37 @@
         </previousInputViews>   
         <expression><![CDATA[.*]]></expression>
         <errorAlert></errorAlert>
-      </inputStep>
-      <inputStep>
-        <name>09_enter_your_one_day_service_description</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_007.jpg</image>
+      </buttonStep>
+      <buttonStep>
+        <name>09_enter_your_one_day_service_per</name>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_007.jpg</image>
         <text><![CDATA[
-          <p><strong>Enter your One Day Service - Description.</strong> Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
+          <p><strong>Enter your One Day Service - Per.</strong></p>
+          <p>Using the drop-down menu, locate the Unit of Issue that pertains to your item and enter the corresponding code in this field. For a complete list of every Unit of Issue, see also the <em>Reference</em> tab.</p>
+        ]]></text>
+        <position>right</position>
+        <top>170px</top>
+        <left>204px</left>
+        <width>143px</width>
+        <height>22px</height>
+        <previousInputViews>
+          <previousInputView>
+            <inputStepName>07_enter_your_one_day_service_charges</inputStepName>
+            <top>150px</top>
+            <left>28px</left>
+            <width>175px</width>
+            <height>22px</height>
+          </previousInputView> 
+        </previousInputViews>   
+        <expression><![CDATA[.*]]></expression>
+        <errorAlert></errorAlert>
+      </buttonStep>
+      <inputStep>
+        <name>10_enter_your_one_day_service_description</name>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_009.jpg</image>
+        <text><![CDATA[
+          <p><strong>Enter your One Day Service - Description.</strong></p>
+          <p>Press <strong>Enter</strong> to validate and click <strong>Next</strong>.</p>
         ]]></text>
         <position>bottom</position>
         <top>150px</top>
@@ -3472,11 +3692,11 @@
         <errorAlert></errorAlert>        
       </inputStep>
       <buttonStep>
-        <name>10_save_your_work</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_007.jpg</image>
+        <name>11_save_your_work</name>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_009.jpg</image>
         <text><![CDATA[
           <p><strong>Save your work.</strong></p>
-          <p></p>
+          <p>Click the <strong>Save</strong> button to ensure your work is not lost.</p>
         ]]></text>
         <position>right</position>
         <top>5px</top>
@@ -3484,6 +3704,13 @@
         <width>30px</width>
         <height>30px</height>
         <previousInputViews>
+          <previousInputView>
+            <inputStepName>10_enter_your_one_day_service_description</inputStepName>
+            <top>150px</top>
+            <left>346px</left>
+            <width>194px</width>
+            <height>22px</height>
+          </previousInputView>    
           <previousInputView>
             <inputStepName>09_enter_your_one_day_service_description</inputStepName>
             <top>150px</top>
@@ -3508,8 +3735,8 @@
         </previousInputViews>   
       </buttonStep>
       <blankStep>
-        <name>11_end_of_the_download_upload_template_special_charges_tab</name>
-        <image>modules/presentation/images/download_special_charges_lesson/download_special_charges_007.jpg</image>
+        <name>12_end_of_the_download_upload_template_special_charges_tab</name>
+        <image>modules/presentation/images/download_special_charges_lesson/dl_special_charges_009.jpg</image>
         <text><![CDATA[
           <p><strong>End of Download/Upload: Special Charges Lesson</strong></p>
           <p>Click <strong>Done</strong> to complete this lesson.</p>
@@ -3520,6 +3747,13 @@
         <width>0px</width>
         <height>0px</height>
         <previousInputViews>
+          <previousInputView>
+            <inputStepName>10_enter_your_one_day_service_description</inputStepName>
+            <top>150px</top>
+            <left>346px</left>
+            <width>194px</width>
+            <height>22px</height>
+          </previousInputView>    
           <previousInputView>
             <inputStepName>09_enter_your_one_day_service_description</inputStepName>
             <top>150px</top>
@@ -3545,6 +3779,7 @@
       </blankStep>
     </steps>
   </presentation>
+  <!-- Presentation below is hidden until it can be updated to match the guide instructions. -->    
   <presentation>
     <name>download_photos_lesson</name>
     <image>modules/presentation/images/download_photos_lesson/download_photos_001.jpg</image>
@@ -3662,7 +3897,7 @@
             <left>284px</left>
             <width>136px</width>
             <height>22px</height>
-          </previousInputView>             
+          </previousInputView>           
           <previousInputView>
             <inputStepName>03_enter_the_manufacturer_part_number</inputStepName>
             <top>150px</top>
@@ -3686,7 +3921,7 @@
          <image>modules/presentation/images/download_photos_lesson/download_photos_006.jpg</image>
         <text><![CDATA[
           <p><strong>Adding more photos.</strong></p>
-          <p>If you wish to add more than one photo, simply enter the other filename(s) into the column under <em>Additional Photo 2</em> and <em>Additional Photo 3</em>. You may add up to three photos.</p>
+          <p>If you wish to add more than one photo, simply enter the other filename(s) into the column under <em>Additional Photo 2</em> and <em>Additional Photo 3</em> (you can only add up to three photos).</p>
           <p>Click <strong>Next</strong>.</p>
         ]]></text>
         <position>left</position>
@@ -3794,7 +4029,7 @@
             <left>284px</left>
             <width>136px</width>
             <height>22px</height>
-          </previousInputView>             
+          </previousInputView>
           <previousInputView>
             <inputStepName>03_enter_the_manufacturer_part_number</inputStepName>
             <top>150px</top>
@@ -4132,11 +4367,11 @@
           <p>Once you have generated your Offer Analysis Report and all errors have been corrected, you are ready to begin the process of generating your Pricing Document.</p>
           <p>Click the <strong>Generate Pricing Document</strong> button.</p>
         ]]></text>
-        <position>top-middle-aligned</position>
-        <top>296px</top>
-        <left>644px</left>
-        <width>312px</width>
-        <height>141px</height>
+        <position>top-right-aligned</position>
+        <top>264px</top>
+        <left>662px</left>
+        <width>201px</width>
+        <height>36px</height>
         <previousInputViews/>
       </buttonStep>  
       <buttonStep>
@@ -4147,11 +4382,11 @@
           <p>Generation of your document may take up to 30 minutes, but you can check the status at any time by clicking this button. You will need to click this button until the message changes from "In Progress" to "Complete."</p>
           Click the <strong>Check Status</strong> button.</p>
         ]]></text>
-        <position>top-middle-aligned</position>
-        <top>296px</top>
-        <left>644px</left>
-        <width>312px</width>
-        <height>155px</height>
+        <position>top-right-aligned</position>
+        <top>312px</top>
+        <left>662px</left>
+        <width>110px</width>
+        <height>36px</height>
         <previousInputViews/>
       </buttonStep>  
       <buttonStep>
@@ -4162,11 +4397,11 @@
           <p>Once the status is "Complete," you will see a link called "View Final Pricing Document."</p>
           <p>Click that link.</p>
         ]]></text>
-        <position>top-middle-aligned</position>
-        <top>296px</top>
-        <left>644px</left>
-        <width>312px</width>
-        <height>141px</height>
+        <position>top-right-aligned</position>
+        <top>265px</top>
+        <left>663px</left>
+        <width>206px</width>
+        <height>35px</height>
         <previousInputViews/>
       </buttonStep>  
       <blankStep>
@@ -4177,11 +4412,11 @@
           <p>This document includes all of the information you have entered throughout the Formatted Products Tool process. You may save a copy of this for your records.</p>
           <p>Click <strong>Next</strong>.</p>
         ]]></text>
-        <position>bottom</position>
-        <top>138px</top>
-        <left>27px</left>
-        <width>928px</width>
-        <height>61px</height>
+        <position>floating</position>
+        <top>200px</top>
+        <left>500px</left>
+        <width>0px</width>
+        <height>0px</height>
         <previousInputViews/>
       </blankStep>  
       <blankStep>

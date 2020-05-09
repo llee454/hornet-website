@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <books>
   <book>
     <name>eoffer_emod</name>
@@ -10,15 +10,11 @@
       <div class="book_front_body">
         <div>
           <a class="section-heading">
-            <h2>Welcome</h2>
+           <h2>Welcome</h2>
           </a>
         </div>
         <hr/>
         <p>Welcome to the eOffer/eMod User Help Center! This site has been designed as a guide to introduce you to the eOffer/eMod system. Throughout this Knowledge Base, you will find a step-by-step approach explaining many specific functions within the eOffer/eMod system, as well as information to provide you with a firm understanding of the system as a whole.</p>
-        <div class="embedded_video_block">
-          <div class="embedded_video_player_id">video</div>
-          <div class="embedded_video_video_id">video_library_page/example_library/eoffer/goods-service/file:%2F%2F%2Fhome%2Flarry%2FDownloads%2Fpersonal_website%2Flucidity%2Fvideos%2FDSC_0473.MOV</div>
-        </div>
         <div id="book_articles_section">
           <h2>Featured Additions</h2>
           <hr/>

@@ -1,288 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <articles>
   <article>
-    <id>additions-009</id>
-    <title>New Formatted Product Tool</title>
-    <date>06-24-2016</date>
-    <summary><![CDATA[
-      <p>GSA has is introducing the new Formatted Product Tool process which will change how you enter in products.</p>
-      <a href="index.html#article_article_page/additions-009">Read More</a>]]></summary>
-    <body><![CDATA[
-      <p>On June 27, 2016, GSA is introducing the <strong>Formatted Product Tool process</strong> into the eOffer/eMod system. You will be able to enter detailed pricing information for each of your products and accessories, including discounts, warranties, delivery options, photos, and more. This will allow you to capture the most comprehensive data so that your CO can more accurately evaluate your offer. The new Formatted Product Tool streamlines multiple sections of eOffer/eMod</p>
-      <p>The guides have interactive training now embedded throughout many of the new Formatted Product Tool Sections.  </p>
-      <ul>
-        <li>
-          <p>
-            <strong>Updated eOffer Sections</strong>
-          </p>
-          <ul>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/adding-your-goods-and-services-sins">Goods and Services</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/product-template-wizard">Product Template Wizard</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/zonal-pricing">Zonal Pricing Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/special-charges">Special Charges</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/wizard-management/special-features">Special Features</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/discounts">Discounts</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/contractor-warranty">Contractor Warranty</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/capture-and-generate-pricing/capture-and-generate-pricing-overview">Capture and Generate Pricing Overview</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/capture-and-generate-pricing/choosing-a-pricing-template-method">Choosing a Pricing Template Method</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/download-template-overview">Download/Upload Template Method Overview</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/downloading-your-template">Downloading Your Template</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/reference-tabs">Download/Upload Template: Reference Tabs</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/template-pricing-tab">Pricing Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/non-pricing-tab">Non-Pricing Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/special-charges-tab">Special Charges Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/special-features-tab">Special Features Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/template-delivery-tab">Delivery Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/zonal-pricing-tab">Zonal Pricing Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/photos-tab">Photos Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/options-tab">Options Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/accessories-tab">Accessories Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/download-upload-template/uploading-your-template-file-tab">Uploading Your Template File Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/on-screen-data-entry-overview">On-Screen Data Entry</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/on-screen-data-entry-overview">Get Started Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/pricing-tab">Pricing Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/additional-photos-tab">Additional Photos Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/zonal-offer-price-tab">Zonal Offer Price Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/accessories-tab">Accessories Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/special-charges-tab">Special Charges Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/delivery-tab">Delivery Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/special-features-tab">Special Features Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/on-screen-data-entry/dimensions-and-shipping-tab">Dimensions &amp; Shipping Tab</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/upload-additional-photos">Upload Additional Photos</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/generate-offer-analysis-report">Generate Offer Analysis Report</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/generate-pricing-document">Generate Pricing Document</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p>
-            <strong>Updated eMod Sections</strong>
-          </p>
-          <ul>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-product-s">Add Product(s)</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/additions-modifications/add-sin">Add SIN</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/temporary-price-reduction">Delete Product(s)</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/temporary-price-reduction">Temporary Price Reduction</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/capture-formatted-pricing">Capture Formatted Pricing</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/create-manage-discounts">Create/Manage Discounts</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-based-on-most-favored-customer">Permanent Price Reduction (Based on Most Favored Customer)</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-industry-partner-requested">Permanent Price Reduction (Industry Partner Requested</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    ]]></body>
-  </article>
-  <article>
-    <id>additions-008</id>
-    <title>February 2016 Release Notes Updates</title>
-    <date>02-25-2016</date>
-    <summary><![CDATA[
-      <p>GSA has made recent updates to eOffer. Find out the details of the update and how they impact you today.</p>
-      <a href="index.html#article_article_page/additions-008">Read More</a>
-    ]]></summary>
-    <body><![CDATA[
-      <p>On February 13, 2016, GSA implemented changes to the <strong>Solicitation Clauses</strong> section of the eOffer System. The following changes will be made:</p>
-      <ul>
-        <li>
-          <p>In order to capture the most detailed information about your offer, the <strong>Basic Information</strong> template now lists each clause separately by its number and title. You will now be required to complete several screens, as opposed to just one. Depending on the type of clause, the data you enter into each field will be different.</p>
-        </li>
-      </ul>
-      <p>Be sure to check the updated version of <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/responding-to-solicitation-clauses/responding-to-solicitation-clauses-overview" target="blank">Responding to Solicitation Clauses</a> in the <strong>Preparing Your Electronic Contract Offer (eOffer) Guide</strong>, under <strong>eOffer Resources</strong>.</p>
-    ]]></body>
-  </article>
-  <article>
-    <id>additions-007</id>
-    <title>November 2015 Release Notes Updates</title>
-    <date>12-16-2015</date>
-    <summary><![CDATA[
-      <p>GSA has made recent updates to eOffer/eMod. Find out the details of the update and how they impact you today.</p>
-      <a href="index.html#article_article_page/additions-007">Read More</a>
-    ]]></summary>
-    <body><![CDATA[
-      <p>In November 2015, GSA implemented changes to the eOffer/eMod System. The follow changes have been made:</p>
-      <ul>
-        <li>
-          <p>In support of category management, all professional services schedules have been consolidated under one schedule called the Professional Services Schedule.</p>
-          <p>You can learn more about the Professional Services Schedule (PSS) on the <a href="https://interact.gsa.gov/groups/professionalservicescategory">Professional Service Category Community</a> on <a href="https://interact.gsa.gov/">Interact</a> or the PSS portal page, <a href="http://www.gsa.gov/portal/content/200063">Professional Service Schedule</a>.</p>
-        </li>
-        <li>
-          <p>The Help Links throughout ORS have been updated to send users to this guide on the <a href="http://amsystemssupport.fas.gsa.gov/">AM Systems Support site</a>.  The Help On This Page video links have also been removed as the videos will be migrated and maintained on the ORS Guide within the AM Systems Support site. </p>
-        </li>
-      </ul>
-      <p>The next release is in February of 2016. Check back to find out the latest updates.</p>
-    ]]></body>
-  </article>
-  <article>
-    <id>additions-006</id>
-    <title>May 2015 Release Notes Updates</title>
-    <date>05-01-2015</date>
-    <summary><![CDATA[
-      <p>GSA has made recent updates to eOffer/eMod. Find out the details of the update and how they impact you today.</p>
-      <a href="index.html#article_article_page/additions-006">Read More</a>
-    ]]></summary>
-    <body><![CDATA[
-      <p>In May 2015, GSA implemented changes to the eOffer/eMod System. The follow changes have been made:</p>
-      <ul>
-        <li>
-          <p>Price reduction modifications are now effective immediately upon submission.  This affects the following modifications:</p>
-          <ul>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/temporary-price-reduction">Temporary Price Reduction</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-based-on-most-favored-customer">Permanent Price Reduction (based on Most Favored Customer)</a>
-            </li>
-            <li>
-              <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/pricing-modifications/permanent-price-reduction-industry-partner-requested">Permanent Price Reduction (Industry Partner Request)</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p>Vendors may now respond to Solicitation Provisions in formatted text entry fields. Read about <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/eoffer-resources/preparing-your-electronic-contract-offer-eoffer/responding-to-solicitation-provisions">Responding to Solicitation Provisions here</a>.</p>
-        </li>
-      </ul>
-    ]]></body>
-  </article>
-  <article>
     <id>additions-005</id>
-    <title>November 2015 Release Notes Updates</title>
-    <date>11-01-2014</date>
+    <title>MAS Consolidation Phase 2 is coming to eOffer/eMod</title>
+    <date>2020-01-17</date>
     <summary><![CDATA[
-      <p>GSA has made recent updates to eOffer/eMod. Find out the details of the update and how they impact you today.</p>
+      <p>During late January/early February 2020, GSA will be implementing Phase 2 of MAS Consolidation.  These changes will impact the way you interact with the system.</p>
       <a href="index.html#article_article_page/additions-005">Read More</a>
     ]]></summary>
     <body><![CDATA[
-      <p>In November 2014, GSA implemented changes to the eOffer/eMod System. The follow changes have been made:</p>
+      <p>Throughout the end of January and into early February 2020, GSA will be implementing MAS Consolidation Phase 2 to all contracts. GSA modernized federal acquisition by consolidating the existing 24 Schedules into one single Schedule for products, services, and solutions. This will provide consistency in the program for all stakeholders, make it easier for customers to find total solutions under one contract vehicle, ensure terms and conditions meet the needs of our customers, and eliminate duplicate contracts.</p>
+      <p>Phase 2 is a continuation of the initial MAS Consolidation updates implemented during the last quarter of 2019. It will affect current Schedule contract holders and will also affect the Mass Mod and eMod systems. During this phase, you will still have the ability to update your contract, and the ability to process Add SIN and Delete SIN modifications has been reinstated.  During the initial Mass Mod phase, GSA removed the add/delete SIN function to ensure that all modifications would be processed prior to the Mass Mod acceptance. The functionality has since been restored.</p>
+      <p>In order to be prepared for this update, there are a few things that you are able to do:</p>
       <ul>
-        <li>
-          <p>Vendors have been given the ability to express their Commercial Sales Practice (CSP) in terms of Markup/Build Out to better capture their business model.</p>
-        </li>
-        <li>
-          <p>When a vendor wishes to create a new offer based off a withdrawn or rejected offer, the system gives vendors the ability to import information from the previous eOffer. This feature now includes Commercial Sales Practice (CSP) data.  Read about <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/update-revise-commercial-sales-practice">Commercial Sales Practices</a> here.</p>
-        </li>
+        <li>Review the new solicitation (47QSMD20R0001) on <a href="https://beta.sam.gov/" >beta.sam.gov</a></li>
+        <li>Ensure you have joined the MAS Community on <a href="https://interact.gsa.gov/tag/mas">Interact</a></li>
+        <li>Send questions to <a href="mailto:maspmo@gsa.gov">maspmo@gsa.gov</a></li>
+        <li>Review the new SIN structure and the mapping legacy structure on the <a href="https://www.gsa.gov/buying-selling/purchasing-programs/gsa-schedules/selling-through-schedules/roadmap-for-new-schedule-offerors/1-get-ready/available-offerings-and-requirements">Available Offerings and Requirements</a> page</li>
       </ul>
     ]]></body>
   </article>
   <article>
     <id>additions-004</id>
-    <title>September 2014 Release Notes Updates</title>
-    <date>09-01-2014</date>
+    <title>MAS Consolidation is now live in eOffer/eMod</title>
+    <date>2019-11-09</date>
     <summary><![CDATA[
-      <p>In September 2014, GSA implemented changes to the eOffer/eMod System.</p>
+      <p>On October 01, 2019 GSA implemented new Consolidated Scheduling.  These changes will impact how you interact with the system.</p>
       <a href="index.html#article_article_page/additions-004">Read More</a>
     ]]></summary>
     <body><![CDATA[
-      <p>In September 2014, GSA implemented changes to the eOffer/eMod System. The follow changes have been made: </p>
-      <ul>
-        <li>
-          <p>When a Vendor submits a new Offer under the CORP Schedule, eOffer will now ask if the vendor is migrating existing contract(s) to a consolidated contract under the Standard Responses section.</p>
-        </li>
-        <li>
-          <p>On the <a href="http://http://eoffer.gsa.gov/">eOffer/eMod Homepage</a>, there is now a list in the About eOffer section titled View Solicitations that contains links to <a href="http://eoffer.gsa.gov/eOffer/util/solicitationUtilAction.do?method=view&amp;displaySolList=Y&amp;isMas=Y">MAS Schedule Solicitations</a>, (previously found in the Learn More About: section), and <a href="http://eoffer.gsa.gov/eOffer/util/solicitationUtilAction.do?method=view&amp;displaySolList=Y&amp;isMas=N">Non-MAS Schedule Solicitations</a>.</p>
-          <div class="screenshotContainer">
-            <div class="screenshotBox">
-              <a class="fancybox" data-lightbox="additions-004" href="images/004-schedules.jpg" title=" ">
-                <img src="images/004-schedules.jpg" alt="MAS and Non-MAS Schedules can now be found on the eOffer/eMod homepage" delegate="" button="" is="" class="screenshot"/>
-              </a>
-              <div class="screenshotText">
-                <p class="figCaption">MAS and Non-MAS Schedules can now be found on the eOffer/eMod homepage</p>
-                <p class="clickTo">Click the image to enlarge</p>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <p>On October 01, 2019, GSA implemented MAS Consolidation to all contracts.  GSA modernized federal acquisition by consolidating the existing 24 Schedules into one single Schedule for products, services, and solutions.  This will provide consistency in the program for all stakeholders, make it easier for customers to find total solutions under one contract vehicle, ensure terms and conditions meet the needs of our customers, and eliminate duplicate contracts.</p>
+      <p>Businesses with existing contracts are able to process modifications, accept orders and are still required to maintain compliance with the current terms and conditions of their contracts. Users are able to prepare new offers under the Consolidated MAS schedule, but no new contract awards will be made under this schedule until after January 1, 2020.  User guides are being updated to incorporate the new changes.</p>
+      <p>For more information, visit the <a href="https://interact.gsa.gov/document/want-know-more-about-mas-consolidation">MAS Interact Page</a> or view our <a href="https://www.youtube.com/watch?v=gPydy_f-p-w">MAS Consolidation training webinar</a> for more information.</p>
+
     ]]></body>
-  </article>  
+  </article>
+  <article>
+    <id>additions-003</id>
+    <title>Name Change Agreement Process</title>
+    <date>2019-08-23</date>
+    <summary><![CDATA[
+      <p>Follow the correct steps during a Change of Name Agreement Modification in order to ensure contract integrity.</p>
+      <a href="index.html#article_article_page/additions-003">Read More</a>
+    ]]></summary>
+    <body><![CDATA[
+      <p>The Change of Name Agreement process can be a little confusing and could potentially effect the way the contract is handled if you do not execute the process correctly.  In order to assist you, we added additional guidance that should answer any questions you may have.</p>
+      <p>The Change of Name Agreement process has multiple steps in order to submit the modification successfully.  We have added a simple workflow that outlines where and when to update company information.  You can find the workflow in the <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/legal-modifications/change-of-name-agreement-modification">Change of Name Agreement eMod</a> section.</p>
+      <p>Additionally, it is important to note that if you do not follow the guidance or try and proceed through the Change of Name Agreement process without the proper steps being taken, you risk being completely locked out of all systems.  By first going to D&B and updating your company name, SAM will automatically be notified and you will just need to accept that change.  Then, once you receive the email from GSA, you will then be allowed to submit the needed modification(s) successfully.</p>
+    ]]></body>
+  </article>
   <article>
     <id>additions-002</id>
     <title><![CDATA[Release of the eOffer/eMod Online User Guide]]></title>
-    <date>02-01-2014</date>
+    <date>2014-02-01</date>
     <summary><![CDATA[
       <p>The new version of the Online User Guide has launched. Learn more about its features here.</p>
       <a href="index.html#article_article_page/additions-002">Read More</a>
@@ -326,31 +96,6 @@
           </div>
         </div>
       </div>
-    ]]></body>
-  </article>
-  <article>
-    <id>additions-001</id>
-    <title>February 2014 Release Notes Updates</title>
-    <date>02-01-2014</date>
-    <summary><![CDATA[
-      <p>In February 2014, GSA implemented changes to the eOffer/eMod System.</p>
-      <a href="index.html#article_article_page/additions-001">Read More</a>
-    ]]></summary>
-    <body><![CDATA[
-      <p>In February 2014, GSA implemented changes to the eOffer/eMod System. You can read a detailed description of each update on the <a href="../../release-notes/index.html" target="_blank">Release Notes</a> website.</p>
-      <ul>
-        <li>
-          <p>eOffer/eMod is now compatible with Firefox to support a wider ranger of users.</p>
-        </li>
-        <li>
-          <p>The Add Labor Category and/or Service Offering now requires Vendors to go through the Subcontracting Plan utility to add a Subcontracting Plan to their Contract. Previously, users simply uploaded a handmade Subcontracting Plan.</p>
-          <p>To learn more, read the <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/terms-and-conditions-modifications/subcontracting-modification">Subcontracting Plan</a> section under the <strong>eMod Resources</strong> category of the User Guide.</p>
-        </li>
-        <li>
-          <p>Vendors can now choose two full years for their Subcontracting Plan on Commercial Plans, whereas previously the utility only allowed Vendors to choose a one year term.</p>
-          <p>To learn more, read the <a href="index.html#book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/modtypes/terms-and-conditions-modifications/subcontracting-modification">Subcontracting Plan</a> section under the <strong>eMod Resources</strong> category of the User Guide. </p>
-        </li>
-      </ul>
     ]]></body>
   </article>
 </articles>

@@ -71,10 +71,15 @@ MODULE_LOAD_HANDLERS.add (
               article_title_block:        article_titleBlock
             });
 
-            // V. Register the page handlers.
+            // V. Register the Curly block handlers.
+            curly_HANDLERS.addHandlers ({
+              'article.title': article_titleCurlyBlock
+            });
+
+            // VI. Register the page handlers.
             page_HANDLERS.add ('article_article_page', 'modules/article/templates/article_page.html');
 
-            // VI. Continue.
+            // VII. Continue.
             done (null);
         });
     });
@@ -242,9 +247,68 @@ function article_parseArticle (articleElement) {
 }
 ```
 
+### Curly Block Handlers
+
+The module defines the following curly blocks:
+
+```javascript
+/*
+  Accepts three arguments:
+
+  * pageId, a string that represents the current
+    page ID
+  * content, a string that represents the text
+    passed to this block
+  * and done, a function that accepts two
+    arguments: error, an Error; and expansion,
+    a string
+
+  where `content` must be an article ID string, and
+  passes the title of the given article page to done.
+*/
+function article_titleCurlyBlock (pageId, content, done) {
+  var articleId = content.trim ();
+  var article = article_ARTICLES [articleId];
+  done (null, article ? $('<div></div>').html (article.title).text () : '');
+}
+
+// Unittests for `article_titleCurlyBlock`.
+unittest ('article_titleCurlyBlock',
+  {
+    globals: [
+      {
+        variableName: 'article_ARTICLES',
+        value: {
+          'article_article_page/testing-article-1': {
+            author: 'Rebecca Estes',
+            body: 'This is the body text',
+            date: '2016-03-21',
+            id: 'article_article_page/testing-article-1',
+            summary: 'This is the summary',
+            title: 'Article 1'
+          }
+      }}
+    ]
+  },
+  function (assert) {
+    assert.expect (1);
+    var handlers = new curly_HandlerStore ();
+    handlers.add ('article.title', article_titleCurlyBlock);
+
+    var done0 = assert.async ();
+    curly_expandBlocks (handlers,
+      'article_article_page/testing-article-1',
+      'article title: {{#article.title}}article_article_page/testing-article-1{{/article.title}}',
+      function (error, expansion) {
+        assert.strictEqual (expansion, 'article title: Article 1');
+        done0 ();
+    });
+});
+```
+
 ### Block Handlers
 
-The module essentially defines a block for each article element. For example, it defines a block that expands into an article's title and another that expands into an article's summary. Each of these blocks accepts a single text node representing an article's resource id.
+The module essentially defines a block for each article property. For example, it defines a block that expands into an article's title and another that expands into an article's summary. Each of these blocks accepts a single text node representing an article's resource id.
 
 ```javascript
 /*
@@ -334,7 +398,7 @@ unittest ('article_articleListBlock',
   instead.
 */
 function article_articleBlock (context, done) {
-  var articleId = context.element.text ();
+  var articleId = context.element.text ().trim ();
   var article = article_ARTICLES [articleId];
   if (!article) {
     var error = new Error ('[article][article_articleBlock] Error: an error occured while trying to expand an article block. The referenced article does not exist.');
@@ -818,9 +882,11 @@ function article_createArticleElement (article) {
     .addClass ('article_article')
     .append ($('<div></div>')
       .addClass ('article_header')
+      .append ($('<hr></hr>'))
       .append ($('<h2></h2>')
         .addClass ('article_header_title')
-        .append (article_createTitleElement (article.title))))
+        .append (article_createTitleElement (article.title)))
+      .append ($('<hr></hr>')))
     .append (
       $('<div></div>')
         .addClass ('article_byline')
@@ -1013,7 +1079,6 @@ You can generate the Article module's source files using [Literate Programming](
 `literate-programming Readme.md`
 from the command line.
 
-<!---
 #### Article.js
 ```
 _"Article Module"
@@ -1026,8 +1091,8 @@ _"Load Settings"
 
 _"Load Articles"
 
+_"Curly Block Handlers"
+
 _"Block Handlers"
 ```
 [article.js](#Article.js "save:")
--->
-

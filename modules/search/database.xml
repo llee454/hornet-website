@@ -4,16 +4,7 @@
     <name>search</name>
     <!-- <lunrIndexURL>data/books_index.json</lunrIndexURL> -->
     <setIds>
-      <setId>book_search_source/modules%2Fbook%2Fdatabase.xml</setId>
-      <setId>video_library_search_source/example_library</setId>
-    </setIds>
-  </index>
-  <index>
-    <name>video_search</name>
-    <!-- <lunrIndexURL>data/books_index.json</lunrIndexURL> -->
-    <setIds>
-      <setId>video_library_search_source/example_library</setId>
+      <setId>book_search_source/book_book_page%2Fmodules%252Fbook%252Fdatabase.xml%2Feoffer_emod</setId>
     </setIds>
   </index>
 </database>
-

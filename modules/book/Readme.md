@@ -52,6 +52,8 @@ MODULE_LOAD_HANDLERS.add (
     // I. Load the Book database.
     book_loadDatabase (book_DATABASE_URL,
       function (error, database) {
+        progressbar.update ('book.load_database', 100);
+
         if (error) { return done (error); }
 
         // II. Cache the Book database.
@@ -68,17 +70,23 @@ MODULE_LOAD_HANDLERS.add (
           book_body_block: book_bodyBlock,
         });
 
-        // VI. Register the page handlers.
+        // VI. Register the Curly block handlers.
+        curly_HANDLERS.addHandlers ({
+          'book.title': book_titleCurlyBlock
+        });
+
+        // VII. Register the page handlers.
         page_HANDLERS.addHandlers ({
           book_book_page:    template_page,
+          book_link_page:    template_page,          
           book_page_page:    template_page,
           book_section_page: template_page
         });
 
-        // VII. Register the search source.
+        // VIII. Register the search source.
         search_registerSource ('book_search_source', book_index);
 
-        // VIII. Continue.
+        // IX. Continue.
         done (null);
     });
 });
@@ -111,7 +119,10 @@ function book_loadDatabase (url, done) {
       var error = new Error ('[book][book_loadDatabase] Error: an error occured while trying to load "' + url + '".');
       strictError (error);
       done (error);
-    }
+    },
+  })
+  .progress (function (e) {
+    progressbar.update ('book.load_database', e.total < 1 ? 0 : (e.loaded / e.total * 100));
   });
 }
 
@@ -121,7 +132,6 @@ function book_loadDatabase (url, done) {
   Confirms that loadSettings can load and parse
   the book database without throwing an error.
 */
-
 unittest ('book_loadDatabase',
   {
     globals: [
@@ -140,7 +150,6 @@ unittest ('book_loadDatabase',
     })
   }
 )
-
 ```
 
 Parse the Database
@@ -215,7 +224,24 @@ function book_parsePage (parentPath, element) {
   return new book_Page (
     book_getId ('book_page_page', parentPath.concat ($('> name', element).text ())),
     $('> title', element).text (),
-    $('> body', element).text ()
+    $('> body', element).text (),
+    $('> searchable', element).text () === 'true'
+  );
+}
+
+
+/*
+  book_parseLink accepts two arguments:
+
+  * parentPath, a string array
+  * element, a JQuery HTML Element
+*/
+function book_parseLink (parentPath, element) {
+  return new book_Link (
+    book_getId ('book_link_page', parentPath.concat ($('> name', element).text ())),
+    $('> title', element).text (),
+    $('> pageId', element).text (),
+    $('> searchable', element).text () === 'true'
   );
 }
 
@@ -239,12 +265,67 @@ function book_parseContent (parentPath, elements) {
           return book_parseSection (parentPath, element);
         case 'page':
           return book_parsePage (parentPath, element);
+        case 'link':
+          return book_parseLink (parentPath, element);  
         default:
           strictError ('[book][book_parseContent] Error: an error occured while trying to parse a Book Content element. The element\'s tag name is invalid.');
           return null;
       }
   });
 }
+```
+
+Curly Block Handlers
+--------------------
+
+```javascript
+/*
+  Accepts three arguments:
+
+  * pageId, a string that represents the current
+    page ID
+  * content, a string that represents the text
+    passed to this block
+  * and done, a function that accepts two
+    arguments: error, an Error; and expansion,
+    a string
+
+  where `content` must be a book element ID string, and
+  passes the title of the given element to done.
+*/
+function book_titleCurlyBlock (pageId, content, done) {
+  var elementId = content.trim ();
+  var element = book_DATABASE.getElement (elementId);
+  done (null, element ? $('<div></div>').html (element.title).text () : '');
+}
+
+// Unittests for `book_titleCurlyBlock`.
+unittest ('book_titleCurlyBlock',
+  {
+    globals: [
+      {variableName: 'book_DATABASE', value: {}}
+    ]
+  },
+  function (assert) {
+    assert.expect (1);
+    var done0 = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example',
+      function (error, database) {
+        if (error) { return done0 (); }
+        book_DATABASE = database;
+
+        var handlers = new curly_HandlerStore ();
+        handlers.add ('book.title', book_titleCurlyBlock);
+
+        curly_expandBlocks (handlers,
+          'testing',
+          '{{#book.title}}book_page_page/modules%2Fbook%2Fdatabase.xml.example/example_book_2/example_section_2/example_page_2{{/book.title}}',
+          function (error, expansion) {
+            assert.strictEqual (expansion, 'Another Example Page');
+            done0 ();
+        }); 
+    });
+});
 ```
 
 Block Handlers
@@ -275,7 +356,6 @@ function book_bodyBlock (context, done) {
   .book_body_block element with a .book_body
   element that contains the book's body text.
 */
-
 unittest ('book_bodyBlock',
   {
     globals: [
@@ -311,30 +391,40 @@ unittest ('book_bodyBlock',
 Search Source
 -------------
 
+The Book module defines a search source that can be used to include book pages in search results. To use this feature open the Search module's database file and define a setId that has the following format: "book_search_source/BOOKID" where BOOKID is a hash encoded book ID. For example, "book_book_page%2Fmodules%252Fbook%252Fdatabase.xml%2Feoffer_emod" is an example book ID.
+
 ```javascript
 /*
   Accepts two arguments:
 
-  * databaseURL, a string representing the URL of
-    the database
-  * done, a function that accepts two arguments:
-    an Error object, and a jQuery HTML Element.
+  * bookId, a string representing a book ID
+  * and done, a function that accepts two
+    arguments: an Error object, and a jQuery
+    HTML Element.
 
-  If loading the database throws an error, that
-  error is passed to done. Otherwise done 
-  generates a list of search entries via 
-  database.index.
+  Loads the book referenced by `bookId` and
+  passes a search index listing its content to
+  `done`.
+
+  If the referenced book does not exist, it
+  throws a strict error and calls `done`.
+
+  Example:
+
+  book_book_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod
+
+  is an example bookId.
 */
-function book_index (databaseURL, done) {
-  book_loadDatabase (databaseURL,
-    function (error, database) {
-      if (error) { return done (error); }
-
-      done (null, database.index ());
-  });
+function book_index (bookId, done) {
+  var book = book_DATABASE.getElement (bookId);
+  if (!book) {
+    var error = new Error ('[book][book_index] Error: The referenced book does not exist or hasn\'t yet loaded (' + bookId + ').');
+    strictError (error);
+    return done (error);
+  }
+  done (null, book.index ());
 }
 ```
-
 
 The Entry Class
 ---------------
@@ -364,23 +454,115 @@ function book_Entry (id, title, body) {
 book_Entry.prototype = Object.create (search_Entry.prototype);
 
 /*
-  Accepts one argument, done, a function that
-  takes two arguments: an Error and a jQuery HTML
-  Element. Passes to done an HTML Element
-  representing a search result, and returns undefined.
+  Accepts two arguments:
+
+  * query, a string that represents the current
+    search query
+  * and done, a function that accepts two
+    arguments: error, an Error object; and
+    resultElement, a jQuery HTML Element
+
+  and passes a jQuery HTML Element that
+  represents this entry to done.
 */
-book_Entry.prototype.getResultElement = function (done) {
+book_Entry.prototype.getResultElement = function (query, done) {
   done (null, $('<li></li>')
     .addClass ('search_result')
     .addClass ('book_search_result')
     .addClass ('book_search_page_result')
+    .attr ('data-book-search-result-id', this.id)
     .append (getContentLink (this.id)
       .addClass ('search_result_link')
       .addClass ('book_search_link')
       .addClass ('book_search_page_link')
-      .attr ('href', getContentURL (this.id))
-      .append ($('<h3></h3>').html (this.title))
-      .append ($('<p></p>').text (book_getSnippet (this.body)))));
+      .append ($('<h3></h3>')
+        .html (this.title)))
+    .append ($('<p></p>')
+      .addClass ('search_result_snippet')
+      .html (book_getSnippet (query, this.body))));
+}
+```
+
+
+The Link Class
+--------------
+The book_Link page represents terminal leafs in the book tree. Unlike pages, these link to pages.
+
+```javascript
+/*  
+  Defines the book_Link class. Accepts three arguments:
+  * id, a string
+  * title, a string
+  * pageId, a string that represents a page ID
+  * searchable, a boolean value indicating
+    whether or not this link should be included
+    in search indicies.
+*/
+function book_Link (id, title, pageId, searchable) {
+  this.id         = id;
+  this.title      = title;
+  this.pageId     = pageId;
+  this.searchable = searchable
+}
+
+/*
+  Accepts one argument, id, a string. Returns the 
+  Page object matching that ID, if it exists.
+  Returns null if no match is found.
+*/
+book_Link.prototype.getElement = function (id) {
+  return this.id === id ? this : null;
+}
+
+
+/*
+  Accepts no arguments, creates a book_Entry
+  Object using the values of book_Page, and
+  returns the object inside an array.
+*/
+book_Link.prototype.index = function () {
+  var page = book_DATABASE.getElement (this.pageId);
+  return this.searchable ? [new book_Entry (this.id,
+    book_removeURLs (book_stripHTMLTags (this.title)),
+    book_removeURLs (book_stripHTMLTags (page.body)))] : [];
+}
+
+/*
+  Accepts no arguments and returns 1, to
+  represent that Link is a effectively a leaf.
+*/
+book_Link.prototype.getNumLeafs = function () {
+  return 1;
+}
+
+/*
+  Accepts no arguments, creates a template_page
+  Object from the page referenced by book_Link, 
+  and returns the object inside an array.
+*/
+book_Link.prototype.getTemplates = function () {
+  var page = book_DATABASE.getElement (this.pageId);
+  return [new template_Page (null, this.id, page.getRawPageTemplate, 'book_link')];
+}
+
+
+/*
+  Accepts no arguments, creates a menu_Leaf
+  Object from the values of book_Link, and
+  returns the object inside an array.
+*/
+book_Link.prototype.getMenuElements = function () {
+  return [new menu_Leaf (null, this.id, this.title, 'book_link')];
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element representing the content of a book_Page
+  Object.
+*/
+book_Link.prototype.getBodyElement = function () {
+  var page = book_DATABASE.getElement (this.pageId);
+  return page.getBodyElement ();
 }
 ```
 
@@ -394,11 +576,15 @@ The book_Page class represents the terminal leafs in the book tree. They are chi
   * id, a string
   * title, a string
   * body, a string
+  * searchable, a boolean value indicating
+    whether or not this link should be included
+    in search indicies.
 */
-function book_Page (id, title, body) {
-  this.id     = id;
-  this.title  = title;
-  this.body   = body;
+function book_Page (id, title, body, searchable) {
+  this.id         = id;
+  this.title      = title;
+  this.body       = body;
+  this.searchable = searchable;
 }
 
 /*
@@ -419,7 +605,7 @@ book_Page.prototype.getElement = function (id) {
 QUnit.test ('book_Page.getElement', function (assert) {
   assert.expect (2);
   var done = assert.async ();
-  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.');
+  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.', false);
 
   assert.strictEqual (testBookPage.getElement ('test_book_id'), testBookPage, 'book_Page.getElement correctly returns a book_Page item when the given argument matches the book_Page\'s id.');
   assert.notOk (testBookPage.getElement ('fake_book_id'), 'book_Page.getElement returns null when the given argument does not matches the book_Page\'s id.');
@@ -432,9 +618,17 @@ QUnit.test ('book_Page.getElement', function (assert) {
   returns the object inside an array.
 */
 book_Page.prototype.index = function () {
-  return [new book_Entry (this.id,
+  return this.searchable ? [new book_Entry (this.id,
     book_stripHTMLTags (this.title),
-    book_stripHTMLTags (this.body))];
+    book_stripHTMLTags (this.body))] : [];
+}
+
+/*
+  Accepts no arguments and returns 1, to
+  represent that Page is a leaf.
+*/
+book_Page.prototype.getNumLeafs = function () {
+  return 1;
 }
 
 /*
@@ -445,15 +639,18 @@ book_Page.prototype.index = function () {
   provided book_Page.
 */
 QUnit.test ('book_Page.index', function (assert) {
-  assert.expect (3);
-  var done = assert.async ();
-  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.');
+  assert.expect (4);
+  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.', true);
   var testBookEntry = testBookPage.index ();
 
   assert.strictEqual (testBookEntry [0].id, testBookPage.id, 'The ID of the book_Entry created by book_Page.index is the same as the ID of the original book_Page.');
   assert.strictEqual (testBookEntry [0].title, testBookPage.title, 'The title of the book_Entry created by book_Page.index is the same as the title of the original book_Page.');
   assert.strictEqual (testBookEntry [0].body, testBookPage.body, 'The body of the book_Entry created by book_Page.index is the same as the body of the original book_Page.');
-  done ();
+
+  var page1  = new book_Page ('1', 'Test Title', 'Test Body', false);
+  var index1 = page1.index ();
+
+  assert.strictEqual (index1.length, 0, 'Pages that were marked as nonsearchable were excluded from the search index.');
 })
 
 /*
@@ -476,14 +673,13 @@ book_Page.prototype.getRawPageTemplate = function (done) {
 QUnit.test ('book_Page.getRawPageTemplate', function (assert) {
   assert.expect (2);
   var done = assert.async ();
-  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.');
+  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.', false);
   testBookPage.getRawPageTemplate (function (error, template) {
     assert.ok (template, 'getRawPageTemplate generates a template object.');
     assert.notOk (error, 'getRawPageTemplate does not throw an error.')
     done ();
   });
 })
-
 
 /*
   Accepts no arguments, creates a template_page
@@ -495,7 +691,6 @@ book_Page.prototype.getTemplates = function () {
   return [new template_Page (null, this.id, this.getRawPageTemplate, 'book_page')];
 }
 
-
 /*
   Unittests for book_Page.getTemplates.
 
@@ -505,7 +700,7 @@ book_Page.prototype.getTemplates = function () {
 QUnit.test ('book_Page.getTemplates', function (assert) {
   assert.expect (3);
   var done = assert.async ();
-  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.');
+  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.', false);
   var testBookPageTemplates = testBookPage.getTemplates ();
 
   assert.ok (Array.isArray (testBookPageTemplates) && testBookPageTemplates.length === 1, 'getTemplates returns an array with one item in it.');
@@ -532,7 +727,7 @@ book_Page.prototype.getMenuElements = function () {
 QUnit.test ('book_Page.getMenuElements', function (assert) {
   assert.expect (3);
   var done = assert.async ();
-  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.');
+  var testBookPage = new book_Page ('test_book_id', 'Test Book', 'This is the body for a test book page.', false);
   var testBookPageMenu = testBookPage.getMenuElements ();
 
   assert.ok (Array.isArray (testBookPageMenu) && testBookPageMenu.length === 1, 'getMenuElements returns an array with one item in it.');
@@ -574,6 +769,36 @@ function book_Section (id, title, children) {
 }
 
 /*
+  Accepts no arguments and returns an integer
+  representing the number of leafs that are
+  book_Section's descendants.
+*/
+book_Section.prototype.getNumLeafs = function () {
+  var numLeafs = 0;
+  this.children.forEach (function (child) {
+    numLeafs += child.getNumLeafs ();
+  });
+  return numLeafs;
+} 
+
+/*
+  Unittests for book_Section.getNumLeafs.
+
+  Confirms that the function returns the total
+  number of leafs that are a descendent of
+  book_Section.
+*/
+QUnit.test ('book_Section.getNumLeafs', function (assert) {
+  assert.expect (1);
+  var done = assert.async ();
+  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+    var testSection = database.books [0].children [0];
+    assert.strictEqual (testSection.getNumLeafs (), 2, 'getNumLeafs counts 2 leaves within the given section.')
+    done ();
+  })
+})
+
+/*
   Accepts no arguments and returns entries, an
   array consisting of book_Section's children.
 */
@@ -592,21 +817,29 @@ book_Section.prototype.index = function () {
   book_Section's children, and adds each to the
   entries array.
 */
-QUnit.test ('book_Section.index', function (assert) {
-  assert.expect (4);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var testSection = database.books [0].children [0];
-    testSection.children.push (new book_Page('second_test_id', 'Second Example Page', 'This is another example page.'));
-    var entries = testSection.index ();
-    assert.strictEqual (testSection.children.length, entries.length, 'The book_Section\'s number of children matches the length of the entries array.');
-    assert.strictEqual (testSection.children [0].id, entries [0].id, 'The book_Section\'s first child\'s ID is equal to that of the first item in entries.');
-    assert.strictEqual (testSection.children [0].title, entries [0].title, 'The book_Section\'s first child\'s title is equal to that of the first item in entries.');
-    assert.strictEqual (testSection.children [0].body, entries [0].body, 'The book_Section\'s first child\'s body is equal to that of the first item in entries.');
-    done ();
-  })
-})
-
+unittest ('book_Section.index',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (4);
+    var done0 = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var testSection = database.books [0].children [0];
+      testSection.children.push (new book_Page('book_page_page/second_test_id', 'Second Example Page', 'This is another example page.', true));
+      testSection.children.push (new book_Page('book_page_page/third_test_id', 'Third Example Page', 'This is another example page.', false));
+      var entries = testSection.index ();
+      assert.strictEqual (entries.length, 3, 'Indexed the correct number of pages.');
+      assert.strictEqual (testSection.children [0].id, entries [0].id, 'The book_Section\'s first child\'s ID is equal to that of the first item in entries.');
+      assert.strictEqual (testSection.children [0].title, entries [0].title, 'The book_Section\'s first child\'s title is equal to that of the first item in entries.');
+      assert.strictEqual (testSection.children [0].body, entries [0].body, 'The book_Section\'s first child\'s body is equal to that of the first item in entries.');
+      done0 ();
+    });
+  }
+);
 
 /*
   Accepts one argument, id, a string. Checks the
@@ -623,26 +856,6 @@ book_Section.prototype.getElement = function (id) {
   }
   return null;
 }
-
-/*
-  Unittests for book_Section.getElement.
-
-  Confirms that the function returns the section
-  or one of its children if they match the given
-  ID, and returns null otherwise.
-*/
-QUnit.test ('book_Section.index', function (assert) {
-  assert.expect (3);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var testSection = database.books [0].children [0];
-    testSection.children.push (new book_Page('second_test_id', 'Second Example Page', 'This is another example page.'));
-    assert.strictEqual (testSection.getElement('book_section_page/modules%2Fbook%2Fdatabase.xml.example/example_book/example_section'), testSection, 'book_Section.index returns the section when it matches the given ID.');   
-    assert.strictEqual (testSection.getElement ('second_test_id'), testSection.children [1], 'book_Section.index returns a child of the section when it matches the given ID.');
-    assert.notOk (testSection.getElement ('fake_id'), 'book_Section.index returns null if nothing matches the given ID.');    
-    done ();
-  })
-})
 
 /*
   Accepts one argument, done, a function that
@@ -706,19 +919,26 @@ book_Section.prototype.getTemplates = function () {
   Confirms that the function returns an array
   with one template_Page object.
 */
-QUnit.test ('book_Section.getTemplates', function (assert) {
-  assert.expect (3);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var testSection = database.books [0].children [0];
-    var testSectionTemplates = testSection.getTemplates ();
-    assert.ok (Array.isArray (testSectionTemplates) && testSectionTemplates.length === 1, 'getTemplates returns an array with one item in it.');
-    assert.strictEqual (testSectionTemplates [0].children.length, testSection.children.length, 'getTemplates returns an array whose number of children matches the section\'s number of children.');
-    assert.strictEqual (testSectionTemplates [0].children [0].id, testSection.children [0].id, 'The ID of the child of template_Page object getTemplates returns matches the ID of the child of testSection.')
-    done ();
-  })
-})
-
+unittest ('book_Section.getTemplates',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (3);
+    var done = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var testSection = database.books [0].children [0];
+      var testSectionTemplates = testSection.getTemplates ();
+      assert.ok (Array.isArray (testSectionTemplates) && testSectionTemplates.length === 1, 'getTemplates returns an array with one item in it.');
+      assert.strictEqual (testSectionTemplates [0].children.length, testSection.children.length, 'getTemplates returns an array whose number of children matches the section\'s number of children.');
+      assert.strictEqual (testSectionTemplates [0].children [0].id, testSection.children [0].id, 'The ID of the child of template_Page object getTemplates returns matches the ID of the child of testSection.')
+      done ();
+    });
+  }
+);
 
 /*
   Accepts no arguments and returns an array
@@ -762,11 +982,11 @@ QUnit.test ('book_Section.getMenuElements', function (assert) {
     done ();
   })
 })
-
 ```
 
 The Book Class
 --------------
+The book_Book classes are nodes. They are typically children of the book_Database object.
 
 ```javascript
 /*
@@ -815,51 +1035,34 @@ book_Book.prototype.index = function () {
 }
 
 /*
-function getNumLeafs (tree, startNum) {
-  var numLeafs = startNum;
-  if (tree.children.length < 1) {
-    numLeafs += 1;
-  }
-  else {
-    for (var i = 0; i < tree.children.length; i++) {
-      console.log(tree.children[i].constructor.name)
-      if (tree.children[i].constructor.name === 'book_Page') {
-        numLeafs += 1;
-      } else {
-        getNumLeafs (tree.children[i], numLeafs);
-      }
-    }
-  } else {
-    numLeafs += 1;
-  }
-  console.log(numLeafs);
-  return numLeafs;
-}
-*/
-
-
-
-/*
   Unittests for book_Book.index.
 
   Confirms that the function iterates through the
   book_Book's page descendents, and adds them as
   well as book_Book itself to the entries array.
 */
-QUnit.test ('book_Book.index', function (assert) {
-  assert.expect (3);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var testBook = database.books [0];
-    console.log(testBook.children);
-    var entries = testBook.index ();
-    assert.strictEqual (testBook.id, entries [0].id, 'The book_Book\'s first child\'s ID is equal to that of the first item in entries.');
-    assert.strictEqual (testBook.children [0].children[0].id, entries [1].id, 'The book_Book\'s first child\'s ID is equal to that of the second item in entries.');
-    assert.strictEqual (testBook.children [0].children[0].body, entries [1].body, 'The book_Book\'s first child\'s body is equal to that of the second item in entries.');
-    done ();
-  })
-})
-
+unittest ('book_Section.getTemplates',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (5);
+    var done = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var testBook = database.books [0];
+      var entries = testBook.index ();
+      assert.strictEqual (testBook.id, entries [0].id, 'The book_Book\'s first child\'s ID is equal to that of the first item in entries.');
+      assert.strictEqual (testBook.getNumLeafs (0), entries.length - 1, 'The length of entries, excluding the first item which is a book_Book object, is equal to the number of leafs among the book\'s descendants.');
+      assert.ok (entries[1].id.indexOf('book_page_page') >= 0, 'The second item in entries is a book_Page item.');
+      assert.strictEqual (testBook.children [0].children[0].id, entries [1].id, 'The book_Book\'s first child\'s ID is equal to that of the second item in entries.');
+      assert.strictEqual (testBook.children [0].children[0].body, entries [1].body, 'The book_Book\'s first child\'s body is equal to that of the second item in entries.');
+      done ();
+    });
+  }
+);
 
 /*
   Accepts one argument, done, a function that
@@ -889,7 +1092,6 @@ QUnit.test ('book_Book.getRawPageTemplate', function (assert) {
     })
   })
 })
-
 
 /*
   Accepts one argument, done, a function that
@@ -951,19 +1153,26 @@ book_Book.prototype.getTemplates = function () {
   comprised of the book_Book object and all of its
   book_Section children.
 */
-QUnit.test ('book_Book.getTemplates', function (assert) {
-  assert.expect (3);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var testBook = database.books [0];
-    var testBookTemplates = testBook.getTemplates ();
-    assert.ok (Array.isArray (testBookTemplates) && testBookTemplates.length > 0, 'getTemplates returns a non-empty array.');
-    assert.strictEqual (testBookTemplates.length, testBook.children.length + 1, 'The number of items in the templates array that getTemplates returns is equal to the given Book plus all of its child Sections.');
-    assert.strictEqual (testBookTemplates [0].children [0].id, testBook.children [0].id, 'The ID of the child of template_Book object that getTemplates returns matches the ID of the child of its child section.')
-    done ();
-  })
-})
-
+unittest ('book_Book.getTemplates',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (3);
+    var done = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var testBook = database.books [0];
+      var testBookTemplates = testBook.getTemplates ();
+      assert.ok (Array.isArray (testBookTemplates) && testBookTemplates.length > 0, 'getTemplates returns a non-empty array.');
+      assert.strictEqual (testBookTemplates.length, testBook.children.length + 1, 'The number of items in the templates array that getTemplates returns is equal to the given Book plus all of its child Sections.');
+      assert.strictEqual (testBookTemplates [0].children [0].id, testBook.children [0].id, 'The ID of the child of template_Book object that getTemplates returns matches the ID of the child of its child section.')
+      done ();
+    });
+  }
+);
 
 /*
   Accepts no arguments and returns an array that
@@ -990,8 +1199,6 @@ book_Book.prototype.getMenuElements = function () {
 
 /*
   Unittests for book_Book.getMenuElements.
-
-  Confirms that .
 */
 QUnit.test ('book_Book.getMenuElements', function (assert) {
   assert.expect (4);
@@ -1011,6 +1218,7 @@ QUnit.test ('book_Book.getMenuElements', function (assert) {
 
 The Database Class
 ------------------
+The database class is the topmost level within the book tree.
 
 ```javascript
 /*
@@ -1020,6 +1228,34 @@ The Database Class
 function book_Database (books) {
   this.books = books;
 }
+
+/*
+  Accepts no arguments and returns an integer
+  representing the number of leafs that are
+  book_Database's descendants.
+*/
+book_Database.prototype.getNumLeafs = function () {
+  var numLeafs = 0;
+  this.books.forEach (function (book) {
+    numLeafs += book.getNumLeafs ();
+  });
+  return numLeafs;
+} 
+
+/*
+  Unittests for book_Database.getNumLeafs.
+
+  Confirms that the function returns the total
+  number of leafs within the database.
+*/
+QUnit.test ('book_Database.getNumLeafs', function (assert) {
+  assert.expect (1);
+  var done = assert.async ();
+  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+    assert.strictEqual (database.getNumLeafs (), 3, 'getNumLeafs counts 3 leaves within the entire database.')
+    done ();
+  })
+})
 
 /*
   Accepts no arguments and returns entries, an
@@ -1035,29 +1271,37 @@ book_Database.prototype.index = function () {
 }
 
 /*
-  Unittests for book_Database'sindex.
+  Unittests for book_Database.index.
 
   Confirms that the function iterates through the
   book_Database's book children, and adds each to
   the entries array.
 */
-QUnit.test ('book_Database.index', function (assert) {
-  assert.expect (1);
-  var done = assert.async ();
-  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
-    var entries = database.index ();
-    assert.strictEqual (database.books [0].id, entries [0].id, 'The book_Book\'s first child\'s ID is equal to that of the first item in entries.');
-    done ();
-  })
-})
-
+unittest ('book_Database.index',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (2);
+    var done = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var entries = database.index ();
+      assert.strictEqual (database.books [0].id, entries [0].id, 'The book_Book\'s first child\'s ID is equal to that of the first item in entries.');
+      assert.strictEqual (entries.length, database.books.length + database.getNumLeafs (0), 'The number of items in entries is equal to the total number of books and leafs in the database.')
+      done ();
+    });
+  }
+);
 
 /*
   Accepts one argument, id, a string. Iterates
-  through the values in book_Database's books
-  property, and returns the child matching that
-  ID if it exists. If no match is found, a strict
-  error is thrown and returns null.
+  through book_Database's descendants and returns
+  the object matching that ID. If no match is 
+  found, a strict error is thrown and returns 
+  null.
 */
 book_Database.prototype.getElement = function (id) {
   for (var i = 0; i < this.books.length; i ++) {
@@ -1069,9 +1313,27 @@ book_Database.prototype.getElement = function (id) {
 }
 
 /*
+  Unittests for book_Database.getElement.
+
+  Confirms that the function returns a descendant
+  that matches the given id, including iterating
+  through multiple 'generations' if necessary.
+*/
+QUnit.test ('book_Database.getElement', function (assert) {
+  assert.expect (2);
+  var done = assert.async ();
+  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+    assert.strictEqual (database.getElement ('book_book_page/modules%2Fbook%2Fdatabase.xml.example/example_book'), database.books [0], 'book_Database.index returns a child if one matches the given ID.');
+    assert.strictEqual (database.getElement ('book_section_page/modules%2Fbook%2Fdatabase.xml.example/example_book/example_section'), database.books [0].children [0], 'book_Database returns a grandchild if one matches the given ID.');  
+    done ();
+  })
+})
+
+/*
   Accepts no arguments and returns an array,
   templates, which represents the templates for
-  the objects in book_Database's books property.
+  the objects in book_Database's books property
+  and the books' section children.
 */
 book_Database.prototype.getTemplates = function () {
   var templates = [];
@@ -1080,6 +1342,33 @@ book_Database.prototype.getTemplates = function () {
   }
   return templates;
 }
+
+/*
+  Unittests for book_Database.getTemplates.
+
+  Confirms that the function returns an array of
+  book_Book and book_Section objects.
+*/
+unittest ('book_Database.getTemplates',
+  {
+    globals: [
+      { variableName: 'book_DATABASE', value: {} }
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (4);
+    var done = assert.async ();
+    book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+      book_DATABASE = database;
+      var databaseTemplates = database.getTemplates ();
+      assert.ok (Array.isArray (databaseTemplates), 'getTemplates returns an array.');
+      assert.strictEqual (databaseTemplates.length, 4, 'getTemplates returns an array of the same length as the books and sections in the database.')
+      assert.strictEqual (databaseTemplates [0].id, database.books [0].id, 'The ID of the first book_Section object in the database matches the ID of the book_Section template object generated by getTemplates.')
+      assert.strictEqual (databaseTemplates [0].children.length, database.books [0].children.length, 'The number of children of the first book_Section object in the database matches the number of children of the book_Section template object generated by getTemplates.');
+      done ();
+    });
+  }
+);
 
 /*
   Accept no arguments and returns menu, a 
@@ -1094,6 +1383,25 @@ book_Database.prototype.getMenu = function () {
   }
   return menu;
 }
+
+/*
+  Unittests for book_Database.getMenu.
+
+  Confirms that the function returns a menu 
+  object that reflects the tree structure of the
+  database and its nodes and leaves.
+*/
+QUnit.test ('book_Database.getMenu', function (assert) {
+  assert.expect (3);
+  var done = assert.async ();
+  book_loadDatabase ('modules/book/database.xml.example', function (error, database) {
+    var menu = database.getMenu ();
+    assert.strictEqual (menu.constructor.name, 'menu_Menu', 'getMenu returns a menu object.')
+    assert.strictEqual (menu.children.length, database.books.length, 'get Menu\'s children array is the same length as database\'s books array.')
+    assert.strictEqual (menu.children [0].id, database.books [0].id, 'get Menu\'s first child has the same ID as the first item in database\'s books array.')
+    done ();
+  })
+})
 ```
 
 Auxiliary Functions
@@ -1118,15 +1426,50 @@ function book_getId (type, path) {
 }
 
 /*
-  Accepts one argument, text, an HTML string, and
-  returns a string representing a snippet of the
-  text contained within the given HTML.
-*/
-function book_getSnippet (text) {
-  return text.length <= book_SNIPPET_LENGTH ? text :
-    text.substr (0, book_SNIPPET_LENGTH) + '...';
-}
+  Unittests for book_getId.
 
+  Confirms that the function constructs an ID for
+  the object from its given type and path.
+*/
+QUnit.test ('book_getId', function (assert) {
+  assert.expect (3);
+  var done = assert.async ();
+  var bookPageId = book_getId ('book_book_page', ['test_path_1', 'test_path_2']);
+  assert.strictEqual (typeof bookPageId, 'string', 'book_getId returns a string value.')  
+  assert.strictEqual (bookPageId.indexOf('book_book_page'), 0, 'The string book_getId constructs begins with the type given.');
+  assert.ok (bookPageId.indexOf('test_path_1') > 0 && bookPageId.indexOf('test_path_2') > 0, 'The string book_getId constructs includes the paths provided.');
+  done ();
+})
+
+/*
+  Accepts two arguments:
+
+  * query, a query string
+  * and text, plain text string
+
+  and returns a string representing a snippet
+  of the text.
+*/
+function book_getSnippet (query, text) {
+  var re = new RegExp (query.match (/\w+/g).join ('|'), 'ig');
+
+  // find the first matching term in the snippet.
+  var maxIndex = text.length - book_SNIPPET_LENGTH;
+  var index = Math.min (
+    Math.max (0,
+      text.search (re) -  Math.floor (book_SNIPPET_LENGTH / 2)),
+    Math.max (0, maxIndex));
+
+  // extract the snippet and highlight the matching terms.
+  var snippet =
+    (index > 0 ? '... ' : '') +
+    (text
+      .substr (index, book_SNIPPET_LENGTH)
+      .replace (re, '<span class="book_search_snippet_highlight">$&</span>')) +
+    (index < maxIndex ? ' ...' : '');
+
+  return snippet;
+}
 
 /*
   Accepts one argument: html, an HTML string;
@@ -1135,6 +1478,16 @@ function book_getSnippet (text) {
 */
 function book_stripHTMLTags (html) {
   return html.replace (/<[^>]*>/g, '');
+}
+
+/*
+  Accepts one argument: text, a text string
+  that may contain one or more URLs (including
+  relative URLs); and returns a new string in
+  which these URLs have been filtered out.
+*/
+function book_removeURLs (text) {
+  return text.replace (/[^ \/]*\/[^ ]*/g, '');
 }
 ```
 
@@ -1183,6 +1536,7 @@ To be considered valid, the Book Database XML file must conform to the following
     <xs:choice maxOccurs="unbounded">
       <xs:element name="section" type="sectionType" minOccurs="0"/>
       <xs:element name="page" type="pageType" minOccurs="0"/>
+      <xs:element name="link" type="linkType" minOccurs="0"/>      
     </xs:choice>
   </xs:complexType>
 
@@ -1198,11 +1552,22 @@ To be considered valid, the Book Database XML file must conform to the following
   <!-- Define the page element type -->
   <xs:complexType name="pageType">
     <xs:all>
-      <xs:element name="name"  type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="body"  type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="name"       type="xs:string"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="title"      type="xs:string"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="body"       type="xs:string"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="searchable" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
     </xs:all>
   </xs:complexType>
+
+  <!-- Define the link element type -->
+  <xs:complexType name="linkType">
+    <xs:all>
+      <xs:element name="name"       type="xs:string"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="title"      type="xs:string"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="pageId"     type="xs:anyURI"  minOccurs="1" maxOccurs="1"/>
+      <xs:element name="searchable" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>  
 </xs:schema>
 
 ```
@@ -1228,6 +1593,32 @@ The Book module includes an example database in [database.xml.example](#Database
             <name>example_page</name>
             <title><![CDATA[Example Page]]></title>
             <body><![CDATA[This is an example page.]]></body>
+            <searchable>true</searchable>
+          </page>
+          <link>
+            <name>example_link</name>
+            <title><![CDATA[Example Link]]></title>
+            <pageId>book_page_page/modules%2Fbook%2Fdatabase.xml.example/example_book/example_section/example_page</pageId>
+            <searchable>true</searchable>
+          </link>          
+        </content>
+      </section>
+    </content>
+  </book>
+  <book>
+    <name>example_book_2</name>
+    <title><![CDATA[Another Example Book]]></title>
+    <body><![CDATA[This is another example book]]></body>
+    <content>
+      <section>
+        <name>example_section_2</name>
+        <title><![CDATA[Another Example Section]]></title>
+        <content>
+          <page>
+            <name>example_page_2</name>
+            <title><![CDATA[Another Example Page]]></title>
+            <body><![CDATA[This is another example page.]]></body>
+            <searchable>true</searchable>
           </page>
         </content>
       </section>
@@ -1256,11 +1647,15 @@ _"Load the Database"
 
 _"Parse the Database"
 
+_"Curly Block Handlers"
+
 _"Block Handlers"
 
 _"Search Source"
 
 _"The Entry Class"
+
+_"The Link Class"
 
 _"The Page Class"
 

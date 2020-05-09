@@ -7,10 +7,52 @@ The Template module allows other modules to define and nested templates.
 /*
   The Template module allows other modules to define and nested templates.
 */
+
+// Declares the QUnit test module.
+QUnit.module ('Template');
+```
+
+Example Usage
+-------------
+The Menu module defineds the Menu class, which represents menus within Lucidity. Each Menu object must be added to the menu_MENUS array, which maintains a record of all registered menus. Once a Menu object has been registered, it can then be displayed using the Menu blocks listed below. The following presents an example of a Menu object:
+
+```javascript
+/*
+  Accepts no arguments and returns a new example
+  menu.
+*/
+function createExampleTemplates () {
+  var section0 = new template_Section (null, 'section0', [], getSectionExample, ['section0']);
+  var section1 = new template_Section (section0, 'section1', [], getSectionExample, ['section1'])
+
+  var page0 = new template_Page (section0, 'page0', getPageExample, ['page0']);
+  var page1 = new template_Page (section1, 'page1', getPageExample, ['page1']);
+  var page2 = new template_Page (section1, 'page2', getPageExample, ['page2']);
+
+  section0.children.push (section1, page0);
+  section1.children.push (page1, page2)
+
+  return section0;
+}
+
+function getSectionExample (done) {
+  var rawTemplate = $('<div class="container">\
+    <div class="template_hole_block"></div>\
+  </div>');
+  done (null, rawTemplate)
+}
+
+function getPageExample (done) {
+  var rawTemplate = $('<div class="container">\
+    <div class="page_block"></div>\
+  </div>');
+  done (null, rawTemplate);
+}
 ```
 
 The Template Class
 ------------------
+This is an abstract class that template_Page and template_Section inherit from. There are no template_Template objects.
 
 ```javascript
 /*
@@ -30,19 +72,40 @@ function template_Template (parent, id, getRawElement, classes) {
 }
 
 /*
-  Accepts no arguments. Returns the parent path
-  of the template_Template object if it exists,
-  and an empty array if not.
+  Accepts no arguments. Returns an array of the
+  template's parents, grandparents, etc. and an
+  empty array if it has no parents.
 */
 template_Template.prototype.getAncestors = function () {
   return this.parent ? this.parent.getPath () : [];
 }
 
 /*
+  Unittest for getAncestors.
+
+  Confirms that the function returns an array 
+  consisting of the template's ancestors.
+*/
+QUnit.test ('getAncestors', function (assert) {
+  assert.expect (4);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+  var page1 = section0.children [0].children [0];
+
+  assert.notOk (section0.getAncestors ().length, 'Because section0 has no ancestors, getAncestors returns an empty array.');
+  assert.strictEqual (page1.getAncestors ().length, 2, 'The array that page1.getAncestors returns includes 2 items, because it has 2 ancestors.');  
+  assert.strictEqual (page1.getAncestors () [0], section0, 'The first item in page1\'s getAncestors array is identical to its grandparent, template0.');
+  assert.strictEqual (page1.getAncestors () [1], section0.children [0], 'The second item in page1\'s getAncestors array is identical to its parent element.');
+  done ();
+})
+
+
+/*
   Accepts no arguments, and returns ancestors, an
-  array consisting of the paths of 
-  template_Template's ancestors as well as the 
-  template_Template instance itself.
+  array of objects representing:
+  * each of template_Template's ancestors, and
+  * the template_Template instance itself.
 */
 template_Template.prototype.getPath = function () {
   var ancestors = this.getAncestors ();
@@ -51,9 +114,31 @@ template_Template.prototype.getPath = function () {
 }
 
 /*
+  Unittest for getPath.
+
+  Confirms that the function returns an array
+  consisting of the template's ancestors as well
+  as the template object itself.
+*/
+QUnit.test ('getPath', function (assert) {
+  assert.expect (5);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+  var section1 = section0.children [0];
+
+  assert.strictEqual (section0.getPath ().length, 1, 'getPath returns a single-item array for section, because it has no ancestors.');
+  assert.strictEqual (section1.getPath ().length, 2, 'getPath returns a two-item array for section1, because it has one ancestor.');  
+  assert.strictEqual (section1.getPath () [0], section0, 'The first object returned by section1.getPath is equivalent to its parent.');
+  assert.strictEqual (section1.getPath () [1], section1, 'The second object returned by section1.getPath is identical to section1.'); 
+  assert.strictEqual (section1.children [0].getPath ().length, 3, 'getPath returns a three-item array for page1, because it has two ancestors.');
+  done ();
+})
+
+/*
   Accepts no arguments, and returns line, an
-  array consisting of the IDs of the items that
-  make up template_Template's path.
+  array consisting of the ancestors that make up
+  template_Template's path.
 */
 template_Template.prototype.getLine = function () {
   var line = [];
@@ -65,6 +150,28 @@ template_Template.prototype.getLine = function () {
 }
 
 /*
+  Unittest for getLine.
+
+  Confirms that the function returns an array of
+  template objects, representing the given
+  template's ancestors.
+*/
+QUnit.test ('getLine', function (assert) {
+  assert.expect (5);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+  var section1 = section0.children [0];
+
+  assert.strictEqual (section0.getPath ().length, 1, 'getPath returns a single-item array for section0, because it has no ancestors.');
+  assert.strictEqual (section1.getPath ().length, 2, 'getPath returns a two-item array for section0, because it has one ancestor.');
+  assert.strictEqual (section1.children [0].getPath ().length, 3, 'getPath returns a three-item array for section0, because it has two ancestors.');    
+  assert.strictEqual (section1.getPath () [0], section0, 'The first object returned by section1.getPath is identical to its parent, tsection0.');  
+  assert.strictEqual (section1.getPath () [1].id, section1.id, 'The second object returned by section1.getPath is identical to section1.');    
+  done ();
+})
+
+/*
   Accepts no arguments and returns an integer
   representing the level of the template, as
   determined by its path.
@@ -74,6 +181,24 @@ template_Template.prototype.getLevel = function () {
 }
 
 /*
+  Unittest for getLevel.
+
+  Confirms that the function returns an integer
+  equal to the level of the template.
+*/
+QUnit.test ('getLevel', function (assert) {
+  assert.expect (3);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+
+  assert.strictEqual (section0.getLevel (), 1, 'section0.getLevel returns 1 because it is the topmost template.');
+  assert.strictEqual (section0.children [1].getLevel (), 2, 'page0.getLevel returns 2 because it is a second-level template.');
+  assert.strictEqual (section0.children [0].children [0].getLevel (), 3, 'page1.getLevel returns 3 because it is a third-level template.');
+  done ();
+})
+
+/*
   Accepts one argument, a function; applies that
   function to the template_Template object; and
   returns undefined.
@@ -81,6 +206,29 @@ template_Template.prototype.getLevel = function () {
 template_Template.prototype.iterate = function (templateFunction) {
   templateFunction (this);
 }
+
+/*
+  Unittest for iterate.
+
+  Confirms that the function applies the function
+  to the template object and all of its children.
+*/
+
+QUnit.test ('iterate', function (assert) {
+  assert.expect (2);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+  function testIterate (input) {
+    input.iterated = true;
+  }
+  section0.iterate (testIterate);
+
+  assert.ok (section0.iterated, 'The test function testIterate successfully added the key "iterated" to section0.');
+  assert.ok (section0.children [0].iterated, 'The test function testIterate successfully added the key "iterated" to the first child of section0.');
+  done ();
+})
+
 
 /*
   Accepts one argument, done, a function; sends
@@ -99,6 +247,35 @@ template_Template.prototype.getElement = function (done) {
         .attr ('data-template-level', self.getLevel ()));
   });
 }
+
+/*
+  Unittest for getElement.
+
+  Confirms that the function generates an object
+  representing the template's HTML structure,
+  using its getElement method.
+*/
+QUnit.test ('getElement', function (assert) {
+  assert.expect (4);
+
+  var section0 = createExampleTemplates ();
+  var page0 = section0.children [1];
+
+  var done0 = assert.async ();
+  section0.getElement (function (error, rawTemplate) {
+    assert.ok (rawTemplate, 'getElement successfully returns a rawTemplate object for section0.');
+    assert.ok ($(rawTemplate [0].children [0]).hasClass ('template_hole_block'), 'section0.getElement\'s rawTemplate object includes the appropriate template class.');
+    done0 ();
+  })
+
+  var done1 = assert.async ();
+  page0.getElement (function (error, rawTemplate) {
+    assert.ok (rawTemplate, 'getElement successfully returns a rawTemplate object for page0.');
+    assert.ok ($(rawTemplate [0].children [0]).hasClass ('page_block'), 'page0.getElement\'s rawTemplate object includes the appropriate template class.');
+    done1 ();
+  })
+
+})
 ```
 
 The Page Template Class
@@ -141,6 +318,22 @@ template_Page.prototype.constructor = template_Page;
 template_Page.prototype.getPageTemplate = function (id) {
   return this.id === id ? this : null;
 }
+
+/*
+  Unittest for getPageTemplate.
+
+  Confirms that the function returns the page
+  template if it matches the given ID.
+*/
+QUnit.test ('getPageTemplate', function (assert) {
+  assert.expect (2);
+  var done = assert.async ();
+
+  var page0 = createExampleTemplates ().children [1];
+  assert.strictEqual(page0.getPageTemplate ('page0').id, 'page0', 'getPageTemplate returns the page object when it matches the given ID.')
+  assert.notOk(page0.getPageTemplate ('page1'), 'getPageTemplate returns nll when the page\'s ID is different than the given ID.')
+  done ();
+})
 
 /*
   Accepts one argument, id, a template ID string.
@@ -198,6 +391,29 @@ template_Page.prototype.getPageElement = function (done) {
       );
   });
 }
+
+/*
+  Unittest for getPageElement.
+
+  Confirms that the function builds an HTML
+  structure, via an array of nested objects,
+  that reflects the page's HTML as placed within
+  its section parent's HTML.
+*/
+QUnit.test ('getPageElement', function (assert) {
+  assert.expect (5);
+  var done = assert.async ();
+  var page0 = createExampleTemplates ().children [1];
+
+  page0.getPageElement (function (error, pageElement) {
+    assert.strictEqual (pageElement.length, 1, 'getPageElement returns a pageElement array with one item in it.');
+    assert.ok ($(pageElement [0]).hasClass ('template_section'), 'getPageElement returns an HTML template with the correct section template name.');
+    assert.strictEqual ($(pageElement [0]).attr ('data-template-id'), page0.parent.id, 'The HTML template matches the assigned template for page0\'s parent, section0.');  
+    assert.ok ($(pageElement [0].children [0]).hasClass ('template_page'), 'The page template is within the outer template, and has the correct class name.');
+    assert.strictEqual ($(pageElement [0].children [0]).attr ('data-template-id'), page0.id, 'The page template matches the assigned template for page0.');
+    done ();
+  })
+})
 ```
 
 The Section Template Class
@@ -257,6 +473,24 @@ template_Section.prototype.getPageTemplate = function (id) {
 template_Section.prototype.getSectionTemplate = function (id) {
   return this.id === id ? this : template_findSectionTemplate (id, this.children);
 }
+
+/*
+  Unittest for getSectionTemplate.
+
+  Confirms that the function searches through the
+  template and its children, and returns the
+  instance, if any, that matches the given ID.
+*/
+QUnit.test ('getSectionTemplate', function (assert) {
+  assert.expect (3);
+  var done = assert.async ();
+
+  var section0 = createExampleTemplates ();
+  assert.strictEqual(section0.getSectionTemplate ('section0').id, 'section0', 'getSectionTemplate returns the section object when it matches the given ID.')
+  assert.strictEqual(section0.getSectionTemplate ('section1').id, 'section1', 'getSectionTemplate returns the section\'s child that matches the given ID.');
+  assert.notOk(section0.getSectionTemplate ('page1'), 'getSectionTemplate returns null when the given ID matches neither the section nor one of its children.');
+  done ();
+})
 
 /*
   Accepts one argument, templateFunction, a
@@ -390,6 +624,57 @@ function template_TemplateStore () {
     template ? templateFunction (template) : addTemplateFunction (id, templateFunction);
   }
 }
+
+/*
+  Unittest for template_TemplateStore.
+
+  Confirms that the function properly stores
+  added templates as well as template functions,
+  and applies the functions to their associated
+  templates regardless of whether a template's
+  function was added before the function or vice
+  versa.
+*/
+QUnit.test ('template_TemplateStore', function (assert) {
+  assert.expect (4);
+  var done = assert.async ();
+  var section0 = createExampleTemplates ();
+
+  // I. Template added before function
+  var templateStore0 = new template_TemplateStore ();
+  var templateFunction0HasRun, templateFunction1HasRun;
+  function templateFunction0 () {
+    return templateFunction0HasRun = true;
+  }
+  function templateFunction1 () {
+    return templateFunction1HasRun = true;
+  }
+  templateStore0.add (section0);
+  templateStore0.getPageTemplate ('page1', templateFunction0);
+  templateStore0.getPageTemplate ('fakePage1', templateFunction1)
+
+  assert.ok (templateFunction0HasRun, 'templateFunction0 was able to run, because page1 was included in the template store.');
+  assert.notOk (templateFunction1HasRun, 'templateFunction1 could not run, because there is no fakePage1 template in the store.');
+
+  // II. Function added before template
+  var templateStore1 = new template_TemplateStore ();
+  var templateFunction2HasRun, templateFunction3HasRun;
+  function templateFunction2 () {
+    return templateFunction2HasRun = true;
+  }
+  function templateFunction3 () {
+    return templateFunction3HasRun = true;
+  }
+  templateStore1.getPageTemplate ('page1', templateFunction2);
+  templateStore1.getPageTemplate ('fakePage1', templateFunction3);
+  templateStore1.add (section0);
+
+  assert.ok (templateFunction2HasRun, 'Once section0, which contains page1, was added to the store, templateFunction2 could run.');
+  assert.notOk (templateFunction3HasRun, 'templateFunction3 could not run because fakePage1 was not added as a template.');
+
+  done ();
+})
+
 ```
 
 The Template Store
@@ -462,6 +747,26 @@ function template_findPageTemplate (id, templates) {
 } 
 
 /*
+  Unittest for template_findPageTemplate.
+
+  Confirms that the function searches through the
+  templates array, and all the children of those
+  templates, and returns the page template that
+  matches the given ID.
+*/
+
+QUnit.test ('template_findPageTemplate', function (assert) {
+  assert.expect (2);
+  var done = assert.async ();
+  var templates = [];
+  templates.push (createExampleTemplates ());
+
+  assert.strictEqual (template_findPageTemplate ('page0', templates).id, 'page0', 'template_findPageTemplate searches the template in the templates array, as well as all their children, and returns the template_Page instance that matches the given ID.');
+  assert.notOk (template_findPageTemplate ('fakepage0', templates), 'If no template matches the given ID, template_findPageTemplate returns null.');
+  done ();
+})
+
+/*
   Accepts two arguments:
   * id, a Menu Element ID string
   * templates, an array of section template 
@@ -478,6 +783,26 @@ function template_findSectionTemplate (id, templates) {
   }
   return null;
 }
+
+/*
+  Unittest for template_findSectionTemplate.
+
+  Confirms that the function searches through the
+  templates array, and all the children of those
+  templates, and returns the section template 
+  that matches the given ID.
+*/
+
+QUnit.test ('template_findSectionTemplate', function (assert) {
+  assert.expect (2);
+  var done = assert.async ();
+  var templates = [];
+  templates.push (createExampleTemplates ());
+
+  assert.strictEqual (template_findSectionTemplate ('section1', templates).id, 'section1', 'template_findSectionTemplate searches the template in the templates array, as well as all their children, and returns the template_Section instance that matches the given ID.');
+  assert.notOk (template_findSectionTemplate ('fakesection0', templates), 'If no template matches the given ID, template_findSectionTemplate returns null.');
+  done ();
+})
 ```
 
 Generating Source Files
@@ -491,6 +816,8 @@ from the command line.
 #### Template.js
 ```
 _"Template Module"
+
+_"Example Usage"
 
 _"The Template Class"
 

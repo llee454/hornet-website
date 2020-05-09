@@ -9,6 +9,24 @@
     <script src="lib/async/dist/async.js"></script>
     <script src="lib/jquery/jquery.js"></script>
     <script src="lib/jquery-getCSS/jquery.getCSS.js"></script>
+    <script src="lib/jquery-ui/jquery-ui.js"></script>
+    <script src="lib/jq-ajax-progress/src/jq-ajax-progress.js"></script>
+    <script src="lib/uri/uri.js"></script> 
+
+     <script src="lib/qunit/qunit.js"></script>
+     <script>
+       QUnit.config.autostart = false;
+     </script>
+ 
+    <!-- Load the library stylesheets -->
+    <link rel="stylesheet" type="text/css" href="lib/jquery-ui/jquery-ui.min.css">
+
+     <!-- Load the current theme's stylesheet -->
+    <link rel="stylesheet" type="text/css" href="themes/portfolio/portfolio.css">
+
+    <!-- Load the experimental Progressbar module -->
+    <script src="modules/progressbar/progressbar.js"></script>
+
     <script src="lib/uri/uri.js"></script>
     <script src="lib/qunit/qunit.js"></script>
     <script>
@@ -46,7 +64,7 @@
         </div>
       </div>
       <div id='hero-video-container'>
-        <video id='hero-video' class="video-js vjs-default-skin" loop autoplay preload="auto" width="640" height="500">
+        <video id='hero-video' class="video-js vjs-default-skin" loop autoplay preload="auto" height="500">
           <source src="https://work-website-media.s3.us-east-2.amazonaws.com/background+loop.mp4"/>
         </video>
       </div>
@@ -65,7 +83,7 @@
                 Over the last 7 years, I've proved hundreds of results using Coq and have developed formally verified algorithms.
               </p>
               <div class="video_player_block">
-                <video class="video-js vjs-default-skin" controls preload="auto" width="640" height="500">
+                <video class="video-js vjs-default-skin" controls preload="auto" height="500">
                   <source src="https://work-website-media.s3.us-east-2.amazonaws.com/success+story+second+version.mp4"/>
                 </video>
               </div>
@@ -150,6 +168,7 @@
               </ul>
             </div>
             <div class='section-body'>
+              <div class="form_block">feedback_form</div>
             </div>
           </div>
         </div>

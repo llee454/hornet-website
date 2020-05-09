@@ -228,8 +228,13 @@ var APP_LOAD_HANDLERS = new AppLoadHandlers ();
   within the current page.
 */
 $(document).ready (function () {
+  progressbar.update ('core.load_app', 10);
+
   // I. Load the configuration settings.
   loadSettings (function (settings) {
+    progressbar.update ('core.load_app', 20);
+    progressbar.update ('core.load_settings', 100);
+
     // Add the main module to the modules list.
     settings.modules.push ({
       name:    'main',
@@ -239,17 +244,24 @@ $(document).ready (function () {
 
     // II. Load the enabled modules.
     loadModules (settings, function () {
+      progressbar.update ('core.load_app', 30);
+
       // III. Update the error mode.
       STRICT_ERROR_MODE = settings.errorMode;
 
       // IV. Call the module load event handlers.
       MODULE_LOAD_HANDLERS.execute (function () {
+        progressbar.update ('core.load_app', 50);
+
         if (settings.runUnittests) {
+          progressbar.update ('core.load_app', 100);
+
           // V. Run unit tests
           $.getCSS ('lib/qunit/qunit.css');
           QUnit.start ();
         } else {
           // V. Call the app load event handlers.
+          progressbar.update ('core.load_app', 100);
           APP_LOAD_HANDLERS.execute (settings, function () {});         
         }
       });
@@ -307,11 +319,16 @@ function parseSettings (doc) {
 */
 function loadModules (settings, done) {
   // II. Load the module files in the modules list.
-  async.eachSeries (settings.modules,
-    function (module, next) {
+  async.eachOfSeries (settings.modules,
+    function (module, index, next) {
+      progressbar.update ('core.load_modules', index/settings.modules.length * 100);
+
       module.enabled ? loadScript (module.url, next) : next ();
     },
-    done
+    function (error) {
+      progressbar.update ('core.load_modules', 100);
+      done (error);
+    }
   );
 }
 
@@ -375,6 +392,11 @@ function loadScripts (urls, done) {
   an Error object to done instead.
 */
 function replaceWithTemplate (url, element, done) {
+  if (!url) {
+    var error = new Error ('[core][replaceWithTemplate] Error: an error occured while trying to load a template from "". A valid URL is needed.')
+    strictError (error);
+    done (error);
+  }
   getTemplate (url,
     function (error, template) {
       if (error) { return done (error); }
@@ -535,6 +557,16 @@ function getUniqueId () {
     currentId ++;
   }
   return 'id' + (currentId ++);
+}
+
+/*
+  Accepts one argument: variableName, a string
+  that represents a variable name; and safely
+  checks whether or not the referenced variable
+  has been declared/defined.
+*/
+function declared (variableName) {
+  return eval ('typeof ' + variableName + ' != "undefined"');
 }
 
 /*

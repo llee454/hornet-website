@@ -273,6 +273,8 @@ MODULE_LOAD_HANDLERS.add (
 
             // Call the page load event handlers.
             PAGE_LOAD_HANDLERS.execute (id, function () {
+              progressbar.update ('page.load', 100);
+
               // Fade in
               page_fadein ();
 
@@ -323,7 +325,7 @@ function page_loadSettings (url, done) {
 */
 QUnit.test ('page_loadSettings', function (assert) {
   assert.expect (2);
-
+  
   var done = assert.async ();
   page_loadSettings ('modules/page/settings.xml.default',
     function (error, settings) {
@@ -451,6 +453,73 @@ function page_block (context, done) {
 }
 
 /*
+  Unittests for page_block.
+
+  Confirms that page_block:
+
+  * will replace page blocks with the pages
+    referenced by their given page IDs
+  * will replace page blocks with the pages
+    referenced by their Block Expansion Context
+    page IDs if they're empty
+  * will replace page blocks with the pages
+    referenced by the default page ID if they're
+    empty and have empty Block Expansion Context
+    page IDs
+  * will empty page blocks that have no pageIDs
+*/
+
+unittest ('page_block',
+  {
+    globals: [
+      { variableName: 'block_HANDLERS', value: new block_HandlerStore () }
+    ],
+    elements: [
+      $('<div class="page_block_parent">\
+         <div class="page_block">example_page</div>\
+       </div>'),
+      $('<div class="page_block_parent_1">\
+         <div class="page_block"></div>\
+       </div>'),
+       $('<div class="page_block_parent_2">\
+         <div class="page_block"></div>\
+       </div>'),
+       $('<div class="page_block_parent_3">\
+         <div class="page_block"></div>\
+       </div>'),              
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (3);
+    block_HANDLERS.add ('page_block', page_block);
+
+    var done0 = assert.async ();
+    block_expandBlock (new block_Context (12, elements [0]),
+      function () {
+        assert.ok ($('.page_block_parent .example_block').length > 0, 'page_block replace .page_block with the page referenced by the given page ID');
+        done0 ();
+      }
+    );
+
+    var done1 = assert.async ();
+    block_expandBlock (new block_Context ('example_page', elements [1]),
+      function () {
+        assert.ok ($('.page_block_parent_1 .example_block').length > 0, 'If the .page_block div is empty, page_block loads the page referenced by the Block Expansion Context page ID.');
+        done1 ();
+      }
+    );
+
+    var done2 = assert.async ();
+    block_expandBlock (new block_Context (null, elements [2]),
+      function () {
+        assert.notOk ($('.page_block_parent_2 .example_block').length > 0, 'If the .page_block div is empty and no Block Expansion Context page ID is given, page_block empties the element.');
+        done2 ();
+      }
+    );
+  }
+);
+
+/*
   Accepts three arguments:
 
   * containerElement, a jQuery HTML Element
@@ -492,12 +561,63 @@ function page_setPageElement (containerElement, id, done) {
             done (error);
         });
       }
+      if (!pageElement) {
+        error = new Error ('[page][page_setPageElement] Error: the page does not exist.');
+        strictError (error);
+
+        return page_getErrorPageElement (error,
+          function (errorPageError, errorPageElement) {
+            if (errorPageError) { return done (errorPageError); }
+
+            containerElement.empty ();
+            containerElement.append (errorPageElement);
+            done (null, errorPageElement);
+        });
+      }
       
       containerElement.empty ();
       containerElement.append (pageElement);
       done (null, pageElement);
   });
 }
+
+/*
+  Unittest for page_setPageElement.
+
+  Confirms that the function replaces the 
+  contents of the given element with the page
+  corresponding to the given ID, if it exists.
+  Otherwise empties the element.
+*/
+
+unittest ('page_setPageElement',
+  {
+    elements: [
+      $('<div class="page_element_parent">\
+         <div class="page_element"></div>\
+       </div>'),
+      $('<div class="page_element_parent_2">\
+         <div class="page_element_2"></div>\
+       </div>')
+    ]
+  },
+  function (assert, elements) {
+    assert.expect (3);
+
+    var done0 = assert.async ();
+    page_setPageElement (elements [0], 'example_page', function (error, pageElement) {
+      assert.ok ($('.page_element_parent .example_block').length > 0, 'page_setPageElement replaces the contents of containerElement with the page corresponding to the given ID.');
+      done0 ();
+    })
+
+    var done1 = assert.async ();
+    page_setPageElement (elements [1], 'fake_page', function (error, pageElement) {
+      assert.notOk ($('.page_element_parent_2 .example_block').length > 0, 'page_setPageElement empties containerElement because it does not recognize the given page ID.');
+      assert.notOk (pageElement, 'pageElement is null because there is no page handler matching the ID of fake_page');
+      done1 ();
+    })
+  }
+);
 
 /*
   page_getPageElement accepts three arguments:
@@ -522,6 +642,23 @@ function page_getPageElement (id, done) {
   var handler = page_HANDLERS.get (getContentType (id));
   handler ? page_applyPageHandler (handler, id, done) : done (null, null);
 }
+
+QUnit.test ('page_getPageElement', function (assert) {
+  assert.expect (2);
+
+  var done = assert.async ();
+  page_getPageElement ('example_page', function (error, pageElement) {
+    assert.ok ($(pageElement[0].children[1].children[0]).hasClass('example_block'), 'The pageElement variable includes the page referenced by the example_page ID.');
+    done ();
+  })
+
+  var done1 = assert.async ();
+  page_getPageElement ('fake_page', function (error, pageElement) {
+    assert.notOk (pageElement, 'pageElement is null because there is no page handler matching the ID of fake_page');
+    done1 ();
+  })
+})
+
 
 /*
   page_applyPageHandler accepts four arguments:
@@ -550,6 +687,7 @@ function page_applyPageHandler (handler, id, done) {
       done (error);
   }
 }
+
 
 /*
   Accepts two arguments:
@@ -589,7 +727,7 @@ function page_fadeout () {
 }
 
 /*
-  Accepts no arguments, fades in the page by fading out the
+  Accepts no arguments, fades ni the page by fading out the
   the overlay to covering it, and returns undefined.
 */
 function page_fadein () {

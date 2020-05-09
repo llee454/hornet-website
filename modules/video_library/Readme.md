@@ -436,15 +436,18 @@ function video_library_VideoEntry (id, title, body) {
 video_library_VideoEntry.prototype = Object.create (video_library_VideoEntry.prototype);
 
 /*
-  Accepts one argument: done, a function that
-  accepts two arguments: an error object; and
-  a JQuery HTML Element.
+  Accepts two arguments:
 
-  This function creates an HTML element that
-  represents this Video Library Video Search
-  Entry and passes the element to done.
+  * query, a string that represents the current
+    search query
+  * and done, a function that accepts two
+    arguments: error an Error object; and
+    resultElement, a jQuery HTML Element
+
+  and passes a jQuery HTML Element that
+  represents this entry to done.
 */
-video_library_VideoEntry.prototype.getResultElement = function (done) {
+video_library_VideoEntry.prototype.getResultElement = function (query, done) {
   done (null, $('<li></li>')
     .addClass ('search_result')
     .addClass ('book_search_result')

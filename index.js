@@ -12,7 +12,8 @@ MODULE_LOAD_HANDLERS.add (
     'main_header_block':          'templates/main_header_block.html',
     'main_menu_block':            'templates/main_menu_block.html',
     'main_search_header_block':   'templates/main_search_header_block.html',
-    'main_search_menu_block':     'templates/main_search_menu_block.html'
+    'main_search_menu_block':     'templates/main_search_menu_block.html',
+    'book_search_result':         main_addBreadcrumbs,
   });
 
   // II. Display/hide the Back to Top tab.
@@ -87,4 +88,32 @@ function main_undarken () {
     function () {
       $(this).remove ();
   });
+}
+
+/*
+  Accepts two arguments:
+
+  * context, a Block Expansion Context
+  * and done, a function that accepts two
+    arguments, an Error object and a JQuery HTML
+    Element.
+
+  context.element must be a book search result
+  element.
+
+  This function adds a menu breadcrumb to the
+  element and calls done.
+*/
+function main_addBreadcrumbs (context, done) {
+  context.element.addClass ('main_book_search_result');
+
+  var menu_id = 'book';
+  var menu_leaf_id = context.element.attr ('data-book-search-result-id');
+  $('.book_search_link', context.element).after (
+    $('<div></div>')
+      .addClass ('menu_leaf_breadcrumb_block')
+      .append ($('<div></div>').addClass ('menu_id').text (menu_id))
+      .append ($('<div></div>').addClass ('menu_leaf_id').text (menu_leaf_id))
+  );
+  done (null, context.element);
 }

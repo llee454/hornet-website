@@ -1,11 +1,23 @@
 /* Article Pages */
 
-.article_article {
-  padding: 0% 5% 2% 5%;
+.article_page_container {
+  padding: 20px; 
+  margin: 0px auto;
+  max-width: 1300px;
 }
 
 /* Featured Additions */
 
+.article_article {
+  .article_header {
+    .article_header_title {
+      font-size: 1.2em;
+    }
+  }
+  .article_byline {
+    padding: 20px 0 0;
+  }
+}
 ul.article_list {
   @include outer-container;
   list-style: none;
@@ -50,7 +62,7 @@ ul.article_list {
         width: 80%;
         text-align: left;
         font-weight: 600;
-        font-size:110%;
+        font-size: 110%;
         margin: 0px;
         padding: 0px 10px 0px 0px;
         margin-left: 50px;

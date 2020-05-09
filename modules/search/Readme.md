@@ -71,7 +71,8 @@ MODULE_LOAD_HANDLERS.add (
               search_interface_block:  search_interfaceBlock,
               search_link_block:       search_linkBlock,
               search_results_block:    search_resultsBlock,
-              search_no_results_block: 'modules/search/templates/search_no_results_block.html'
+              search_no_results_block: 'modules/search/templates/search_no_results_block.html',
+              search_pagination_block: search_paginationBlock
             });
 
             // IV. Register the page handlers.
@@ -265,7 +266,7 @@ function search_interfaceBlock (context, done) {
     return done (error);
   }
 
-  var interface = new search_Interface (index, start, num);
+  var interface = new search_Interface (interfaceId, index, start, num);
 
   search_INTERFACES [interfaceId] = interface;
 
@@ -340,6 +341,274 @@ function search_resultsBlock (context, done, expand) {
     expand
   );
 } 
+
+/*
+  Accepts three arguments:
+
+  * context, a Block Expansion Context
+  * and done, a function that accepts a jQuery
+    HTML Element
+
+  context.element must contain a single text node
+  that represents a Search Interface ID.
+
+  Loads the search interface referenced by
+  context.element and passes a pagination element
+  to done. If an error occurs, this function
+  passes the error to done.
+
+  If a search update occurs, this function
+  updates the pagination.
+*/
+function search_paginationBlock (context, done) {
+  // I. Load the search interface.
+  var interface = search_INTERFACES [context.element.text ()];
+  if (!interface) {
+    var error = new Error ('[search][search_paginationBlock] Error: The "' + context.element.text () + '" search interface has not been initialized.');
+    strictError (error);
+    return done (error);
+  }
+  var paginationElement = interface.createPaginationElement ();
+  context.element.replaceWith (paginationElement);
+  done (null, paginationElement);
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents a pagination element
+  for this interface.
+
+  Note: this function registers a search event
+  handler with this interface.
+*/
+search_Interface.prototype.createPaginationElement = function () {
+  var self = this;
+
+  // I. Get current properties.
+  var currentPage = this.getCurrentPage ();
+  var numPages    = this.getNumPages ();
+  var numResults  = this.getNumResults ();
+
+  // II. Create pagination element.
+  var paginationElement = $('<div></div>')
+    .addClass ('search_pagination')
+    .attr ('data-search-pagination-num-results', numResults)
+    .attr ('data-search-pagination-num-pages', numPages);
+
+  // III. Create the first link element.
+  var firstLinkElement = this.createPaginationFirstLinkElement ();
+  paginationElement.append (firstLinkElement);
+
+  // IV. Create the previous link element.
+  var prevLinkElement = this.createPaginationPrevLinkElement ();
+  paginationElement.append (prevLinkElement);
+
+  // V. Create the pagination links.
+  var pageLinkContainerElement = $('<div></div>')
+    .addClass ('search_pagination_link_container')
+    .append (this.createPaginationPageLinkElements ());
+
+  paginationElement.append (pageLinkContainerElement);
+
+  // VI. Create the next link element.
+  var nextLinkElement = this.createPaginationNextLinkElement ();
+  paginationElement.append (nextLinkElement);
+
+  // VII. Create the last link element.
+  var lastLinkElement = this.createPaginationLastLinkElement ();
+  paginationElement.append (lastLinkElement);
+
+  // V. Register the search event handler.
+  this.searchEventHandlers.push (function (done) {
+    // Update the previous link element.
+    if (self.onFirstPage ()) {
+      prevLinkElement.addClass (search_disabledClassName);
+      firstLinkElement.addClass (search_disabledClassName);
+    } else {
+      prevLinkElement.removeClass (search_disabledClassName);
+      firstLinkElement.removeClass (search_disabledClassName);
+    }
+
+    // Update the pagination link elements.
+    pageLinkContainerElement.empty ()
+      .append (self.createPaginationPageLinkElements ());
+
+    // Update the next link element.
+    if (self.onLastPage ()) {
+      nextLinkElement.addClass (search_disabledClassName);
+      lastLinkElement.addClass (search_disabledClassName);
+    } else {
+      nextLinkElement.removeClass (search_disabledClassName);
+      lastLinkElement.removeClass (search_disabledClassName);
+    }
+
+    // Continue.
+    done ();
+  });
+
+  // VI. Return the pagination element.
+  return paginationElement;
+}
+
+/*
+  Accepts no arguments and returns an array of
+  jQuery HTML Elements that represent pagination
+  links.
+*/
+search_Interface.prototype.createPaginationPageLinkElements = function () {
+  var linkElements = [];
+  var lastPage    = this.getLastPage ();
+  for (var index = 0; index <= lastPage; index ++) {
+    linkElements.push (this.createPaginationPageLinkElement (index));
+  }
+  return linkElements;
+}
+
+/*
+  Accepts one argument: index, an integer; and
+  returns a jQuery HTML Element the represets
+  a pagination page link to index.
+*/
+search_Interface.prototype.createPaginationPageLinkElement = function (index) {
+  var self = this;
+  var linkElement = search_createPaginationLinkElement ()
+    .addClass ('search_pagination_page_link')
+    .addClass (this.isCurrentPage (index) && 'search_pagination_page_link_current')
+    .addClass (this.isFirstPage (index) && 'search_pagination_page_link_first')
+    .addClass (this.isLastPage (index) && 'search_pagination_page_link_last')
+    .attr ('data-search-pagination-page-link-index', index)
+    .text (index + 1)
+    .click (function () {
+        self.start = index * self.num;
+        self.search (self.query, function () {});
+      });
+
+  var maxRadius = 10;
+  var radius = this.getPaginationRadius (index);
+  linkElement.attr ('data-search-pagination-page-link-radius', radius);
+  for (; radius <= maxRadius; radius ++) {
+    linkElement.addClass ('search_pagination_page_link_radius_' + radius);
+  }
+  return linkElement;
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represent the pagination Previous
+  link element.
+*/
+search_Interface.prototype.createPaginationPrevLinkElement = function () {
+  var self = this;
+  return search_createPaginationStepLinkElement ()
+    .addClass ('search_pagination_step_link_prev')
+    .addClass (this.onFirstPage () && search_disabledClassName)
+    .text ('Prev')
+    .click (function () {
+        var currentPage = self.getCurrentPage ();
+        if (currentPage === 0) { return; }
+        self.start = (currentPage - 1) * self.num;
+        self.search (self.query, function (error) {});
+      });
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represent the pagination Next
+  link element.
+*/
+search_Interface.prototype.createPaginationNextLinkElement = function () {
+  var self = this;
+  return search_createPaginationStepLinkElement ()
+    .addClass ('search_pagination_step_link_next')
+    .addClass (this.onLastPage () && search_disabledClassName)
+    .text ('Next')
+    .click (function () {
+        var currentPage = self.getCurrentPage ();
+        var lastPage    = self.getLastPage ();
+        if (currentPage === lastPage) { return; }
+        self.start = (currentPage + 1) * self.num;
+        self.search (self.query, function () {});
+      });
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents a previous/next link.
+*/
+function search_createPaginationStepLinkElement () {
+  return search_createPaginationLinkElement ()
+    .addClass ('search_pagination_step_link');
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents the First link.
+*/
+search_Interface.prototype.createPaginationFirstLinkElement = function () {
+  var self = this;
+  return search_createPaginationQuickLinkElement ()
+    .addClass ('search_pagination_quicklink_first')
+    .addClass (this.onFirstPage () && search_disabledClassName)
+    .text ('First')
+    .click (function () {
+        self.start = 0;
+        self.search (self.query, function () {});
+      });
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents the Last link.
+*/
+search_Interface.prototype.createPaginationLastLinkElement = function () {
+  var self = this;
+  return search_createPaginationQuickLinkElement ()
+    .addClass ('search_pagination_quicklink_last')
+    .addClass (this.onLastPage () && search_disabledClassName)
+    .text ('Last')
+    .click (function () {
+        self.start = self.getLastPage () * self.num;
+        self.search (self.query, function () {});
+      });
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents a generic pagination
+  quicklink.
+*/
+function search_createPaginationQuickLinkElement () {
+  return search_createPaginationLinkElement ()
+    .addClass ('search_pagination_quicklink');
+}
+
+/*
+  Accepts no arguments and returns a jQuery HTML
+  Element that represents a generic pagination
+  link.
+*/
+function search_createPaginationLinkElement () {
+  return $('<div></div>').addClass ('search_pagination_link');
+}
+
+/*
+  Represents the class used to label disabled
+  pagination links.
+*/
+var search_disabledClassName = 'search_disabled';
+
+/*
+  Accepts one argument: index, an integer that
+  represents a pagination link index; and returns
+  the minimum bracket radius that includes the
+  link at index.
+*/
+search_Interface.prototype.getPaginationRadius = function (index) {
+  var currentPage = this.getCurrentPage ();
+  return index >= currentPage ?
+    Math.min (index - currentPage, Math.ceil (index/2)):
+    Math.min (currentPage - index, Math.ceil ((this.getLastPage () - index)/2));
+}
 ```
 
 Auxiliary Functions
@@ -549,13 +818,18 @@ function search_Entry (id) {
 }
 
 /*
-  Accepts one argument, done, a function that
-  accepts two arguments: an Error object and a 
-  JQuery HTML Element. Generates a jQuery HTML
-  Object representing a search result, and passes
-  it to done.
+  Accepts two arguments:
+
+  * query, a string that represents the current
+    search query
+  * and done, a function that accepts two
+    arguments: error, an Error object; and
+    resultElement, a jQuery HTML Element
+
+  and passes a jQuery HTML Element that
+  represents this entry to done.
 */
-search_Entry.prototype.getResultElement = function (done) {
+search_Entry.prototype.getResultElement = function (query, done) {
   done (null, $('<li></li>')
     .addClass ('search_result')
     .addClass ('search_' + getContentType (this.id) + '_result')
@@ -565,7 +839,10 @@ search_Entry.prototype.getResultElement = function (done) {
 }
 
 /*
-  Accepts two arguments:
+  Accepts three arguments:
+
+  * query, a string that represents the current
+    search query
   * entries, an array
   * done, a function that accepts two arguments:
     an Error object and a JQuery HTML Element
@@ -573,10 +850,10 @@ search_Entry.prototype.getResultElement = function (done) {
   Generates jQuery HTML Objects representing the
   result entries, and calls done.
 */
-function search_getEntriesResultElements (entries, done) {
+function search_getEntriesResultElements (query, entries, done) {
   async.mapSeries (entries,
     function (entry, next) {
-      entry.getResultElement (next);
+      entry.getResultElement (query, next);
     },
     done
   );
@@ -589,19 +866,95 @@ Interface
 ```javascript
 /*
   Accepts three arguments:
-  * index, a string
-  * start, a ninteger
+  * index, a Lunr Index
+  * start, an integer
   * num, an integer
 
   and returns a search_Interface object.
 */
-function search_Interface (index, start, num) {
+function search_Interface (id, index, start, num) {
+  this.id                  = id;
   this.index               = index;
   this.query               = ''; 
   this.start               = start;
   this.num                 = num;
   this.results             = []; 
   this.searchEventHandlers = [];
+}
+
+/*
+  Accepts no arguments and returns an integer
+  representing the current page index.
+*/
+search_Interface.prototype.getCurrentPage = function () {
+  return Math.floor (this.start / this.num);
+}
+
+/*
+  Accepts no arguments and returns the total
+  number of results.
+*/
+search_Interface.prototype.getNumResults = function () {
+  return this.results.length;
+}
+
+/*
+  Accepts no arguments and returns an integer
+  representing the total number of pages.
+*/
+search_Interface.prototype.getNumPages = function () {
+  return Math.ceil (this.getNumResults () / this.num);
+}
+
+/*
+  Accepts no arguments and returns an integer
+  that represents the index of the last page.
+*/
+search_Interface.prototype.getLastPage = function () {
+  return this.getNumPages () - 1;
+}
+
+/*
+  Accepts no arguments and returns true iff this
+  interface is currently on its first page.
+*/
+search_Interface.prototype.onFirstPage = function () {
+  return this.getCurrentPage () === 0;
+}
+
+/*
+  Accepts no arguments and returns true iff this
+  interface is currently on its last page.
+*/
+search_Interface.prototype.onLastPage = function () {
+  return this.getCurrentPage () === this.getLastPage ();
+}
+
+/*
+  Accepts one argument: index, an integer;
+  and returns true iff index refers to this
+  interface's current page.
+*/
+search_Interface.prototype.isCurrentPage = function (index) {
+  return index === this.getCurrentPage ();
+}
+
+/*
+  Accepts one argument: index, an integer;
+  and returns true iff index refers to this
+  interface's first page.
+*/
+search_Interface.prototype.isFirstPage = function (index) {
+  return index === 0;
+}
+
+/*
+  Accepts one argument: index, an integer;
+  and returns true iff index refers to this
+  interface's last page.
+*/
+search_Interface.prototype.isLastPage = function (index) {
+  return index === this.getLastPage ();
 }
 
 /*
@@ -621,6 +974,7 @@ search_Interface.prototype.search = function (query, done) {
       if (error) { done (error); }
 
       self.results = lunrIndex.search (query);
+      if (self.start >= self.results.length) { self.start = 0; }
       self.callSearchEventHandlers (done);
   });
 }
@@ -678,12 +1032,13 @@ search_Interface.prototype.getFilterElement = function (done, expand) {
   for a query and passes done to getResultElements.
 */
 search_Interface.prototype.getFilterElements = function (done) {
+  var self = this;
   if (!this.query) {
     return this.index.getEntries (
       function (error, entries) {
         if (error) { return done (error); }
 
-        search_getEntriesResultElements (entries, done);
+        search_getEntriesResultElements (self.query, entries, done);
     });
   }
   this.getResultElements (done);
@@ -711,6 +1066,7 @@ search_Interface.prototype.getResultsElement = function (done, expand) {
     function (error, resultElements) {
       var resultsElement = $('<ol></ol>')
         .addClass ('search_results')
+        .attr ('style', 'counter-reset: ' + self.id + ' ' + self.start)
         .append (resultElements && resultElements.length > 0 ?
             resultElements :
             $('<div class="search_no_results_block"></div>')
@@ -720,6 +1076,7 @@ search_Interface.prototype.getResultsElement = function (done, expand) {
         function (done) {
           resultsElement
             .empty ()
+            .attr ('style', 'counter-reset: ' + self.id + ' ' + self.start)
             .append ($('<div></div>').addClass ('search_loading'));
 
           self.getResultElements (
@@ -757,7 +1114,7 @@ search_Interface.prototype.getResultElements = function (done) {
     function (error, entries) {
       if (error) { return done (error); }
 
-      search_getEntriesResultElements (entries, done);
+      search_getEntriesResultElements (self.query, entries, done);
   });
 }
 

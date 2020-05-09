@@ -111,13 +111,13 @@ MODULE_LOAD_HANDLERS.add (
                 // VI. Cancel text to speech playback and empty the presentation_INSTANCES array on page load.
                 PAGE_LOAD_HANDLERS.add (
                   function (id, done) {
-                    responsiveVoice && responsiveVoice.cancel ();
+                    declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ();
                     presentation_INSTANCES = {};
                     done ();
                 });
 
                 // VII. Wait for Responsive Voice and continue.
-                if (responsiveVoice) {
+                if (declared ('responsiveVoice') && responsiveVoice) {
                   var responsiveVoiceTimedOut = null;
                   setTimeout (
                     function () {
@@ -1790,7 +1790,7 @@ presentation_PresentationInstance.prototype._createAudioToggleElement = function
         var checked = $(this).prop ('checked');
         presentation_AUDIO = checked
 
-        checked || (responsiveVoice && responsiveVoice.cancel ());
+        checked || (declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ());
 
         var stepInstance = self.getCurrentStepInstance ();
         if (stepInstance) {
@@ -1958,7 +1958,7 @@ presentation_PresentationInstance.prototype._createIntro = function () {
             $('.introjs-tooltip', presentationElement)
               .prepend (self.createExitButton ())
               .append (self.getMessageElement ())
-              .append (responsiveVoice ? self.getAudioToggleElement () : null)
+              .append (declared ('responsiveVoice') && responsiveVoice ? self.getAudioToggleElement () : null)
               .append (self.getNavElement ());
           }
 
@@ -1985,7 +1985,7 @@ presentation_PresentationInstance.prototype._createIntro = function () {
     // When last step is finished  
     .onexit (
         function () {
-          responsiveVoice && responsiveVoice.cancel ();
+          declared ('responsiveVoice') && responsiveVoice && responsiveVoice.cancel ();
 
           presentationElement.css ('background-image', 'url(' + self.presentation.getImage () + ')');
           presentationElement.removeClass ('presentation_active');
@@ -2225,7 +2225,7 @@ presentation_punctuate = function (htmlTranscript) {
   synthesizer.
 */
 presentation_speak = function (htmlTranscript) {
-  responsiveVoice && responsiveVoice.speak (presentation_punctuate (htmlTranscript), 'UK English Male');
+  declared ('responsiveVoice') && responsiveVoice && responsiveVoice.speak (presentation_punctuate (htmlTranscript), 'UK English Male');
 }
 ```
 

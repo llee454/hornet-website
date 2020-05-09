@@ -17,6 +17,7 @@ MODULE_LOAD_HANDLERS.add (
 
         // II. Register the block handlers.
         block_HANDLERS.addHandlers ({
+          'select_current_id_block': select_currentIdBlock,
           'select_date_block': select_dateBlock,
           'select_random_block': select_randomBlock
         });
@@ -25,6 +26,57 @@ MODULE_LOAD_HANDLERS.add (
         done (null);
     });
 });
+
+/*
+  Accepts two arguments:
+  
+  * context, a Block Expansion Context
+  * and done, a function that accepts two
+    arguments: an Error object and a JQuery
+    HTML Element
+
+  context.element may contain a data attribute
+  named data-select-page-id-pattern that contains
+  a regular expression.
+
+  Adds a data attribute to context.element
+  named data-select-current-page-id and sets
+  this attribute equal to the current main page
+  ID before calling done. If the URL changes,
+  this block updates the attribute with the new
+  page ID. 
+
+  If context.element contains a page id pattern
+  data attribute, this function adds a class
+  named select_active to context.element whenever
+  the main page ID matches the given pattern.
+*/
+function select_currentIdBlock (context, done) {
+  var pattern = new RegExp (context.element.attr ('data-select-page-id-pattern'));
+
+  /*
+    Accepts one argument, id, the current main
+    page ID, and updates the block element.
+  */
+  var updateElement = function (id) {
+    context.element.attr ('data-select-current-page-id', id);
+    var activeClassName = 'select_active';
+    pattern.test (id) ?
+      context.element.addClass (activeClassName) :
+      context.element.removeClass (activeClassName);
+  }
+
+  // I. Update the block element when the main page ID changes.
+  $(window).on ('hashchange', function () {
+    var url = new URI ();
+    var id  = getIdFromURL (url);
+    updateElement (id);
+  });
+
+  // II. Initialize the block element to reflect the current page ID.
+  updateElement (context.getId ());
+  done (null);
+}
 
 /*
   select_dateBlock accepts two arguments:
@@ -103,13 +155,13 @@ unittest ('select_dateBlock',
         </div>\
       </div>'),
       $('<div class="select_date_block_parent">\
-        <div class="after_parent select_date_block" data-select-predicate="after" data-select-date="2017-03-30" data-select-granularity="year">Parent\
+        <div class="after_parent select_date_block" data-select-predicate="after" data-select-date="2018-03-30" data-select-granularity="year">Parent\
           <div class="child_after_1">child1</div>\
           <div class="child_after_2">child2</div>\
         </div>\
       </div>'),
       $('<div class="select_date_block_parent">\
-        <div class="on_parent select_date_block" data-select-predicate="on" data-select-date="2017-03-30" data-select-granularity="year">Parent\
+        <div class="on_parent select_date_block" data-select-predicate="on" data-select-date="2018-03-30" data-select-granularity="year">Parent\
           <div class="child_on_1">child1</div>\
           <div class="child_on_2">child2</div>\
         </div>\
