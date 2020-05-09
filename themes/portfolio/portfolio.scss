@@ -20,13 +20,28 @@ $base_theme_path: "../../themes/base";
 @import "../../themes/base/general-theme"; 
 
 $hero-height: 100vh;
-$content-max-width: 900px;
+
+@mixin absoluteCenter($left,$top) {
+  left: $left;
+  position: absolute;
+  top: $top;
+}
+
+@mixin centeredContentDims {
+  max-width: 900px;
+  width: 70%;
+}
 
 @mixin centeredContent {
+  @include centeredContentDims;
   color: white;
-  width: $content-max-width;
   margin: 0 auto;
   padding: 0;
+}
+
+@mixin heroDims {
+  height: 100vh;
+  min-height: 500px;
 }
 
 #header-content {
@@ -50,19 +65,18 @@ $content-max-width: 900px;
 }
 
 #hero {
-  height: $hero-height;
-  min-height: 500px;
+  @include heroDims;
   position: relative;
 }
 
 #hero-video-container {
-  height: $hero-height;
+  @include heroDims;
   overflow-y: hidden;
 }
 
 #hero-overlay {
+  @include heroDims;
   background-color: rgba(0,0,0,0.7);
-  height: $hero-height;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -70,15 +84,12 @@ $content-max-width: 900px;
 }
 
 #hero-overlay-content {
-  height: auto;
-  left: 50%;
-  padding-bottom: 25px;
-  position: absolute;
+  @include centeredContentDims;
+  @include absoluteCenter(50%,50%);
   color: white;
-  max-width: $content-max-width;
-  top: 50%;
+  height: auto;
+  padding-bottom: 25px;
   transform: translateX(-50%) translateY(-50%);
-  width: 70%;
 
   h1 {
     color: white;
@@ -93,12 +104,17 @@ $content-max-width: 900px;
   }
 }
 
-#hero-video {
-  height: 1080px;
-  width: 100%;
+#hero-video-container {
+  position: relative;
 }
 
-#main-content {
+#hero-video {
+  @include absoluteCenter(0,0);
+  height: 1080px;
+}
+
+#intro-video {
+  max-width: 100%;
 }
 
 .section-content {
@@ -125,5 +141,11 @@ $content-max-width: 900px;
   }
   input, textarea {
     color: $text-gray;
+  }
+  input[type="text"], textarea {
+    width: 100%;
+  } 
+  input[type="radio"] {
+    width: 40px;
   }
 }

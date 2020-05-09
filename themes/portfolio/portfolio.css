@@ -2674,8 +2674,9 @@ table.padded-list tbody tr td {
     #back_to_top a {
       display: none; } }
 #header-content {
+  max-width: 900px;
+  width: 70%;
   color: white;
-  width: 900px;
   margin: 0 auto;
   padding: 0; }
 
@@ -2696,26 +2697,28 @@ table.padded-list tbody tr td {
 
 #hero-video-container {
   height: 100vh;
+  min-height: 500px;
   overflow-y: hidden; }
 
 #hero-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
   height: 100vh;
+  min-height: 500px;
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   position: absolute;
   top: 0px;
   z-index: 10; }
 
 #hero-overlay-content {
-  height: auto;
-  left: 50%;
-  padding-bottom: 25px;
-  position: absolute;
-  color: white;
   max-width: 900px;
+  width: 70%;
+  left: 50%;
+  position: absolute;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 70%; }
+  color: white;
+  height: auto;
+  padding-bottom: 25px;
+  transform: translateX(-50%) translateY(-50%); }
   #hero-overlay-content h1 {
     color: white;
     font-family: freight-display-pro;
@@ -2726,13 +2729,22 @@ table.padded-list tbody tr td {
   #hero-overlay-content p {
     color: white; }
 
+#hero-video-container {
+  position: relative; }
+
 #hero-video {
-  height: 1080px;
-  width: 100%; }
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 1080px; }
+
+#intro-video {
+  max-width: 100%; }
 
 .section-content {
+  max-width: 900px;
+  width: 70%;
   color: white;
-  width: 900px;
   margin: 0 auto;
   padding: 0; }
 
@@ -2750,3 +2762,7 @@ table.padded-list tbody tr td {
   width: 70px; }
 #contact input, #contact textarea {
   color: #333333; }
+#contact input[type="text"], #contact textarea {
+  width: 100%; }
+#contact input[type="radio"] {
+  width: 40px; }
