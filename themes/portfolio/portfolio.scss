@@ -48,9 +48,6 @@ $hero-height: 100vh;
   @include centeredContent;
 }
 
-#header-menu-container {
-}
-
 .header-menu-item {
   color: white;
   cursor: pointer;
@@ -148,5 +145,18 @@ $hero-height: 100vh;
   } 
   input[type="radio"] {
     width: 40px;
+  }
+
+  .form_form_section_footer {
+    margin: 25px 0;
+  }
+}
+
+@include media(max-width $medium-width) {
+  .header-menu-container {
+    width: 100%;
+  }
+  .header-menu-item {
+    width: 100%;
   }
 }

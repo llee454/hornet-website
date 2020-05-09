@@ -250,10 +250,6 @@ tr:nth-child(even) {
   }
 }
 
-#header_padding {
-  height: $header_height;
-}
-
 #sidr {
   background-color: $light_gray;
   padding-bottom: 80px;
@@ -623,87 +619,12 @@ table.padded-list {
 }
 
 @include media(max-width $medium-width) {
-  #header {
-    position: static;
-    border-bottom: 1px solid $medium_gray;
-  }
-
-  #header_padding {
-    display: none;
-  }
 }
 
 @include media(max-width $small-width) {
-  #header {
-    height: $header_height + $header_bottom_height;
-
-    #header_right {
-      width: 100%;
-      height: $header_bottom_height;
-      margin: 0;
-      border-top: 1px solid $medium_gray;
-
-      .search_link {
-        float: none;
-        width: 90%;    
-        @include center;
-      }
-    }
-  }
-
-  #header_padding {
-    height: $header_height +  $header_bottom_height;    
-  }
 }
 
 @include media(max-width $extra-small-width) {
-  #header {
-    #header_left {
-      min-width: $nav_button_small_screen_width + $nav_button_shift_width + $nav_button_wedge_width;
-
-      #nav_button {
-        position: relative;
-        width: $nav_button_small_screen_width;
-
-        &:hover {
-          width: $nav_button_small_screen_width + $nav_button_shift_width;
-          padding-left: $nav_button_shift_width;
-        }
-
-        a {
-          font-size:  12px;
-          margin:     17px 0px 0px 15px;
-          padding:    0px 0px 0px 30px;
-        }
-      }
-    }
-
-    #header_middle {
-      height: $header_bottom_height;
-      margin: 0;
-      border-top: 1px solid $medium_gray;
-      text-align: center;
-
-      h2 {
-        font-size: 18px;
-        margin:    12px 0px 0px 0px;
-        min-width: 106px;
-      }
-    }
-  }
-
-  #sidr {
-    #table_of_contents_header {
-      #table_of_contents_header_title {
-        width: $nav_menu_small_width - (2 * $table_of_contents_header_margin) - ($table_of_contents_header_close_button_width);
-      }
-    }
-
-    .search_link {
-      width: $nav_menu_small_width - 40px;
-    }
-  }
-
   #back_to_top {
     background-position: 50% 50%;
     padding: 25px 25px;
