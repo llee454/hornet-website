@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>eOffer/eMod Help Center</title>
+    <title>Larry Lee: Programmer</title>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" http-equiv="Content-Type">
     <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -16,28 +16,146 @@
     </script>
 
     <!-- Load the current theme's stylesheet -->
-    <link rel="stylesheet" type="text/css" href="themes/standard/standard.css">
+    <link rel="stylesheet" type="text/css" href="themes/portfolio/portfolio.css">
 
     <!-- Load the Core Module -->
     <script src="modules/core/core.js"></script>
   </head>
   <body id="top">
-    <div id="overlay">
-      <img src="images/bx_loader.gif" alt="Loading..."/>
-    </div>
-    <div class="main_menu_block"></div>
-    <div class="main_header_block"></div>
-    <div id='header_padding'></div>
-    <div id='body'>
-      <div id='main_content'>
-        <div class="unittests">
-          <div id="qunit"></div>
-          <div id="qunit-fixture"></div>
+    <div id='header'>
+      <div id='header-content'>
+        <div id='header-menu-container'>
+          <div id='header-menu'>
+            <div class='header-menu-item'>CASE STUDY</div>
+            <div class='header-menu-item'>WORK SAMPLES</div>
+            <div class='header-menu-item'>RESUME</div>
+            <div class='header-menu-item'>CONTACT</div>
+          </div>
         </div>
-        <div class="page_block"></div>
+      </div>
+    </div>
+    <div id='hero'>
+      <div id='hero-overlay'>
+        <div id='hero-overlay-content'>
+          <h1>Proven Ability &#8718</h1>
+          <p>I am a software developer specializing in formally verified software development.
+             Over the last 7 years, I've written hundreds of proofs and formally verified algorithms.
+             I've contributed to the Coq Standard Library and am a package maintainer in the Coq Package index.
+             My work includes formally verified hardware designs and real-world examples of applied mathematics.
+             My portfolio of results proves my ability to analyze complex problems and produce results.
+        </div>
+      </div>
+      <div id='hero-video-container'>
+        <video id='hero-video' class="video-js vjs-default-skin" loop autoplay preload="auto" width="640" height="500">
+          <source src="https://work-website-media.s3.us-east-2.amazonaws.com/background+loop.mp4"/>
+        </video>
+      </div>
+    </div>
+    <div id='body'>
+      <div id='main-content'>
+        <!-- intro section -->
+        <div id='intro' class='section'>
+          <div class='section-content'>
+            <div id='assertion' class='section-header'>
+              <h1>I am a software developer specializing in formal methods.</h1>
+            </div>
+            <div class='section-body'>
+              <p>Formally Verified Software development is the practice of writing mathematical proofs to verify software.
+                I specialize in using Coq to do this.
+                Over the last 7 years, I've proved hundreds of results using Coq and have developed formally verified algorithms.
+              </p>
+              <div class="video_player_block">
+                <video class="video-js vjs-default-skin" controls preload="auto" width="640" height="500">
+                  <source src="https://work-website-media.s3.us-east-2.amazonaws.com/success+story+second+version.mp4"/>
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- definition -->
+        <div id='definition' class='section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Definition: What is Formally Verified Software Development?</h1>
+            </div>
+            <div class='section-body'>
+              <p>Formally verified software development is the practice of writing mathematical proofs to verify that software is correct.</p>
+              <h2>What is a mathematical proof?</h2>
+              <p>A mathematical proof is a sequence of assertions in which every assertion is either an axiom or can be derived from one or more of the preceding assertions by applying a logical deduction rule.</p>
+              <p>The Curry-Howard Isomorphism shows that their is a one-to-one correspondence between the terms used to write mathematical proofs and the terms used to construct expressions in the typed lambda calculus.</p>
+              <p>Briefly, we can use the same language to write both mathematical proofs and programs.</p>
+              <p>I specialize in writing programs in Coq, a language whose type system is capable of expressing logical propositions.</p>
+            </div>
+          </div>
+        </div>
+        <!-- success story -->
+        <div id='case-study' class='section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Success Story: Proving Results for Engineering</h1>
+            </div>
+            <div class='section-body'>
+            </div>
+          </div>
+        </div>
+        <!-- portfolio -->
+        <div id='portfolio' class='section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Portfolio: Large Scale Developments Using Coq</h1>
+            </div>
+            <div class='section-body'>
+              <p>While working with SiFive, I was the lead developer for the Kami Processor, an Open-Source Risc-v processor written in Kami.</p>
+              <p>Kami is a domain-specific language designed for modeling digital circuits.</p>
+              <p>The Kami processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
+              <p>Kami is embedded within Gallina, Coq's dependently-typed programming language. Using Coq, I've verified components used within the Kami Processor and verified the Gallina functions used to generate the Kami Processor model.</p>
+            </div>
+          </div>
+        </div>
+        <!-- sample work -->
+        <div id='samples' class='section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Code Samples: Demonstrations of my ability to write formally verified algorithms</h1>
+            </div>
+            <div class='section-body'>
+              <p>While working with SiFive, I was the lead developer for the Kami Processor, an Open-Source Risc-v processor written in Kami.</p>
+              <p>Kami is a domain-specific language designed for modeling digital circuits.</p>
+              <p>The Kami processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
+              <p>Kami is embedded within Gallina, Coq's dependently-typed programming language. Using Coq, I've verified components used within the Kami Processor and verified the Gallina functions used to generate the Kami Processor model.</p>
+            </div>
+          </div>
+        </div>
+        <!-- open source contributions -->
+        <div id='contributions' class='section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Open Source Contributions</h1>
+            </div>
+            <div class='section-body'>
+              <p>Over the years, I've contributed to the Coq Standard Library and released packages through the Coq Package Index.</p>
+              <p>The Coq package index is a curated collection of Coq modules that are released by the Coq maintainers as part of the Coq cpan repository.</p>
+              <p>I am the package maintainer for two CPI libraries: functional algebra and pigeons.</p>
+            </div>
+          </div>
+        </div>
+        <!-- contact -->
+        <div id='contact' class='dark-section section'>
+          <div class='section-content'>
+            <div class='section-header'>
+              <h1>Want to know more? Reach out to me</h1>
+              <ul>
+                <li><span class='contact-label'>email:</span><a href="mailto:llee454@gmail.com">llee454@gmail.com</a></li>
+                <li><span class='contact-label'>github:</span><a href="https://github.com/llee454">https://github.com/llee454</a></li>
+              </ul>
+            </div>
+            <div class='section-body'>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="back_to_top"><a href="#">Back To Top</a></div>
-    <div id="footer"><p>Brought to you by OAM & Elucid Solutions Inc</p></div>
+    <div id="footer"></div>
   </body>
 </html>

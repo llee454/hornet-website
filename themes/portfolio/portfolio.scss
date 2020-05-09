@@ -1,0 +1,118 @@
+$base_theme_path: "../../themes/base";
+
+// Import Fonts
+@import "../../themes/base/fonts/opensans";
+// Import 
+@import "../../themes/base/reset";
+// Import General Variables
+@import "../../themes/base/general-variables";
+// Import theme variables
+@import "variables.scss";
+// Import Bourbon
+@import "../../themes/base/lib/bourbon/bourbon";
+// Import Neat
+@import "../../themes/base/lib/neat/neat";
+// Import Mixins
+@import "../../themes/base/mixins";
+// Import Module Styles
+@import "../../themes/base/modules";
+// Import General Styles
+@import "../../themes/base/general-theme"; 
+
+$hero-height: 100vh;
+$content-max-width: 900px;
+
+@mixin centeredContent {
+  color: white;
+  width: $content-max-width;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#header-content {
+  @include centeredContent;
+}
+
+#header-menu-container {
+}
+
+.header-menu-item {
+  display: inline-block;
+  height: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  width: 170px;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+#hero {
+  height: $hero-height;
+  min-height: 500px;
+  position: relative;
+}
+
+#hero-video-container {
+  height: $hero-height;
+  overflow-y: hidden;
+}
+
+#hero-overlay {
+  background-color: rgba(0,0,0,0.7);
+  height: $hero-height;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 10;
+}
+
+#hero-overlay-content {
+  height: auto;
+  left: 50%;
+  padding-bottom: 25px;
+  position: absolute;
+  color: white;
+  max-width: $content-max-width;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+
+  h1 {
+    color: white;
+    font-family: freight-display-pro;
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: .015em;
+    line-height: 1em;
+  }
+  p {
+    color: white;
+  }
+}
+
+#hero-video {
+  height: 1080px;
+  width: 100%;
+}
+
+#main-content {
+}
+
+.section-content {
+  @include centeredContent;
+}
+
+.dark-section {
+  background-color: $text-gray;
+  color: white;
+
+  .contact-label {
+    display: inline-block;
+    width: 70px;
+  }
+  a, h1 {
+    color: white;
+  }
+}

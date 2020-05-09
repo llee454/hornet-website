@@ -27,12 +27,12 @@ body {
 }
 
 a {
-  color: $red;
+  color: $text-gray;
   text-decoration: none;
 }
 
 h1, h2, h3, h4, h5 {
-  color: $red;
+  color: $text-gray;
   font-family: $default_header_font;
   font-weight: 400;
   margin: 0px;
@@ -70,7 +70,7 @@ ul li {
 }
 
 ol li {
-  color: $red;
+  color: $text-gray;
 }
 
 ol li p {
@@ -175,13 +175,7 @@ tr:nth-child(even) {
 }
 
 #header {
-  @include box-shadow(0px 1px 1px rgba(0, 0, 0, 0.4));
-  background-color: white;
-  height: $header_height;
-  position: fixed;
-  top: 0px;
   width: 100%;
-  z-index: 20000;
 
   #header_left {
     @include transition( all 0.2s);
@@ -464,7 +458,7 @@ tr:nth-child(even) {
 
 .helpCenter {
   font-weight: 200;
-  color: $red;
+  color: $text-gray;
   font-style: italic;
 }
 

@@ -15,7 +15,7 @@
     and "nonstrict". Enable "strict" mode during
     testing, but select "nonstrict" in production.
   -->
-  <errorMode>nonstrict</errorMode>
+  <errorMode>strict</errorMode>
 
   <!--
     runUnittests indicates whether Lucidity should run
