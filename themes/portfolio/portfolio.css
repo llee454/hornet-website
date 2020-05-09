@@ -2681,6 +2681,7 @@ table.padded-list tbody tr td {
   padding: 0; }
 
 .header-menu-item {
+  color: white;
   cursor: pointer;
   display: inline-block;
   height: 100%;
