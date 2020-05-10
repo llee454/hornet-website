@@ -30,11 +30,13 @@ The embedding code requires several global configuration variables and functions
 ```javascript
 var jscoq_ids  = ['.coq-code'];
 var jscoq_opts = {
+    focus:     false,
     prelude:   true,
     base_path: 'modules/coq/lib/node_modules/jscoq/',
     editor:    { mode: { 'company-coq': true }, keyMap: 'default' },
     init_pkgs: ['init'],
-    all_pkgs:  ['init', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'mathcomp']
+    all_pkgs:  ['init', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'mathcomp'],
+    layout: 'notflex'
 };
 ```
 

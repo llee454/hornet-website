@@ -164,11 +164,46 @@ $hero-height: 100vh;
 .section-content {
   @include centeredContent;
 }
-#ide-wrapper {
-  height: 500px;
-  max-height: 500px;
-}
+.jscoq-main {
+  #ide-wrapper {
+    height: 700px;
+    overflow: hidden;
+  }
+  #code-wrapper {
+    height: 400px;
+    overflow-y: scroll;
 
+    #document {
+      padding: 0;
+    }
+  }
+  #panel-wrapper {
+    border: none !important;
+    height: 250px;
+    width: 100%;
+
+    #toolbar {
+      height: 50px;
+      #buttons {
+        display: block;
+        margin: 5px auto;
+        padding: 0;
+        width: 215px;
+        button {
+          height: 40px;
+          width: 40px;
+          margin: 10 20;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .exits {
+        display: none;
+      }
+    }
+  }
+}
 .dark-section {
   background-color: $text-gray;
   color: white;

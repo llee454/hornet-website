@@ -359,9 +359,8 @@ Section nat_string.
 
   Local Open Scope string_scope.
 
-  (* Goal (natToHexStr 179 = "B3"). Proof. reflexivity. Qed. *)
-  Goal (natToDecStr 179 = "179"). Proof. reflexivity. Qed.
-  Goal (natToBinStr 179 = "10110011"). Proof. reflexivity. Qed.
+  Goal (natToDecStr 113 = "113"). Proof. reflexivity. Qed.
+  Goal (natToBinStr 113 = "10110011"). Proof. reflexivity. Qed.
 
   Local Close Scope string_scope.
 

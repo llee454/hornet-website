@@ -2742,9 +2742,33 @@ table.padded-list tbody tr td {
     .section-content {
       width: 80%; } }
 
-#ide-wrapper {
-  height: 500px;
-  max-height: 500px; }
+.jscoq-main #ide-wrapper {
+  height: 700px;
+  overflow: hidden; }
+.jscoq-main #code-wrapper {
+  height: 400px;
+  overflow-y: scroll; }
+  .jscoq-main #code-wrapper #document {
+    padding: 0; }
+.jscoq-main #panel-wrapper {
+  border: none !important;
+  height: 250px;
+  width: 100%; }
+  .jscoq-main #panel-wrapper #toolbar {
+    height: 50px; }
+    .jscoq-main #panel-wrapper #toolbar #buttons {
+      display: block;
+      margin: 5px auto;
+      padding: 0;
+      width: 215px; }
+      .jscoq-main #panel-wrapper #toolbar #buttons button {
+        height: 40px;
+        width: 40px;
+        margin: 10 20; }
+        .jscoq-main #panel-wrapper #toolbar #buttons button:hover {
+          cursor: pointer; }
+    .jscoq-main #panel-wrapper #toolbar .exits {
+      display: none; }
 
 .dark-section {
   background-color: #333333;
