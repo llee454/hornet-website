@@ -164,6 +164,10 @@ $hero-height: 100vh;
 .section-content {
   @include centeredContent;
 }
+#ide-wrapper {
+  height: 500px;
+  max-height: 500px;
+}
 
 .dark-section {
   background-color: $text-gray;

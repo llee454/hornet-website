@@ -2742,6 +2742,10 @@ table.padded-list tbody tr td {
     .section-content {
       width: 80%; } }
 
+#ide-wrapper {
+  height: 500px;
+  max-height: 500px; }
+
 .dark-section {
   background-color: #333333;
   color: white; }
