@@ -2749,6 +2749,7 @@ table.padded-list tbody tr td {
   height: 400px;
   overflow-y: scroll; }
   .jscoq-main #code-wrapper #document {
+    max-width: 100%;
     padding: 0; }
 .jscoq-main #panel-wrapper {
   border: none !important;
@@ -2776,12 +2777,15 @@ table.padded-list tbody tr td {
   .dark-section a, .dark-section h1, .dark-section p {
     color: white; }
 
+.feedback {
+  height: 600px; }
+
 .form_block {
   display: none; }
 
 #contact .contact-label {
   display: inline-block;
-  width: 70px; }
+  width: 60px; }
 #contact input, #contact textarea {
   color: #333333; }
 #contact input[type="text"], #contact textarea {
