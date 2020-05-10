@@ -559,6 +559,32 @@ function getTemplate (url, done) {
 }
 
 /*
+  getPlainText accepts three arguments:
+
+  * url, a URL string
+  * done, a function that accepts two arguments:
+    an Error object and a JQuery HTML Element
+
+  getPlainText loads the plain text file
+  referenced by url and passes it to done.
+
+  If an error occurs, getPlainText throws a strict
+  error and passes an error to done instead.
+*/
+function getPlainText (url, done) {
+  $.get (url,
+    function (content) {
+      done (null, content);
+    },
+    'text'
+    ).fail (function () {
+      var error = new Error ('[core][getPlainText] Error: an error occured while trying to load a template from "' + url + '".');
+      strictError (error);
+      done (error);
+    });
+}
+
+/*
   strictError accepts one argument: error, an Error
   object. If the error mode has been set to strict,
   this function throws an exception with the given
@@ -792,7 +818,6 @@ You can generate the Core module's source files using [Literate Programming](htt
 `literate-programming Readme.md`
 from the command line.
 
-<!---
 #### Core.js
 ```
 _"Core Module"
@@ -816,4 +841,3 @@ _"Load Modules"
 _"Auxiliary Functions"
 ```
 [core.js](#Core.js "save:")
--->

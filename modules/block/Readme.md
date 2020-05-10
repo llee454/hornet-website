@@ -694,7 +694,6 @@ You can generate the Block module's source files using [Literate Programming](ht
 `literate-programming Readme.md`
 from the command line.
 
-<!---
 ### Block.js
 ```
 _"Block Module"
@@ -714,4 +713,3 @@ _"The Core Block Handlers"
 _"Auxiliary Functions"
 ```
 [block.js](#Block.js "save:")
--->

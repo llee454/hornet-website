@@ -87,15 +87,15 @@ function block_HandlerStore () {
     added using block_HandlerStore.addHandlers
 */
 QUnit.test ('block_HandlerStore', function (assert) {
-    assert.expect (2);
+  assert.expect (2);
 
-    var store1 = new block_HandlerStore ();
-    store1.addHandlers ({
-      'a': 'A',
-      'f': function () { return 5; }
-    });
-    assert.strictEqual (store1.get ('a'), 'A', 'block_HandlerStore.get returned the correct String Block Handler added using block_HandlerStore.addHandlers.');
-    assert.strictEqual (store1.get ('f')(), 5, 'block_handlerStore.get returned the correct Function Block Handler added using block_HandlerStore.addHandlers.');
+  var store = new block_HandlerStore ();
+  store.addHandlers ({
+    'a': 'A',
+    'f': function () { return 5; }
+  });
+  assert.strictEqual (store1.get ('a'), 'A', 'block_HandlerStore.get returned the correct String Block Handler added using block_HandlerStore.addHandlers.');
+  assert.strictEqual (store1.get ('f')(), 5, 'block_handlerStore.get returned the correct Function Block Handler added using block_HandlerStore.addHandlers.');
 });
 
 /*
