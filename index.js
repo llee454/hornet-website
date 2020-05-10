@@ -23,6 +23,10 @@ MODULE_LOAD_HANDLERS.add (
     $('#mobile-menu-content').slideToggle ();
   })
 
+  setTimeout(function () {
+    $('#hero-video').play ();
+  }, 1500);
+
   done (null);
 });
 
