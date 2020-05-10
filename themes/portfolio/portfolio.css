@@ -2687,14 +2687,14 @@ table.padded-list tbody tr td {
 
 #hero-video-container {
   height: 100vh;
-  overflow-y: hidden; }
+  overflow: hidden; }
 
 #hero-overlay {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
   position: absolute;
   top: 0px;
+  width: 100%;
   z-index: 10; }
 
 #hero-overlay-content {
