@@ -2626,31 +2626,71 @@ table.padded-list tbody tr td {
   color: white;
   margin: 0 auto;
   padding: 0; }
+  @media screen and (max-width: 950px) {
+    #header-content {
+      width: 80%; } }
+
+.menu-item {
+  cursor: pointer; }
+  .menu-item:hover {
+    font-weight: bold; }
 
 .header-menu-item {
   color: white;
-  cursor: pointer;
   display: inline-block;
   height: 100%;
+  padding: 10px 0;
+  text-align: center;
+  width: 150px; }
+  .header-menu-item:first-of-type, .header-menu-item:last-of-type {
+    text-align: left; }
+
+#mobile-menu {
+  color: white;
+  display: none;
+  position: relative; }
+
+#mobile-menu-header {
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center; }
+  #mobile-menu-header:hover {
+    font-weight: bold; }
+  #mobile-menu-header::before {
+    background-image: url("images/menu-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 2px;
+    content: "";
+    padding: 13px;
+    position: relative;
+    right: 10px;
+    vertical-align: middle; }
+
+#mobile-menu-content {
+  background-color: #333333;
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 20; }
+
+.mobile-menu-item {
+  color: white;
+  display: block;
   padding: 10px 20px;
   text-align: center;
-  width: 170px; }
-  .header-menu-item:hover {
-    font-weight: bold; }
+  width: 100%; }
 
 #hero {
   height: 100vh;
-  min-height: 500px;
   position: relative; }
 
 #hero-video-container {
   height: 100vh;
-  min-height: 500px;
   overflow-y: hidden; }
 
 #hero-overlay {
   height: 100vh;
-  min-height: 500px;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   position: absolute;
@@ -2667,6 +2707,9 @@ table.padded-list tbody tr td {
   height: auto;
   padding-bottom: 25px;
   transform: translateX(-50%) translateY(-50%); }
+  @media screen and (max-width: 950px) {
+    #hero-overlay-content {
+      width: 80%; } }
   #hero-overlay-content h1 {
     color: white;
     font-family: freight-display-pro;
@@ -2695,6 +2738,9 @@ table.padded-list tbody tr td {
   color: white;
   margin: 0 auto;
   padding: 0; }
+  @media screen and (max-width: 950px) {
+    .section-content {
+      width: 80%; } }
 
 .dark-section {
   background-color: #333333;
@@ -2719,10 +2765,13 @@ table.padded-list tbody tr td {
 
 @media screen and (max-width: 1050px) {
   #hero-video {
-    transform: translateX(-30%); }
+    transform: translateX(-30%); } }
+@media screen and (max-width: 950px) {
+  #header-menu {
+    display: none; }
 
-  .header-menu-container {
-    width: 100%; }
+  #mobile-menu {
+    display: block; }
 
-  .header-menu-item {
-    width: 100%; } }
+  #hero-overlay-content h1 {
+    font-size: 50px; } }

@@ -30,6 +30,10 @@ $hero-height: 100vh;
 @mixin centeredContentDims {
   max-width: 900px;
   width: 70%;
+
+  @include media(max-width $small-width) {
+    width: 80%;
+  }
 }
 
 @mixin centeredContent {
@@ -41,25 +45,67 @@ $hero-height: 100vh;
 
 @mixin heroDims {
   height: 100vh;
-  min-height: 500px;
 }
 
 #header-content {
   @include centeredContent;
 }
-
+.menu-item {
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+}
 .header-menu-item {
   color: white;
-  cursor: pointer;
   display: inline-block;
   height: 100%;
+  padding: 10px 0;
+  text-align: center;
+  width: 150px;
+
+  &:first-of-type, &:last-of-type {
+    text-align: left;
+  }
+}
+#mobile-menu {
+  color: white;
+  display: none;
+  position: relative;
+}
+#mobile-menu-header {
+  cursor: pointer;
   padding: 10px 20px;
   text-align: center;
-  width: 170px;
 
   &:hover {
     font-weight: bold;
   }
+  &::before {
+    background-image: url("images/menu-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 2px;
+    content: "";
+    padding: 13px;
+    position: relative;
+    right: 10px;
+    vertical-align: middle;
+  }
+}
+#mobile-menu-content {
+  background-color: $text-gray;
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+}
+.mobile-menu-item {
+  color: white;
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
 }
 
 #hero {
@@ -155,12 +201,17 @@ $hero-height: 100vh;
   #hero-video {
     transform: translateX(-30%);
   }
-  .header-menu-container {
-    width: 100%;
-  }
-  .header-menu-item {
-    width: 100%;
-  }
 }
 @include media(max-width $small-width) {
+  #header-menu {
+    display: none;
+  }
+  #mobile-menu {
+    display: block;
+  }
+  #hero-overlay-content {
+    h1 {
+      font-size: 50px;
+    }
+  }
 }

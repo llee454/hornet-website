@@ -28,6 +28,11 @@ MODULE_LOAD_HANDLERS.add (
       });
   });
 
+  // IV. control the mobile menu.
+  $('#mobile-menu-header').click (function () {
+    $('#mobile-menu-content').slideToggle ();
+  })
+
   // IV. Set the Sidr Fadeout handler.
   setInterval (
     function () {
