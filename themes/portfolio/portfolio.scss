@@ -213,6 +213,9 @@ $hero-height: 100vh;
   }
 }
 
+.feedback {
+  height: 600px;
+}
 .form_block {
   display: none;
 }
@@ -220,7 +223,7 @@ $hero-height: 100vh;
 #contact {
   .contact-label {
     display: inline-block;
-    width: 70px;
+    width: 60px;
   }
   input, textarea {
     color: $text-gray;
