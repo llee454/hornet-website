@@ -79,12 +79,13 @@ function eqn_labeled_block (pageId, content, done) {
     return done (error);
   }
   var elem = $('<div></div>')
-    .append ($('<table></table>')
-      .addClass ("eqn-labeled")
-      .append ($('<tbody></tbody>')
-        .append ($('<tr></tr>')
-          .append ($('<td></td>').addClass ('eqn').html (xs [2]))
-          .append ($('<td></td>').addClass ('eqn-label').html (xs [1])))));
+    .append ($('<div></div>')
+      .addClass ('eqn-labeled')
+      .append ($('<table></table>')
+        .append ($('<tbody></tbody>')
+          .append ($('<tr></tr>')
+            .append ($('<td></td>').addClass ('eqn').html (xs [2]))
+            .append ($('<td></td>').addClass ('eqn-label').html (xs [1]))))));
 
   done (null, elem.html ());
 }
