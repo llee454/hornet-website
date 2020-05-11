@@ -2713,12 +2713,11 @@ table.padded-list tbody tr td {
       width: 80%; } }
 
 .eqn-labeled {
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%; }
   .eqn-labeled table, .eqn-labeled tbody, .eqn-labeled tr {
     width: 100%; }
-  .eqn-labeled td.eqn {
-    overflow-y: hidden; }
   .eqn-labeled td.eqn-label {
     text-align: right; }
 
@@ -2786,4 +2785,7 @@ table.padded-list tbody tr td {
     display: block; }
 
   #hero-overlay-content h1 {
-    font-size: 50px; } }
+    font-size: 50px; }
+
+  .eqn-labeled {
+    overflow-x: scroll; } }

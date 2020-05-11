@@ -66,7 +66,7 @@
     <div id='hero'>
       <div id='hero-overlay'>
         <div id='hero-overlay-content'>
-          <h1>Proven Ability &#8718</h1>
+          <h1>Proven Ability &#8718;</h1>
           <p>
             My name is Larry Lee, I am a software developer specializing in formal methods.
             My work includes formally verified hardware designs and real-world examples of applied mathematics.
@@ -148,13 +148,13 @@
                     </p>
                     <p>
                       One problem remained however.
-                      SiFive's unit defined a register named <code>rem</code>.
-                      SiFive feared that the <code>rem</code> register was too small to store all of the intermediate values computed during operation.
-                      To prove that the <code>rem</code> register was large enough, I needed to prove that the values stored within <code>rem</code> were smaller than <code>2<sup>n</sup></code>, where <code>n</code> represented the number of bits SiFive had allocated.
+                      SiFive's unit defined a register named \(rem\).
+                      SiFive feared that the \(rem\) register was too small to store all of the intermediate values computed during operation.
+                      To prove that the \(rem\) register was large enough, I needed to prove that the values stored within \(rem\) were smaller than \(2^n\), where \(n\) represented the number of bits SiFive had allocated.
                     </p>
                     <p>
-                      This register corresponded to a variable defined within my equations named <code>error(n)</code>.
-                      Using the mapping between <code>rem</code> and <code>error(n)</code>, I had to verify that: $$\forall n, error(n) &lt; \frac{8}{2^n}$$.
+                      This register corresponded to a variable defined within my equations named \(error(n)\).
+                      Using the mapping between \(rem\) and \(error(n)\), I had to verify that: $$\forall n, error(n) &lt; \frac{8}{2^n}$$.
                     </p>
                   </div>
                 </div>
@@ -163,18 +163,123 @@
                   <div class="accordion_item_title">The Model</div>
                   <div class="accordion_item_body">
                     <p>
-                      Let <code>x</code> denote the number that the floating point unit is computing the square root for.
-                      Let <code>approx(n)</code> denote the <code>n<sup>th</sup></code> approximation of the square root of <code>x</code>.
-                      And, let <code>error(n)</code> represent the <code>n<sup>th</sup></code> approximation error.
-                      Then <code>x</code> is given by:
+                      Let \(x\) denote the number that the floating point unit is computing the square root for.
+                      Let \(approx(n)\) denote the \(n^{th}\) approximation of the square root of \(x\).
+                      And, let \(error(n)\) represent the \(n^{th}\) approximation error.
+                      Then \(x\) is given by:
                     </p>
                     <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
-                    <p>Setting <code>approx(0) = 0</code>, we will append a bit, <code>b(n)</code>, onto the approximation at the end of each iteration.</p>
-                    <div class="curly_block">{{#eqn.labeled}}2: $$approx (0) = 0$${{/eqn.labeled}}</div>
-                    <div class="curly_block">{{#eqn.labeled}}2: $$approx (n + 1) = approx (n) + \frac{b (n)}{2^n}$${{/eqn.labeled}}</div>
-                    <p>Each iteration, we attempt to append a 1 onto <code>approx(n)</code>. Otherwise, we append a 0. Hence <code>b(n)</code> is given by:</p>
-                    <p>Using back substitution we can solve for <code>error</code> to derive the following recurrence relation:</p>
-                    <p>Using the above equations and the fact that <code>1 &lt;= a &lt; 2</code>, we can derive the following corollaries:</p>
+                    <p>Setting \(approx(0) = 0\), we will append a bit, \(b(n)\), onto the approximation at the end of each iteration.</p>
+                    <div class="curly_block">{{#eqn.labeled}}2: $$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$${{/eqn.labeled}}</div>
+                    <p>Each iteration, we attempt to append a 1 onto \(approx(n)\). Otherwise, we append a 0. Hence \(b(n)\) is given by:</p>
+                    <div class="curly_block">{{#eqn.labeled}}4: $$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$${{/eqn.labeled}}</div>
+                    <p>Using back substitution we can solve for \(error\) to derive the following recurrence relation:</p>
+                    <div class="curly_block">{{#eqn.labeled}}5: $$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$${{/eqn.labeled}}</div>
+                    <p>Using the above equations and the fact that \(1 &lt;= x &lt; 2\), we can derive the following corollaries:</p>
+                    <div class="curly_block">{{#eqn.labeled}}6: $$\forall n, 0 \le approx(n) \lt 2$${{/eqn.labeled}}</div>
+                    <div class="curly_block">
+                      {{#eqn.labeled}}7: $$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$${{/eqn.labeled}}
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion_item_block">
+                  <div class="accordion_item_number">3</div>
+                  <div class="accordion_item_title">A Lower Bound for \(approx\)</div>
+                  <div class="accordion_item_body">
+                    <p>Next we establish a lower bound constraint for \(approx(n)\):</p>
+                    <div class="eqn-labeled">
+                      $$\mbox{Lemma 1.1:}\ \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
+                    </div>
+                    <p><strong>Proof</strong></p>
+                    <p>We proceed using a proof by induction. When n = 0, substitution gives:</p>
+                    <div class="curly_block">{{#eqn.labeled}}8: $$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$${{/eqn.labeled}}</div>
+                    <p>When \(n \gt 0\), we have to prove:</p>
+                    <div class="curly_block">{{#eqn.labeled}}9: $$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$${{/eqn.labeled}}</div>
+                    <p>We proceed by case analysis. \(b (n)\) equals either 0 or 1.</p>
+                    <p><strong><code>b (n) = 0</code></strong><p>
+                    <p>When \(b (n) = 0\), our goal becomes: \(x \lt (approx (n) + \frac{1}{2^n})^2\). Expanding and rewriting \(error\) using (7) leads to:</p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->x &amp;=&amp; approx (n)^2 + error (n) \\<!--
+                        -->x &amp;\lt&amp; approx (n)^2 + \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \quad \quad \mbox{by (7)} \\<!--
+                        -->x &amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2<!--
+                      -->\end{array}$$
+                    </div>
+                    <p><strong><code>b (n) = 1</code></strong><p>
+                    <p>
+                      When \(b (n) = 1\), our goal becomes: \(x \lt (approx (n) + \frac{1}{2^n} + \frac{1}{2^n})^2\).
+                      However, this is equivalent to: \(a \lt (approx (n) + \frac{2}{2^n})^2\), which is identical to our inductive hypothesis.
+                      &#8718;
+                    </p>
+                  </div>
+                </div>
+                <div class="accordion_item_block">
+                  <div class="accordion_item_number">4</div>
+                  <div class="accordion_item_title">A Constant Upper Bound for \(error\)</div>
+                  <div class="accordion_item_body">
+                    <p>The following lemma establishes an upper bound for \(error (n)\) that we will need to prove our primary theorem below.</p>
+                    <div class="eqn-labeled">
+                      $$\mbox{Lemma 1.2:}\ \forall n, error (n) \lt 4$$
+                    </div>
+                    <p><strong>Proof</strong></p>
+                    <p>We proceed using proof by induction.</p>
+                    <p><strong><code>n = 0</code></strong><p>
+                    <p>When \(n = 0\), the lemma follows immediately from (5): \(error (0) = x \lt 2\).</p>
+                    <p><strong><code>n &ge; 1</code></strong><p>
+                    <p>
+                      When \(n \ge 1\), our goal becomes: \(error (n) \lt 4 \implies error (n + 1) \lt 4\).
+                      Assuming that \(error (n) \lt 4\) and expanding \(error (n + 1)\) leads to:
+                    </p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n}) \\<!--
+                        -->error (n + 1) &amp;\lt&amp; 4 - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n}) \qquad \mbox{by the ind. hyp.} \\<!--
+                        -->error (n + 1) &amp;\lt&amp; 4 - 0 \\<!--
+                      -->\end{array}$$
+                    </div>
+                    <p>
+                      Where we maximized the rhs in the last inequality by taking the case where \(b (n) = 0\).  
+                      &#8718;
+                    </p>
+                  </div>
+                </div>
+                <div class="accordion_item_block">
+                  <div class="accordion_item_number">5</div>
+                  <div class="accordion_item_title">A Scaling Upper Bound for \(error\)</div>
+                  <div class="accordion_item_body">
+                    <div class="eqn-labeled">
+                      $$\mbox{Lemma 1.3:}\ \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
+                    </div>
+                    <p><strong>Proof</strong></p>
+                    <p>
+                      We will procede by induction over \(n\).
+                      When \(n = 0\), Lemma 1.3 follows immediately as \((approx (0) + \frac{2}{2^0})^2 = 4\) and \(x \lt 2\).
+                      When \(n \ge 1\), our goal becomes: \(x \lt (approx (n) + \frac{2}{2^n})^2 \implies x \lt (approx (n + 1) + \frac {2}{2^{n + 1}})^2\).
+                      Unfolding \(approx (n + 1)\), reduces our goal to: \(x \lt (approx (n) + \frac{b (n)}{2^n} + \frac{1}{2^n})^2\).
+                    </p>
+                    <p><strong><code>b (n) = 0</code></strong><p>
+                    <p>When \(b (n) = 0\) our goal follows algebraicly:</p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->x &amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2 \\<!--
+                        -->(approx (n))^2 + error (n) &amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2 \\<!--
+                        -->&amp;\lt&amp; (approx (n))^2 + \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\<!--
+                        -->error (n) &amp;\lt&amp; \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\<!--
+                        -->\mbox{by (7)}\\<!--
+                      -->\end{array}$$
+                    </div>
+                    <div class="eqn-labeled">
+                      $$\mbox{Lemma 1.4:}\ \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
+                    </div>
+                    <p><strong>Proof</strong></p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->x &amp;\lt&amp; (approx (n) + \frac{2}{2^n})^2 \\<!--
+                        -->x &amp;\lt&amp; approx (n)^2 + \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
+                        -->a - approx (n)^2 &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
+                        -->error (n) &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n})<!--
+                      -->\end{array}$$
+                    </div>
                   </div>
                 </div>
               </div>

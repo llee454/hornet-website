@@ -159,14 +159,14 @@ $hero-height: 100vh;
   @include centeredContent;
 }
 .eqn-labeled {
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
 
   table, tbody, tr {
     width: 100%;
   }
   td.eqn {
-    overflow-y: hidden;
   }
   td.eqn-label {
     text-align: right;
@@ -264,5 +264,8 @@ $hero-height: 100vh;
     h1 {
       font-size: 50px;
     }
+  }
+  .eqn-labeled {
+    overflow-x: scroll;
   }
 }
