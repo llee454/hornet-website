@@ -451,13 +451,14 @@ html {
       cursor: pointer;
       display: table;
       border-collapse: collapse;
+      table-layout: fixed;
       width: 100%; }
       .accordion .accordion_item .accordion_item_header .accordion_item_header_left {
         border-right: 1px solid #d2d2d2;
         color: #b2b2b2;
         display: table-cell;
         text-align: center;
-        width: 120px; }
+        width: 50px; }
       .accordion .accordion_item .accordion_item_header .accordion_item_header_middle {
         color: #333333;
         display: table-cell;
@@ -2711,12 +2712,15 @@ table.padded-list tbody tr td {
     .section-content {
       width: 80%; } }
 
-table.eqn-labeled {
+.eqn-labeled {
+  overflow-x: scroll;
   width: 100%; }
-  table.eqn-labeled tbody {
+  .eqn-labeled table, .eqn-labeled tbody, .eqn-labeled tr {
     width: 100%; }
-  table.eqn-labeled tr {
-    width: 100%; }
+  .eqn-labeled td.eqn {
+    overflow-y: hidden; }
+  .eqn-labeled td.eqn-label {
+    text-align: right; }
 
 .jscoq-main #ide-wrapper {
   height: 700px;

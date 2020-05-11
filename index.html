@@ -159,38 +159,22 @@
                   </div>
                 </div>
                 <div class="accordion_item_block">
-                  <div class="accordion_item_number">1</div>
+                  <div class="accordion_item_number">2</div>
                   <div class="accordion_item_title">The Model</div>
                   <div class="accordion_item_body">
                     <p>
                       Let <code>x</code> denote the number that the floating point unit is computing the square root for.
                       Let <code>approx(n)</code> denote the <code>n<sup>th</sup></code> approximation of the square root of <code>x</code>.
-                      Let <code>error(n)</code> represent the <code>n<sup>th</sup></code> approximation error.
+                      And, let <code>error(n)</code> represent the <code>n<sup>th</sup></code> approximation error.
                       Then <code>x</code> is given by:
                     </p>
                     <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
                     <p>Setting <code>approx(0) = 0</code>, we will append a bit, <code>b(n)</code>, onto the approximation at the end of each iteration.</p>
+                    <div class="curly_block">{{#eqn.labeled}}2: $$approx (0) = 0$${{/eqn.labeled}}</div>
+                    <div class="curly_block">{{#eqn.labeled}}2: $$approx (n + 1) = approx (n) + \frac{b (n)}{2^n}$${{/eqn.labeled}}</div>
                     <p>Each iteration, we attempt to append a 1 onto <code>approx(n)</code>. Otherwise, we append a 0. Hence <code>b(n)</code> is given by:</p>
                     <p>Using back substitution we can solve for <code>error</code> to derive the following recurrence relation:</p>
                     <p>Using the above equations and the fact that <code>1 &lt;= a &lt; 2</code>, we can derive the following corollaries:</p>
-                    <p>This is a test of MathJax: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p>
-                  </div>
-                </div>
-                <div class="accordion_item_block">
-                  <div class="accordion_item_number">2</div>
-                  <div class="accordion_item_title">Second Example: This title is too long for small mobile screen sizes. It will need to wrap.</div>
-                  <div class="accordion_item_body">
-                    <h3>The Second Item</h3>
-                    <p>This is the second item.</p>
-                  </div>
-                </div>
-                <div class="accordion_item_block">
-                  <div class="accordion_item_number">3</div>
-                  <div class="accordion_item_title">Third Example: The following is an embedded page that takes advantage of the Accordion Modules support for lazy loading</div>
-                  <div class="accordion_item_body">
-                    <div class="block_quote_block">
-                      <div class="page_block">example_page</div>
-                    </div>
                   </div>
                 </div>
               </div>

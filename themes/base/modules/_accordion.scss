@@ -11,17 +11,18 @@
 
     .accordion_item_header {
       border-bottom: 1px solid rgba(210, 210, 210, 100);
-      cursor:        pointer;
-      display:       table;
+      cursor: pointer;
+      display: table;
       border-collapse: collapse;
-      width:         100%;
+      table-layout: fixed;
+      width: 100%;
 
       .accordion_item_header_left {
         border-right: 1px solid rgba(210, 210, 210, 100);
-        color:        $dark_gray;
-        display:      table-cell;
-        text-align:   center;
-        width:        120px
+        color: $dark_gray;
+        display: table-cell;
+        text-align: center;
+        width: 50px
       }
 
       .accordion_item_header_middle {

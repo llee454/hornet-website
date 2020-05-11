@@ -158,13 +158,18 @@ $hero-height: 100vh;
 .section-content {
   @include centeredContent;
 }
-table.eqn-labeled {
+.eqn-labeled {
+  overflow-x: scroll;
   width: 100%;
-  tbody {
+
+  table, tbody, tr {
     width: 100%;
   }
-  tr {
-    width: 100%;
+  td.eqn {
+    overflow-y: hidden;
+  }
+  td.eqn-label {
+    text-align: right;
   }
 }
 .jscoq-main {
