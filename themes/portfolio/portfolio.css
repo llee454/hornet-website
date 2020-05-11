@@ -2143,35 +2143,6 @@ ul.no-list-style {
 p {
   color: #333333; }
 
-/* Table Styles */
-table {
-  border-collapse: separate;
-  border-spacing: 0px;
-  border: 1px solid #f29a2f; }
-
-thead th {
-  text-align: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1em;
-  line-height: 1.4em;
-  margin: 0px auto;
-  padding: 10px;
-  background: #f29a2f;
-  font-style: italic; }
-
-table.complex-thead {
-  border-spacing: 1px; }
-
-td {
-  padding: 10px 10px; }
-
-tr:nth-child(odd) {
-  background-color: #fef7ef; }
-
-tr:nth-child(even) {
-  background-color: #fce5c9; }
-
 #overlay {
   background-color: white;
   height: 100%;
@@ -2623,7 +2594,6 @@ table.padded-list tbody tr td {
 #header-content {
   max-width: 900px;
   width: 70%;
-  color: white;
   margin: 0 auto;
   padding: 0; }
   @media screen and (max-width: 950px) {
@@ -2735,12 +2705,18 @@ table.padded-list tbody tr td {
 .section-content {
   max-width: 900px;
   width: 70%;
-  color: white;
   margin: 0 auto;
   padding: 0; }
   @media screen and (max-width: 950px) {
     .section-content {
       width: 80%; } }
+
+table.eqn-labeled {
+  width: 100%; }
+  table.eqn-labeled tbody {
+    width: 100%; }
+  table.eqn-labeled tr {
+    width: 100%; }
 
 .jscoq-main #ide-wrapper {
   height: 700px;

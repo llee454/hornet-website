@@ -100,41 +100,6 @@ p {
   color: $text_gray;
 }
 
-/* Table Styles */
-
-table {
-  border-collapse:separate;
-  border-spacing:0px;
-  border: 1px solid $primary-color;
-}
-
-thead th {text-align:center;
-  color:#fff;
-  font-weight:700;
-  font-size:1em;
-  line-height:1.4em;
-  margin: 0px auto;
-  padding: 10px;
-  background:$primary-color;
-  font-style:italic;
-}
-
-table.complex-thead {
-  border-spacing: 1px;
-}
-
-td {
-  padding: 10px 10px;
-}
-
-tr:nth-child(odd) {
-    background-color:lighten($primary-color, 40%);
-}
-
-tr:nth-child(even) {
-    background-color:lighten($primary-color, 32%);
-}
-
 #overlay {
   background-color: white;
   height: 100%;

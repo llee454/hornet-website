@@ -12,11 +12,10 @@
     <script src="lib/jquery-ui/jquery-ui.js"></script>
     <script src="lib/jq-ajax-progress/src/jq-ajax-progress.js"></script>
     <script src="lib/uri/uri.js"></script> 
-
-     <script src="lib/qunit/qunit.js"></script>
-     <script>
-       QUnit.config.autostart = false;
-     </script>
+    <script src="lib/qunit/qunit.js"></script>
+    <script>
+      QUnit.config.autostart = false;
+    </script>
  
     <!-- Load the library stylesheets -->
     <link rel="stylesheet" type="text/css" href="lib/jquery-ui/jquery-ui.min.css">
@@ -69,7 +68,7 @@
         <div id='hero-overlay-content'>
           <h1>Proven Ability &#8718</h1>
           <p>
-            I am a software developer specializing in formally verified software development.
+            My name is Larry Lee, I am a software developer specializing in formal methods.
             My work includes formally verified hardware designs and real-world examples of applied mathematics.
           </p>
         </div>
@@ -90,8 +89,8 @@
             </div>
             <div class='section-body'>
               <p>Formally Verified Software development is the practice of writing mathematical proofs to verify software.
-                I specialize in using Coq to do this.
-                Over the last 7 years, I've proved hundreds of results using Coq and have developed formally verified algorithms.
+                I specialize in using <strong>Coq</strong> to do this.
+                Over the last 7 years, I've proved <strong>hundreds</strong> of results using Coq and have developed formally verified algorithms.
                 I've contributed to the Coq Standard Library and am a package maintainer in the Coq Package index.
                 My portfolio of results proves my ability to analyze complex problems and produce results.
               </p>
@@ -111,11 +110,8 @@
             </div>
             <div class='section-body'>
               <p>Formally verified software development is the practice of writing mathematical proofs to verify that software is correct.</p>
-              <h2>What is a mathematical proof?</h2>
               <p>A mathematical proof is a sequence of assertions in which every assertion is either an axiom or can be derived from one or more of the preceding assertions by applying a logical deduction rule.</p>
-              <p>The Curry-Howard Isomorphism shows that their is a one-to-one correspondence between the terms used to write mathematical proofs and the terms used to construct expressions in the typed lambda calculus.</p>
-              <p>Briefly, we can use the same language to write both mathematical proofs and programs.</p>
-              <p>I specialize in writing programs in Coq, a language whose type system is capable of expressing logical propositions.</p>
+              <p>I specialize in writing proofs in Coq, a programming language capable of expressing both logical arguments and describing algorithms.</p>
             </div>
           </div>
         </div>
@@ -123,20 +119,65 @@
         <div id='case-study' class='section'>
           <div class='section-content'>
             <div class='section-header'>
-              <h1>Success Story: Proving Results for Engineering</h1>
+              <h1>Industrial Results</h1>
             </div>
             <div class='section-body'>
+              <p>In 2018, SiFive, a Silicon Valley-based company specializing in the design of RISC-V processors used an algorithm that they feared was incorrect.</p>
+              <p>
+                The floating point unit used within their S-series processors relied on an algorithm that they feared was incorrect.
+                The engineer tasked with verifying the algorithm had stalled while trying to prove that the registers allocated by the unit where large enough to store the intermediate values computed by the unit during square root and division operations.
+                While the unit passed SiFive's test suite, SiFive feared that a bug lurked in an edge case not covered by their tests.
+              </p>
+              <p>
+                I successfully derived an analytical proof verifying that the registers allocated by the unit where sufficiently large to store these intermediate values.
+                To do this, I mapped the algorithm used by the unit onto a recursive algorithm that could be described by a system of recurrence relations.
+                I then proved that the maximum value computed by each iteration of this simpler algorithm was less than the maximum value that could be stored in the allocated registers.
+              </p>
+              <p>You can view the formalized version of this proof here: <a href="https://github.com/llee454/FPU-Verification/blob/master/sqrt_rem_proof.md">FPU-Verification</a></p>
               <div class="accordion_block">
                 <div class="accordion_item_block">
-                  <div class="accordion_item_number">Step 1</div>
-                  <div class="accordion_item_title">First Example</div>
+                  <div class="accordion_item_number">1</div>
+                  <div class="accordion_item_title">Introduction</div>
                   <div class="accordion_item_body">
-                    <h3>The First Item</h3>
-                    <p>This is the first item.</p>
+                    <p>
+                      SiFive had developed the unit in a modeling language named Chisel.
+                      I began by writing a set of recurrence relations that formalized the square root and division algorithms.
+                      I then identified a bijective mappings between the variables used in SiFive's model and the variables used in my equations.
+                      This allowed me to prove that my equations correctly modeled the unit.
+                      I then verified that my equations correctly converged onto the correct results, thereby verifying that SiFive's unit was logically correct.
+                    </p>
+                    <p>
+                      One problem remained however.
+                      SiFive's unit defined a register named <code>rem</code>.
+                      SiFive feared that the <code>rem</code> register was too small to store all of the intermediate values computed during operation.
+                      To prove that the <code>rem</code> register was large enough, I needed to prove that the values stored within <code>rem</code> were smaller than <code>2<sup>n</sup></code>, where <code>n</code> represented the number of bits SiFive had allocated.
+                    </p>
+                    <p>
+                      This register corresponded to a variable defined within my equations named <code>error(n)</code>.
+                      Using the mapping between <code>rem</code> and <code>error(n)</code>, I had to verify that: $$\forall n, error(n) &lt; \frac{8}{2^n}$$.
+                    </p>
                   </div>
                 </div>
                 <div class="accordion_item_block">
-                  <div class="accordion_item_number">Step 2</div>
+                  <div class="accordion_item_number">1</div>
+                  <div class="accordion_item_title">The Model</div>
+                  <div class="accordion_item_body">
+                    <p>
+                      Let <code>x</code> denote the number that the floating point unit is computing the square root for.
+                      Let <code>approx(n)</code> denote the <code>n<sup>th</sup></code> approximation of the square root of <code>x</code>.
+                      Let <code>error(n)</code> represent the <code>n<sup>th</sup></code> approximation error.
+                      Then <code>x</code> is given by:
+                    </p>
+                    <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
+                    <p>Setting <code>approx(0) = 0</code>, we will append a bit, <code>b(n)</code>, onto the approximation at the end of each iteration.</p>
+                    <p>Each iteration, we attempt to append a 1 onto <code>approx(n)</code>. Otherwise, we append a 0. Hence <code>b(n)</code> is given by:</p>
+                    <p>Using back substitution we can solve for <code>error</code> to derive the following recurrence relation:</p>
+                    <p>Using the above equations and the fact that <code>1 &lt;= a &lt; 2</code>, we can derive the following corollaries:</p>
+                    <p>This is a test of MathJax: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p>
+                  </div>
+                </div>
+                <div class="accordion_item_block">
+                  <div class="accordion_item_number">2</div>
                   <div class="accordion_item_title">Second Example: This title is too long for small mobile screen sizes. It will need to wrap.</div>
                   <div class="accordion_item_body">
                     <h3>The Second Item</h3>
@@ -144,7 +185,7 @@
                   </div>
                 </div>
                 <div class="accordion_item_block">
-                  <div class="accordion_item_number">Step 3</div>
+                  <div class="accordion_item_number">3</div>
                   <div class="accordion_item_title">Third Example: The following is an embedded page that takes advantage of the Accordion Modules support for lazy loading</div>
                   <div class="accordion_item_body">
                     <div class="block_quote_block">

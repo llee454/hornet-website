@@ -38,7 +38,6 @@ $hero-height: 100vh;
 
 @mixin centeredContent {
   @include centeredContentDims;
-  color: white;
   margin: 0 auto;
   padding: 0;
 }
@@ -46,7 +45,6 @@ $hero-height: 100vh;
 @mixin heroDims {
   height: 100vh;
 }
-
 #header-content {
   @include centeredContent;
 }
@@ -147,22 +145,27 @@ $hero-height: 100vh;
     color: white;
   }
 }
-
 #hero-video-container {
   position: relative;
 }
-
 #hero-video {
   @include absoluteCenter(0,0);
   height: 1080px;
 }
-
 #intro-video {
   max-width: 100%;
 }
-
 .section-content {
   @include centeredContent;
+}
+table.eqn-labeled {
+  width: 100%;
+  tbody {
+    width: 100%;
+  }
+  tr {
+    width: 100%;
+  }
 }
 .jscoq-main {
   #ide-wrapper {
