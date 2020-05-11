@@ -15,7 +15,7 @@
     and "nonstrict". Enable "strict" mode during
     testing, but select "nonstrict" in production.
   -->
-  <errorMode>nonstrict</errorMode>
+  <errorMode>strict</errorMode>
 
   <!--
     runUnittests indicates whether Lucidity should run
@@ -46,7 +46,7 @@
     <module name="page"             enabled="true"  url="modules/page/page.js"/>
 
     <!-- level 2 modules -->
-    <module name="curly"            enabled="false"  url="modules/curly/curly.js"/>
+    <module name="curly"            enabled="true"  url="modules/curly/curly.js"/>
     <module name="search"           enabled="false"  url="modules/search/search.js"/>
 
     <!-- level 3 modules -->
@@ -57,6 +57,7 @@
     <module name="bxslider"         enabled="false"  url="modules/bxslider/bxslider.js"/>
     <module name="coq"              enabled="true"   url="modules/coq/coq.js"/>
     <module name="example"          enabled="false"  url="modules/example/example.js"/>
+    <module name="eqn"              enabled="true"   url="modules/eqn/eqn.js"/>
     <module name="form"             enabled="true"   url="modules/form/form.js"/>
     <module name="lightbox"         enabled="false"  url="modules/lightbox/lightbox.js"/>
     <module name="menu"             enabled="false"  url="modules/menu/menu.js"/>
