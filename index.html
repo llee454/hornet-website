@@ -124,16 +124,16 @@
             <div class='section-body'>
               <p>In 2018, SiFive, a Silicon Valley-based company specializing in the design of RISC-V processors used an algorithm that they feared was incorrect.</p>
               <p>
-                The floating point unit used within their S-series processors relied on an algorithm that they feared was incorrect.
-                The engineer tasked with verifying the algorithm had stalled while trying to prove that the registers allocated by the unit where large enough to store the intermediate values computed by the unit during square root and division operations.
-                While the unit passed SiFive's test suite, SiFive feared that a bug lurked in an edge case not covered by their tests.
+                They suspected that a register used within the floating point unit of their S-series processors was too small to store the intermediate values that it computed during square root and division operations.</p>
+                While the unit passed SiFive's test suite, They feared that a bug lurked in an edge case not covered by their tests.
               </p>
               <p>
                 I successfully derived an analytical proof verifying that the registers allocated by the unit where sufficiently large to store these intermediate values.
-                To do this, I mapped the algorithm used by the unit onto a recursive algorithm that could be described by a system of recurrence relations.
-                I then proved that the maximum value computed by each iteration of this simpler algorithm was less than the maximum value that could be stored in the allocated registers.
+                More importantly, I formalized this proof using Coq; thereby giving SiFive the assurance that they needed to move forward with production.
               </p>
-              <p>You can view the formalized version of this proof here: <a href="https://github.com/llee454/FPU-Verification/blob/master/sqrt_rem_proof.md">FPU-Verification</a></p>
+              <p>
+                You can view the formalized Coq version of this proof here: <a href="https://github.com/llee454/FPU-Verification/blob/master/sqrt_rem_proof.md">FPU-Verification</a>
+              </p>
               <div class="accordion_block">
                 <div class="accordion_item_block">
                   <div class="accordion_item_number">1</div>
@@ -142,19 +142,19 @@
                     <p>
                       SiFive had developed the unit in a modeling language named Chisel.
                       I began by writing a set of recurrence relations that formalized the square root and division algorithms.
-                      I then identified a bijective mappings between the variables used in SiFive's model and the variables used in my equations.
+                      I then identified bijective mappings between the variables used in SiFive's model and the variables used in my equations.
                       This allowed me to prove that my equations correctly modeled the unit.
                       I then verified that my equations correctly converged onto the correct results, thereby verifying that SiFive's unit was logically correct.
                     </p>
                     <p>
                       One problem remained however.
-                      SiFive's unit defined a register named \(rem\).
-                      SiFive feared that the \(rem\) register was too small to store all of the intermediate values computed during operation.
-                      To prove that the \(rem\) register was large enough, I needed to prove that the values stored within \(rem\) were smaller than \(2^n\), where \(n\) represented the number of bits SiFive had allocated.
+                      SiFive's unit defined a register named \(rem\), and they feared that this register was too small to store all of the intermediate values computed during operation.
+                      To prove that the \(rem\) register was large enough, I needed to prove that the values stored within \(rem\) were smaller than \(2^w\), where \(w\) represented the number of bits SiFive had allocated.
                     </p>
                     <p>
                       This register corresponded to a variable defined within my equations named \(error(n)\).
-                      Using the mapping between \(rem\) and \(error(n)\), I had to verify that: $$\forall n, error(n) &lt; \frac{8}{2^n}$$.
+                      Using the mapping between \(rem\) and \(error(n)\), I had to verify that: $$\forall n, error(n) &lt; \frac{8}{2^n}$$ when computing the square root of an odd number, and an analogous result when computing the square root of even numbers.
+                      The following is an extract of my proof of this result.
                     </p>
                   </div>
                 </div>
@@ -171,7 +171,7 @@
                     <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
                     <p>Setting \(approx(0) = 0\), we will append a bit, \(b(n)\), onto the approximation at the end of each iteration.</p>
                     <div class="curly_block">{{#eqn.labeled}}2: $$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$${{/eqn.labeled}}</div>
-                    <p>Each iteration, we attempt to append a 1 onto \(approx(n)\). Otherwise, we append a 0. Hence \(b(n)\) is given by:</p>
+                    <p>where:</p>
                     <div class="curly_block">{{#eqn.labeled}}4: $$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$${{/eqn.labeled}}</div>
                     <p>Using back substitution we can solve for \(error\) to derive the following recurrence relation:</p>
                     <div class="curly_block">{{#eqn.labeled}}5: $$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$${{/eqn.labeled}}</div>
@@ -188,7 +188,7 @@
                   <div class="accordion_item_body">
                     <p>Next we establish a lower bound constraint for \(approx(n)\):</p>
                     <div class="eqn-labeled">
-                      $$\mbox{Lemma 1.1:}\ \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
+                      $$\mbox{Lemma 1.1:}\quad \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>We proceed using a proof by induction. When n = 0, substitution gives:</p>
@@ -219,7 +219,7 @@
                   <div class="accordion_item_body">
                     <p>The following lemma establishes an upper bound for \(error (n)\) that we will need to prove our primary theorem below.</p>
                     <div class="eqn-labeled">
-                      $$\mbox{Lemma 1.2:}\ \forall n, error (n) \lt 4$$
+                      $$\mbox{Lemma 1.2:}\quad \forall n, error (n) \lt 4$$
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>We proceed using proof by induction.</p>
@@ -248,11 +248,11 @@
                   <div class="accordion_item_title">A Scaling Upper Bound for \(error\)</div>
                   <div class="accordion_item_body">
                     <div class="eqn-labeled">
-                      $$\mbox{Lemma 1.3:}\ \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
+                      $$\mbox{Lemma 1.3:}\quad \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>
-                      We will procede by induction over \(n\).
+                      We will proceed by induction over \(n\).
                       When \(n = 0\), Lemma 1.3 follows immediately as \((approx (0) + \frac{2}{2^0})^2 = 4\) and \(x \lt 2\).
                       When \(n \ge 1\), our goal becomes: \(x \lt (approx (n) + \frac{2}{2^n})^2 \implies x \lt (approx (n + 1) + \frac {2}{2^{n + 1}})^2\).
                       Unfolding \(approx (n + 1)\), reduces our goal to: \(x \lt (approx (n) + \frac{b (n)}{2^n} + \frac{1}{2^n})^2\).
@@ -261,25 +261,69 @@
                     <p>When \(b (n) = 0\) our goal follows algebraicly:</p>
                     <div class="eqn-labeled">
                       $$\begin{array}{rcl}<!--
-                        -->x &amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2 \\<!--
-                        -->(approx (n))^2 + error (n) &amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2 \\<!--
-                        -->&amp;\lt&amp; (approx (n))^2 + \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\<!--
-                        -->error (n) &amp;\lt&amp; \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\<!--
-                        -->\mbox{by (7)}\\<!--
+                        -->x &amp;=&amp; approx (n)^2 + error (n)\\<!--
+                        -->&amp;\lt&amp; approx (n)^2 + \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \qquad \mbox {by (7)}\\<!--
+                        -->&amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2\\<!--
                       -->\end{array}$$
                     </div>
+                    <p><strong><code>b (n) = 1</code></strong><p>
+                    <p> 
+                      When \(b (n) = 1\) our goal equals the inductive hypothesis.
+                      &#8718;
+                    </p>
+                    <hr/>
                     <div class="eqn-labeled">
-                      $$\mbox{Lemma 1.4:}\ \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
+                      $$\mbox{Corollary 1.4:}\quad \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
                     </div>
-                    <p><strong>Proof</strong></p>
+                    <p><strong>Derivation</strong></p>
+                    <p>Corollary 1.4 follows algebraicly from Lemma 1.3:</p>
                     <div class="eqn-labeled">
                       $$\begin{array}{rcl}<!--
                         -->x &amp;\lt&amp; (approx (n) + \frac{2}{2^n})^2 \\<!--
                         -->x &amp;\lt&amp; approx (n)^2 + \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
-                        -->a - approx (n)^2 &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
+                        -->x - approx (n)^2 &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
                         -->error (n) &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n})<!--
                       -->\end{array}$$
                     </div>
+                  </div>
+                </div>
+                <div class="accordion_item_block">
+                  <div class="accordion_item_number">6</div>
+                  <div class="accordion_item_title">Conclusion</div>
+                  <div class="accordion_item_body">
+                    <p>We are now in a position to prove the main result:</p>
+                    <div class="eqn-labeled">
+                      $$\mbox{Theorem 1.5:}\quad \forall n, error (n) \lt \frac{8}{2^n}$$
+                    </div>
+                    <p><strong>Proof</strong></p>
+                    <p>
+                      We will proceed using induction over \(n\).
+                      When \(n = 0\), \(error (0) = x \lt 2\) and Theorem 1.5 follows immediately.
+                      Hence, we only need to consider the case where \(n \ge 1\).
+                    </p>
+                    <p>Observe that:</p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->approx (n)^2 &amp;=&amp; x - error (n) \\<!--
+                        -->approx (n)^2 &amp;\lt&amp; 2 - 0 \qquad \mbox{using (6)} \\<!--
+                        -->approx (n) &amp;\lt&amp; \sqrt {2}<!--
+                      -->\end{array}$$
+                    </div>
+                    <p>
+                      We can substitute this upper bound into the scaling upper bound we derived in Corollary 1.4.
+                      Doing so leads to:
+                    </p>
+                    <div class="eqn-labeled">
+                      $$\begin{array}{rcl}<!--
+                        -->error (n) &amp;\lt&amp; \frac{4}{2^n} (approx (n) + \frac{1}{2^n}) \\<!--
+                        -->error (n) &amp;\lt&amp; \frac{4}{2^n} (\sqrt {2} + \frac{1}{2^n})<!--
+                      -->\end{array}$$
+                    </div>
+                    <p>
+                      which is always less than \(\frac{8}{2^n}\) when \(n \ge 1\).
+                      This observation completes this proof.
+                      &#8718;
+                    </p>
                   </div>
                 </div>
               </div>
