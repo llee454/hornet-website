@@ -70,6 +70,7 @@ function coq_block (context, done) {
       if (error) { return done (error); }
 
       $(context.element)
+        .text ('')
         .append ($('<div></div>')
           .addClass ('jscoq-main')
           .append ($('<div></div>')
