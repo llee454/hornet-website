@@ -105,17 +105,14 @@ $hero-height: 100vh;
   text-align: center;
   width: 100%;
 }
-
 #hero {
   @include heroDims;
   position: relative;
 }
-
 #hero-video-container {
   @include heroDims;
   overflow: hidden;
 }
-
 #hero-overlay {
   @include heroDims;
   background-color: rgba(0,0,0,0.7);
@@ -124,7 +121,6 @@ $hero-height: 100vh;
   width: 100%;
   z-index: 10;
 }
-
 #hero-overlay-content {
   @include centeredContentDims;
   @include absoluteCenter(50%,50%);
@@ -157,6 +153,15 @@ $hero-height: 100vh;
 }
 .section-content {
   @include centeredContent;
+
+  .section-header {
+    h1 {
+      margin: 0 auto;
+      max-width: 500px;
+      text-align: center;
+      border-bottom: 1px solid $text-gray;
+    }
+  }
 }
 .eqn-labeled {
   overflow-x: auto;
@@ -213,12 +218,19 @@ $hero-height: 100vh;
     }
   }
 }
+#qed {
+  font-size: 90px;
+  text-align: center;
+}
 .dark-section {
   background-color: $text-gray;
   color: white;
 
   a, h1, p {
     color: white;
+  }
+  h1 {
+    border: none;
   }
 }
 

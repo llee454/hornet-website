@@ -360,7 +360,7 @@ Section nat_string.
   Local Open Scope string_scope.
 
   Goal (natToDecStr 113 = "113"). Proof. reflexivity. Qed.
-  Goal (natToBinStr 113 = "10110011"). Proof. reflexivity. Qed.
+  Goal (natToBinStr 113 = "1110001"). Proof. reflexivity. Qed.
 
   Local Close Scope string_scope.
 

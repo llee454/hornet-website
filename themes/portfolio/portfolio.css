@@ -2711,6 +2711,11 @@ table.padded-list tbody tr td {
   @media screen and (max-width: 950px) {
     .section-content {
       width: 80%; } }
+  .section-content .section-header h1 {
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+    border-bottom: 1px solid #333333; }
 
 .eqn-labeled {
   overflow-x: auto;
@@ -2750,11 +2755,17 @@ table.padded-list tbody tr td {
     .jscoq-main #panel-wrapper #toolbar .exits {
       display: none; }
 
+#qed {
+  font-size: 90px;
+  text-align: center; }
+
 .dark-section {
   background-color: #333333;
   color: white; }
   .dark-section a, .dark-section h1, .dark-section p {
     color: white; }
+  .dark-section h1 {
+    border: none; }
 
 .feedback {
   height: 600px; }
