@@ -2722,6 +2722,8 @@ table.padded-list tbody tr td {
   @media screen and (max-width: 950px) {
     .section-content {
       width: 80%; } }
+  .section-content a {
+    color: #2b6fa1; }
   .section-content .section-header h1 {
     margin: 0 auto;
     max-width: 500px;
@@ -2810,8 +2812,10 @@ table.padded-list tbody tr td {
 .dark-section {
   background-color: #333333;
   color: white; }
-  .dark-section a, .dark-section h1, .dark-section p {
+  .dark-section h1, .dark-section p {
     color: white; }
+  .dark-section a {
+    color: #b1deff; }
   .dark-section h1 {
     border: none; }
 

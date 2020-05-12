@@ -167,6 +167,9 @@ $hero-height: 100vh;
   @include centeredContent;
   padding: 25px;
 
+  a {
+    color: #2b6fa1;
+  }
   .section-header {
     h1 {
       margin: 0 auto;
@@ -281,8 +284,11 @@ $hero-height: 100vh;
   background-color: $text-gray;
   color: white;
 
-  a, h1, p {
+  h1, p {
     color: white;
+  }
+  a {
+    color: #b1deff;
   }
   h1 {
     border: none;
