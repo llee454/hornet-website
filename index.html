@@ -23,20 +23,11 @@
      <!-- Load the current theme's stylesheet -->
     <link rel="stylesheet" type="text/css" href="themes/portfolio/portfolio.css">
 
-    <!-- Load the experimental Progressbar module -->
-    <script src="modules/progressbar/progressbar.js"></script>
-
-    <script src="lib/uri/uri.js"></script>
-    <script src="lib/qunit/qunit.js"></script>
-    <script>
-      QUnit.config.autostart = false;
-    </script>
-
-    <!-- Load the current theme's stylesheet -->
-    <link rel="stylesheet" type="text/css" href="themes/portfolio/portfolio.css">
-
     <!-- Load the module libraries -->
     <script src="modules/coq/lib/node_modules/jscoq/ui-js/jscoq-loader.js"></script>
+
+    <!-- Load the experimental Progressbar module -->                                                |~                                                                                                        
+    <script src="modules/progressbar/progressbar.js"></script>
 
     <!-- Load the Core Module -->
     <script src="modules/core/core.js"></script>
@@ -82,7 +73,7 @@
     <div id='body'>
       <div id='main-content'>
         <!-- intro section -->
-        <div id='intro' class='section'>
+        <div id='intro' class='section light-section'>
           <div class='section-content'>
             <div id='assertion' class='section-header'>
               <h1>I am a software developer specializing in formal methods.</h1>
@@ -102,21 +93,8 @@
             </div>
           </div>
         </div>
-        <!-- definition -->
-        <div id='definition' class='section'>
-          <div class='section-content'>
-            <div class='section-header'>
-              <h1>Definition: What is Formally Verified Software Development?</h1>
-            </div>
-            <div class='section-body'>
-              <p>Formally verified software development is the practice of writing mathematical proofs to verify that software is correct.</p>
-              <p>A mathematical proof is a sequence of assertions in which every assertion is either an axiom or can be derived from one or more of the preceding assertions by applying a logical deduction rule.</p>
-              <p>I specialize in writing proofs in Coq, a programming language capable of expressing both logical arguments and describing algorithms.</p>
-            </div>
-          </div>
-        </div>
         <!-- success story -->
-        <div id='case-study' class='section'>
+        <div id='case-study' class='section light-section'>
           <div class='section-content'>
             <div class='section-header'>
               <h1>Industrial Results</h1>
@@ -331,21 +309,25 @@
           </div>
         </div>
         <!-- portfolio -->
-        <div id='portfolio' class='section'>
-          <div class='section-content'>
-            <div class='section-header'>
-              <h1>Portfolio: Large Scale Developments Using Coq</h1>
-            </div>
-            <div class='section-body'>
-              <p>While working with SiFive, I was the lead developer for the Kami Processor, an Open-Source Risc-v processor written in Kami.</p>
-              <p>Kami is a domain-specific language designed for modeling digital circuits.</p>
-              <p>The Kami processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
-              <p>Kami is embedded within Gallina, Coq's dependently-typed programming language. Using Coq, I've verified components used within the Kami Processor and verified the Gallina functions used to generate the Kami Processor model.</p>
+        <div id='portfolio' class='section dark-section'>
+          <div id='portfolio-parallax-background'></div>
+          <div id='portfolio-parallax-background-overlay'></div>
+          <div class='section-content-padding'>
+            <div class='section-content'>
+              <div class='section-header'>
+                <h1>Large Scale Developments Using Coq</h1>
+              </div>
+              <div class='section-body'>
+                <p>While working with SiFive, I was the lead developer for the Kami Processor, an Open-Source Risc-v processor written in Kami.</p>
+                <p>Kami is a domain-specific language designed for modeling digital circuits.</p>
+                <p>The Kami processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
+                <p>Kami is embedded within Gallina, Coq's dependently-typed programming language. Using Coq, I've verified components used within the Kami Processor and verified the Gallina functions used to generate the Kami Processor model.</p>
+              </div>
             </div>
           </div>
         </div>
         <!-- sample work -->
-        <div id='samples' class='section'>
+        <div id='samples' class='section light-section'>
           <div class='section-content'>
             <div class='section-header'>
               <h1>Code Sample: A Formally Verified Nat to String Function</h1>
@@ -365,7 +347,7 @@
           </div>
         </div>
         <!-- open source contributions -->
-        <div id='contributions' class='section'>
+        <div id='contributions' class='section light-section'>
           <div class='section-content'>
             <div class='section-header'>
               <h1>Open Source Contributions</h1>
@@ -377,7 +359,7 @@
             </div>
           </div>
         </div>
-        <div id='qed-section' class='section'>
+        <div id='qed-section' class='section light-section'>
           <div class='section-content'>
             <div class='section-body'>
               <div id='qed'><em><strong>Q.E.D</strong></em></div>

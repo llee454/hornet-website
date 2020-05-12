@@ -151,8 +151,18 @@ $hero-height: 100vh;
 #intro-video {
   max-width: 100%;
 }
+#main-content {
+  background-color: rgb(250,250,255);
+}
+.light-section {
+  .section-content {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px
+  }
+}
 .section-content {
   @include centeredContent;
+  padding: 25px;
 
   .section-header {
     h1 {
@@ -162,6 +172,18 @@ $hero-height: 100vh;
       border-bottom: 1px solid $text-gray;
     }
   }
+}
+#intro {
+  padding-top: 25px;
+}
+#case-study {
+  padding-bottom: 25px;
+}
+#samples {
+  padding-top: 25px;
+}
+#qed-section {
+  padding-bottom: 25px;
 }
 .eqn-labeled {
   overflow-x: auto;
@@ -175,6 +197,32 @@ $hero-height: 100vh;
   }
   td.eqn-label {
     text-align: right;
+  }
+}
+#portfolio {
+  position: relative;
+  overflow: hidden;
+
+  #portfolio-parallax-background {
+    background-image: url('images/hifive_dev_board.jpg');
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  #portfolio-parallax-background-overlay {
+    background-color: rgba(0,0,0,0.7);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  .section-content-padding {
+    padding: 25px 0;
+  }
+  .section-content {
+    background-color: rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
   }
 }
 .jscoq-main {

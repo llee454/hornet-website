@@ -2703,11 +2703,19 @@ table.padded-list tbody tr td {
 #intro-video {
   max-width: 100%; }
 
+#main-content {
+  background-color: #fafaff; }
+
+.light-section .section-content {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px; }
+
 .section-content {
   max-width: 900px;
   width: 70%;
   margin: 0 auto;
-  padding: 0; }
+  padding: 0;
+  padding: 25px; }
   @media screen and (max-width: 950px) {
     .section-content {
       width: 80%; } }
@@ -2717,6 +2725,18 @@ table.padded-list tbody tr td {
     text-align: center;
     border-bottom: 1px solid #333333; }
 
+#intro {
+  padding-top: 25px; }
+
+#case-study {
+  padding-bottom: 25px; }
+
+#samples {
+  padding-top: 25px; }
+
+#qed-section {
+  padding-bottom: 25px; }
+
 .eqn-labeled {
   overflow-x: auto;
   overflow-y: hidden;
@@ -2725,6 +2745,27 @@ table.padded-list tbody tr td {
     width: 100%; }
   .eqn-labeled td.eqn-label {
     text-align: right; }
+
+#portfolio {
+  position: relative;
+  overflow: hidden; }
+  #portfolio #portfolio-parallax-background {
+    background-image: url("images/hifive_dev_board.jpg");
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+  #portfolio #portfolio-parallax-background-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+  #portfolio .section-content-padding {
+    padding: 25px 0; }
+  #portfolio .section-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10; }
 
 .jscoq-main #ide-wrapper {
   height: 700px;
