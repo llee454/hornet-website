@@ -43,7 +43,7 @@ $(window).scroll (function () {
   var offset = $(window).scrollTop();
   sectionOffset = $('#portfolio').offset ();
   threshold = 1000;
-  backgroundOffset = 200;
+  backgroundOffset = 500;
   displacement = offset - sectionOffset.top + threshold;
   if (displacement > 0) {
     x = Math.floor (displacement / 4) - backgroundOffset;

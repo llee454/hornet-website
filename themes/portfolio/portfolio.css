@@ -2752,7 +2752,7 @@ table.padded-list tbody tr td {
   #portfolio #portfolio-parallax-background {
     background-image: url("images/hifive_dev_board.jpg");
     background-size: cover;
-    height: 100%;
+    min-height: 1000px;
     position: absolute;
     width: 100%; }
   #portfolio #portfolio-parallax-background-overlay {
@@ -2838,6 +2838,9 @@ table.padded-list tbody tr td {
 
   #hero-overlay-content h1 {
     font-size: 50px; }
+
+  .section-content {
+    width: 90%; }
 
   .eqn-labeled {
     overflow-x: scroll; } }
