@@ -160,6 +160,9 @@ $hero-height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px
   }
 }
+.section-start-icon {
+  font-size: 40px;
+}
 .section-content {
   @include centeredContent;
   padding: 25px;
@@ -172,6 +175,10 @@ $hero-height: 100vh;
       border-bottom: 1px solid $text-gray;
     }
   }
+}
+.section-end-icon {
+  font-size: 80px;
+  text-align: center;
 }
 #intro {
   padding-top: 25px;
@@ -241,7 +248,7 @@ $hero-height: 100vh;
   }
   #panel-wrapper {
     border: none !important;
-    height: 250px;
+    height: 270px;
     width: 100%;
 
     #toolbar {
@@ -267,7 +274,7 @@ $hero-height: 100vh;
   }
 }
 #qed {
-  font-size: 90px;
+  font-size: 60px;
   text-align: center;
 }
 .dark-section {

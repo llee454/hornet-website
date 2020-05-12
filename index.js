@@ -38,15 +38,3 @@ function main_displayBackToTop () {
     $('#back_to_top').animate ({opacity: 0});
   }
 }
-
-$(window).scroll (function () {
-  var offset = $(window).scrollTop();
-  sectionOffset = $('#portfolio').offset ();
-  threshold = 1000;
-  backgroundOffset = 500;
-  displacement = offset - sectionOffset.top + threshold;
-  if (displacement > 0) {
-    x = Math.floor (displacement / 4) - backgroundOffset;
-    $('#portfolio-parallax-background').css ('top', x + 'px');
-  }
-});

@@ -2710,6 +2710,9 @@ table.padded-list tbody tr td {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px; }
 
+.section-start-icon {
+  font-size: 40px; }
+
 .section-content {
   max-width: 900px;
   width: 70%;
@@ -2724,6 +2727,10 @@ table.padded-list tbody tr td {
     max-width: 500px;
     text-align: center;
     border-bottom: 1px solid #333333; }
+
+.section-end-icon {
+  font-size: 80px;
+  text-align: center; }
 
 #intro {
   padding-top: 25px; }
@@ -2778,7 +2785,7 @@ table.padded-list tbody tr td {
     padding: 0; }
 .jscoq-main #panel-wrapper {
   border: none !important;
-  height: 250px;
+  height: 270px;
   width: 100%; }
   .jscoq-main #panel-wrapper #toolbar {
     height: 50px; }
@@ -2797,7 +2804,7 @@ table.padded-list tbody tr td {
       display: none; }
 
 #qed {
-  font-size: 90px;
+  font-size: 60px;
   text-align: center; }
 
 .dark-section {
