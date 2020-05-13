@@ -2706,10 +2706,6 @@ table.padded-list tbody tr td {
 #main-content {
   background-color: #fafaff; }
 
-.light-section .section-content {
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px; }
-
 .section-start-icon {
   font-size: 40px; }
 
@@ -2727,7 +2723,12 @@ table.padded-list tbody tr td {
   .section-content .section-header h1 {
     margin: 0 auto;
     max-width: 500px;
-    text-align: center;
+    text-align: center; }
+
+.light-section .section-content {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px; }
+  .light-section .section-content .section-header h1 {
     border-bottom: 1px solid #333333; }
 
 .section-end-icon {
@@ -2772,9 +2773,21 @@ table.padded-list tbody tr td {
   #portfolio .section-content-padding {
     padding: 25px 0; }
   #portfolio .section-content {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #333333;
     position: relative;
     z-index: 10; }
+    #portfolio .section-content .accordion .accordion_item h2 {
+      color: white; }
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header .accordion_item_header_left,
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header .accordion_item_header_middle,
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header .accordion_item_header_right {
+      color: white; }
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header:hover .accordion_item_header_left,
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header:hover .accordion_item_header_middle,
+    #portfolio .section-content .accordion .accordion_item .accordion_item_header:hover .accordion_item_header_right {
+      color: #333333; }
+    #portfolio .section-content .accordion .accordion_item .accordion_item_body {
+      color: white; }
 
 .jscoq-main #ide-wrapper {
   height: 700px;
@@ -2818,6 +2831,8 @@ table.padded-list tbody tr td {
     color: #b1deff; }
   .dark-section h1 {
     border: none; }
+  .dark-section .section-content .section-header h1 {
+    border-bottom: 1px solid white; }
 
 .feedback {
   height: 600px; }
@@ -2825,6 +2840,8 @@ table.padded-list tbody tr td {
 .form_block {
   display: none; }
 
+#contact .section-body {
+  padding-top: 25px; }
 #contact .contact-label {
   display: inline-block;
   width: 60px; }

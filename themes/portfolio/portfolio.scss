@@ -154,12 +154,6 @@ $hero-height: 100vh;
 #main-content {
   background-color: rgb(250,250,255);
 }
-.light-section {
-  .section-content {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px
-  }
-}
 .section-start-icon {
   font-size: 40px;
 }
@@ -175,7 +169,17 @@ $hero-height: 100vh;
       margin: 0 auto;
       max-width: 500px;
       text-align: center;
-      border-bottom: 1px solid $text-gray;
+    }
+  }
+}
+.light-section {
+  .section-content {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px;
+    .section-header {
+      h1 {
+        border-bottom: 1px solid $text-gray;
+      }
     }
   }
 }
@@ -230,9 +234,34 @@ $hero-height: 100vh;
     padding: 25px 0;
   }
   .section-content {
-    background-color: rgba(0,0,0,0.5);
+    background-color: $text-gray;
     position: relative;
     z-index: 10;
+
+    .accordion {
+      .accordion_item {
+        h2 {
+          color: white;
+        }
+        .accordion_item_header {
+          .accordion_item_header_left,
+          .accordion_item_header_middle,
+          .accordion_item_header_right {
+            color: white;
+          }
+          &:hover {
+            .accordion_item_header_left,
+            .accordion_item_header_middle,
+            .accordion_item_header_right {
+              color: $text-gray;
+            }
+          }
+        }
+        .accordion_item_body {
+          color: white;
+        }
+      }
+    }
   }
 }
 .jscoq-main {
@@ -293,6 +322,13 @@ $hero-height: 100vh;
   h1 {
     border: none;
   }
+  .section-content {
+    .section-header {
+      h1 {
+        border-bottom: 1px solid white;
+      }
+    }
+  }
 }
 
 .feedback {
@@ -303,6 +339,9 @@ $hero-height: 100vh;
 }
 
 #contact {
+  .section-body {
+    padding-top: 25px;
+  }
   .contact-label {
     display: inline-block;
     width: 60px;
