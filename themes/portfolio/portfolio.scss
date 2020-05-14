@@ -335,7 +335,6 @@ $hero-height: 100vh;
   padding: 0 50px;
   .endorsement-author {
     float: right;
-    min-width: 300px;
   }
   .clear-float {
     clear: both;
@@ -391,5 +390,8 @@ $hero-height: 100vh;
   }
   .eqn-labeled {
     overflow-x: scroll;
+  }
+  .endorsement {
+    padding: 0;
   }
 }

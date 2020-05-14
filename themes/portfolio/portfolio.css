@@ -2838,8 +2838,7 @@ table.padded-list tbody tr td {
   font-style: italic;
   padding: 0 50px; }
   .endorsement .endorsement-author {
-    float: right;
-    min-width: 300px; }
+    float: right; }
   .endorsement .clear-float {
     clear: both; }
 
@@ -2880,4 +2879,7 @@ table.padded-list tbody tr td {
     width: 95%; }
 
   .eqn-labeled {
-    overflow-x: scroll; } }
+    overflow-x: scroll; }
+
+  .endorsement {
+    padding: 0; } }
