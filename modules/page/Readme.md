@@ -33,6 +33,14 @@ var page_SETTINGS_URL = 'modules/page/settings.xml';
   and stores them in this Page Settings object.
 */
 var page_SETTINGS = null;
+
+/*
+  Indicates whether or not this is the initial
+  page load and prevents the Page module from
+  scrolling to the top of the page if it is.
+*/
+var page_isInitialPageLoad = true;
+
 ```
 
 The Page Load Handler Store Class
@@ -338,8 +346,12 @@ MODULE_LOAD_HANDLERS.add (
               // Fade in
               page_fadein ();
 
-              // scroll to the top of the page after page load
-              page_scroll (url);
+              if (page_isInitialPageLoad) {
+                page_isInitialPageLoad = false;
+              } else {
+                // scroll to the top of the page after page load
+                page_scroll (url);
+              }
             });
         });
 
@@ -923,7 +935,6 @@ You can generate the Page module's source files using [Literate Programming](htt
 `literate-programming Readme.md`
 from the command line.
 
-<!---
 #### Page.js
 ```
 _"Page Module"
@@ -949,4 +960,3 @@ _"The Page Block Handler"
 _"Auxiliary Functions"
 ```
 [page.js](#Page.js "save:")
--->

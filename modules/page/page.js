@@ -24,6 +24,14 @@ var page_SETTINGS_URL = 'modules/page/settings.xml';
 var page_SETTINGS = null;
 
 /*
+  Indicates whether or not this is the initial
+  page load and prevents the Page module from
+  scrolling to the top of the page if it is.
+*/
+var page_isInitialPageLoad = true;
+
+
+/*
   Page Load Handler Stores store the registered
   Page Load Handlers and provide a safe interface
   for registering and retrieving them.
@@ -278,8 +286,12 @@ MODULE_LOAD_HANDLERS.add (
               // Fade in
               page_fadein ();
 
-              // scroll to the top of the page after page load
-              page_scroll (url);
+              if (page_isInitialPageLoad) {
+                page_isInitialPageLoad = false;
+              } else {
+                // scroll to the top of the page after page load
+                page_scroll (url);
+              }
             });
         });
 
@@ -518,6 +530,9 @@ unittest ('page_block',
     );
   }
 );
+
+
+
 
 /*
   Accepts three arguments:
