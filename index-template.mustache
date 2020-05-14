@@ -149,17 +149,17 @@
                       And, let \(error(n)\) represent the \(n^{th}\) approximation error.
                       Then \(x\) is given by:
                     </p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
                     <p>Setting \(approx(0) = 0\), we will append a bit, \(b(n)\), onto the approximation at the end of each iteration.</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}2: $$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$${{/eqn.labeled}}</div>
                     <p>where:</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}4: $$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$${{/eqn.labeled}}</div>
                     <p>Using back substitution we can solve for \(error\) to derive the following recurrence relation:</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}5: $$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$${{/eqn.labeled}}</div>
                     <p>Using the above equations and the fact that \(1 &lt;= x &lt; 2\), we can derive the following corollaries:</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}6: $$\forall n, 0 \le approx(n) \lt 2$${{/eqn.labeled}}</div>
                     <div class="curly_block">
-                      
+                      {{#eqn.labeled}}7: $$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$${{/eqn.labeled}}
                     </div>
                   </div>
                 </div>
@@ -172,9 +172,9 @@
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>We proceed using a proof by induction. When n = 0, substitution gives:</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}8: $$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$${{/eqn.labeled}}</div>
                     <p>When \(n \gt 0\), we have to prove:</p>
-                    <div class="curly_block"></div>
+                    <div class="curly_block">{{#eqn.labeled}}9: $$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$${{/eqn.labeled}}</div>
                     <p>We proceed by case analysis. \(b (n)\) equals either 0 or 1.</p>
                     <p><strong><code>b (n) = 0</code></strong><p>
                     <p>When \(b (n) = 0\), our goal becomes: \(x \lt (approx (n) + \frac{1}{2^n})^2\). Expanding and rewriting \(error\) using (7) leads to:</p>
@@ -410,39 +410,19 @@
               <h1><span class='section-start-icon'>&#8718;</span><br/>Endorsements</h1>
             </div>
             <div class='section-body'>
+              {{#endorsements?}}
                 <div class='endorsement'>
                   <div class='endorsement-quote'>
-                    <p>"I was Larry&#39;s supervisor at SiFive. There, he was instrumental in bringing up a formal specification of the RISC-V processor in Kami, which is a framework in Coq to specify hardware circuits using transactional semantics. The task was pretty complex, given the enormity of the RISC-V specification and the ability to understand, Kami, a new framework completely, in order to write programs in that framework. Larry was a quick learner and was highly motivated to perform this task. He paid a lot of attention to detail and had excellent software engineering skills - always coming up with unit test cases even for the smallest change made or feature added to the code base. Overall, I enjoyed working with Larry."</p>
+                    <p>"{{endorsement-quote}}"</p>
                   </div>
                   <div class='endorsement-author'>
-                    <div class='endorsement-author-name'>Murali Vijayaraghavan</div>
-                    <div class='endorsement-author-title'>Proof Engineer</div>
-                    <div class='endorsement-author-email'>vmurali@csail.mit.edu</div>
+                    <div class='endorsement-author-name'>{{endorsement-name}}</div>
+                    <div class='endorsement-author-title'>{{endorsement-title}}</div>
+                    <div class='endorsement-author-email'>{{endorsement-email}}</div>
                   </div>
                   <div class='clear-float'></div>
                 </div>
-                <div class='endorsement'>
-                  <div class='endorsement-quote'>
-                    <p>"Working with Larry for nearly two years at SiFive I have come to know him as a man with a efficient and effective proof writing technique. As evidenced by his work in the ProcKami repository, he also shows the great attention to detail and forward planning one associates with well-written COQ code."</p>
-                  </div>
-                  <div class='endorsement-author'>
-                    <div class='endorsement-author-name'>Anthony Machado</div>
-                    <div class='endorsement-author-title'>Proof Engineer</div>
-                    <div class='endorsement-author-email'>tj.machado@gmail.com</div>
-                  </div>
-                  <div class='clear-float'></div>
-                </div>
-                <div class='endorsement'>
-                  <div class='endorsement-quote'>
-                    <p>"Larry Lee is great knowledge of theorem proving as well as the ProcKami Risc V processor. He was always the one I talked to when I had a question on how something worked in the ProcKami processor or a question on the Kami language semantics. It was really enjoyable working with Larry Lee while I was at SiFive."</p>
-                  </div>
-                  <div class='endorsement-author'>
-                    <div class='endorsement-author-name'>Kenneth Roe</div>
-                    <div class='endorsement-author-title'>Proof Engineer</div>
-                    <div class='endorsement-author-email'>http://www.cs.jhu.edu/~roe/</div>
-                  </div>
-                  <div class='clear-float'></div>
-                </div>
+              {{/endorsements?}}
             </div>
           </div>
         </div>

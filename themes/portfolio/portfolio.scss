@@ -333,8 +333,10 @@ $hero-height: 100vh;
 .endorsement {
   font-style: italic;
   padding: 0 50px;
+
   .endorsement-author {
     float: right;
+    width: 200px;
   }
   .clear-float {
     clear: both;

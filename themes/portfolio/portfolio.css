@@ -2838,7 +2838,8 @@ table.padded-list tbody tr td {
   font-style: italic;
   padding: 0 50px; }
   .endorsement .endorsement-author {
-    float: right; }
+    float: right;
+    width: 200px; }
   .endorsement .clear-float {
     clear: both; }
 
