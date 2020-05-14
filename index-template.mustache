@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- set mustache tag delimiters {{=[[ ]]=}} -->
 <html lang="en">
   <head>
     <title>Larry Lee: Programmer</title>
@@ -410,19 +411,19 @@
               <h1><span class='section-start-icon'>&#8718;</span><br/>Endorsements</h1>
             </div>
             <div class='section-body'>
-              {{#endorsements?}}
+              [[#endorsements?]]
                 <div class='endorsement'>
                   <div class='endorsement-quote'>
-                    <p>"{{endorsement-quote}}"</p>
+                    <p>"[[endorsement-quote]]"</p>
                   </div>
                   <div class='endorsement-author'>
-                    <div class='endorsement-author-name'>{{endorsement-name}}</div>
-                    <div class='endorsement-author-title'>{{endorsement-title}}</div>
-                    <div class='endorsement-author-email'>{{endorsement-email}}</div>
+                    <div class='endorsement-author-name'>[[endorsement-name]]</div>
+                    <div class='endorsement-author-title'>[[endorsement-title]]</div>
+                    <div class='endorsement-author-email'>[[endorsement-email]]</div>
                   </div>
                   <div class='clear-float'></div>
                 </div>
-              {{/endorsements?}}
+              [[/endorsements?]]
             </div>
           </div>
         </div>
