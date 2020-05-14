@@ -330,14 +330,23 @@ $hero-height: 100vh;
     }
   }
 }
-
+.endorsement {
+  font-style: italic;
+  padding: 0 50px;
+  .endorsement-author {
+    float: right;
+    min-width: 300px;
+  }
+  .clear-float {
+    clear: both;
+  }
+}
 .feedback {
   height: 600px;
 }
 .form_block {
   display: none;
 }
-
 #contact {
   .section-body {
     padding-top: 25px;

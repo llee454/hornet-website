@@ -2834,6 +2834,15 @@ table.padded-list tbody tr td {
   .dark-section .section-content .section-header h1 {
     border-bottom: 1px solid white; }
 
+.endorsement {
+  font-style: italic;
+  padding: 0 50px; }
+  .endorsement .endorsement-author {
+    float: right;
+    min-width: 300px; }
+  .endorsement .clear-float {
+    clear: both; }
+
 .feedback {
   height: 600px; }
 
