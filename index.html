@@ -59,7 +59,7 @@
         <div id='hero-overlay-content'>
           <h1>Proven Ability &#8718;</h1>
           <p>
-            My name is Larry Lee, I am a software developer specializing in formal methods.
+            My name is Larry Lee and I am a software developer specializing in formal methods.
             My work includes formally verified hardware designs and real-world examples of applied mathematics.
           </p>
         </div>
@@ -79,11 +79,12 @@
               <h1><span class='section-start-icon'>&#8718;</span><br/>I am a software developer specializing in formal methods.</h1>
             </div>
             <div class='section-body'>
-              <p>Formally Verified Software development is the practice of writing mathematical proofs to verify software.
+              <p>
+                Formally Verified Software development is the practice of writing mathematical proofs to verify software.
                 I specialize in using <strong>Coq</strong> to do this.
-                Over the last 7 years, I've proved <strong>hundreds</strong> of results using Coq and have developed formally verified algorithms.
-                I've contributed to the Coq Standard Library and am a package maintainer in the Coq Package index.
-                My portfolio of results proves my ability to analyze complex problems and produce results.
+                Over the last 7 years, I've written <strong>hundreds</strong> of proofs using Coq and have developed formally verified algorithms.
+                I've contributed to the Coq Standard Library and am a package maintainer in the Coq Package Index.
+                My portfolio demonstrates my ability to analyze complex problems and produce results.
               </p>
               <div class="video_player_block">
                 <video id="intro-video" class="video-js vjs-default-skin" poster="images/hero_video_poster.jpeg" controls preload="auto">
@@ -100,7 +101,7 @@
               <h1><span class='section-start-icon'>&#8718;</span><br/>Industrial Results</h1>
             </div>
             <div class='section-body'>
-              <p>In 2018, SiFive, a Silicon Valley-based company specializing in the design of RISC-V processors used an algorithm that they feared was incorrect.</p>
+              <p>In 2018, SiFive, a Silicon Valley-based company specializing in the design of RISC-V processors, used an algorithm that they feared was incorrect.</p>
               <p>
                 They suspected that a register used within the floating point unit of their S-series processors was too small to store the intermediate values that it computed during square root and division operations.</p>
                 While the unit passed SiFive's test suite, They feared that a bug lurked in an edge case not covered by their tests.
@@ -164,7 +165,6 @@
                   <div class="accordion_item_number">3</div>
                   <div class="accordion_item_title">A Lower Bound for \(approx\)</div>
                   <div class="accordion_item_body">
-                    <p>Next we establish a lower bound constraint for \(approx(n)\):</p>
                     <div class="eqn-labeled">
                       $$\mbox{Lemma 1.1:}\quad \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
                     </div>
@@ -195,7 +195,6 @@
                   <div class="accordion_item_number">4</div>
                   <div class="accordion_item_title">A Constant Upper Bound for \(error\)</div>
                   <div class="accordion_item_body">
-                    <p>The following lemma establishes an upper bound for \(error (n)\) that we will need to prove our primary theorem below.</p>
                     <div class="eqn-labeled">
                       $$\mbox{Lemma 1.2:}\quad \forall n, error (n) \lt 4$$
                     </div>
@@ -269,7 +268,6 @@
                   <div class="accordion_item_number">6</div>
                   <div class="accordion_item_title">Conclusion</div>
                   <div class="accordion_item_body">
-                    <p>We are now in a position to prove the main result:</p>
                     <div class="eqn-labeled">
                       $$\mbox{Theorem 1.5:}\quad \forall n, error (n) \lt \frac{8}{2^n}$$
                     </div>
@@ -318,10 +316,10 @@
                 <h1><span class='section-start-icon'>&#8718;</span><br/>Large Scale Developments</h1>
               </div>
               <div class='section-body'>
-                <p>While working with SiFive, I was the lead developer for the Kami Processor, an Open-Source Risc-v processor written in Kami.</p>
-                <p>Kami is a domain-specific language designed for modeling digital circuits.</p>
-                <p>The Kami processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
-                <p>Kami is embedded within Gallina, Coq's dependently-typed programming language. Using Coq, I've verified components used within the Kami Processor and verified the Gallina functions used to generate the Kami Processor model.</p>
+                <p>While working with SiFive, I was the lead developer for Kami Processor, an Open-Source RISC-V processor written in Kami.</p>
+                <p>Kami is a domain-specific language embedded within Gallina designed for modeling digital circuits.</p>
+                <p>Kami Processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
+                <p>As part of this work, I verified components used within Kami Processor and verified many of the Gallina functions used to generate the model.</p>
                 <ul class='links'>
                   <li><a href='data/kami_proc_report.pdf'>Kami Processor: Status and Comparison</a></li>
                 </ul>
@@ -337,10 +335,10 @@
             </div>
             <div class='section-body'>
               <p>
-                The example below presents a Gallina functions that accepts a number and returns an equivalent string.
+                The example below presents a Gallina function that accepts a number and returns an equivalent string.
                 This example includes a proof that the given function is injective.
                 Whereas the print function provided by the Coq Standard Library only supports decimal and hexadecimal formats, the example presented below can support an arbitrary radix.
-                Furthermore, this example demonstrates a number of design patterns, including well founded recursion, structural recursion, and dependent types.
+                Furthermore, this example demonstrates a number of Coq design patterns, including well founded recursion, structural recursion, and dependent types.
               </p>
               <p>
                 This example was originally defined as part of the Kami project: <a href="https://github.com/sifive/Kami/blob/master/Lib/NatStr.v">NatStr.v</a>.
@@ -357,7 +355,7 @@
             </div>
             <div class='section-body'>
               <p>Over the years, I've contributed to the Coq Standard Library and released packages through the Coq Package Index.</p>
-              <p>The Coq package index is a curated collection of Coq modules that are released by the Coq maintainers as part of the Coq cpan repository.</p>
+              <p>The Coq package index is a curated collection of Coq modules that are released by the Coq maintainers as part of the Coq Opam repository.</p>
               <p>I am the package maintainer for two CPI libraries: functional algebra and pigeons.</p>
               <ul class='links'>
                 <li><a href='https://github.com/llee454/functional-algebra'>Functional Algebra: a formalization of abstract algebra</a></li>
