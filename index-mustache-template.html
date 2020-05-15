@@ -374,9 +374,12 @@
             </div>
             <div class='section-body'>
               <p>
-                The example below presents a Gallina function that accepts a number and returns an equivalent string.
-                This example includes a proof that the given function is injective.
-                Whereas the print function provided by the Coq Standard Library only supports decimal and hexadecimal formats, the example presented below can support an arbitrary radix.
+                The sample below presents three Gallina functions: <code>natToBinStr</code>, <code>natToDecStr</code>, and <code>natToHexStr</code>.
+                Each of these functions accepts a number and returns a string that represents the given number in a specific format.
+                In this example, I prove that these functions are injective.
+              </p>
+              <p>
+                Whereas the print functions provided by the Coq Standard Library only support decimal and hexadecimal formats, the example presented below can support an arbitrary radix.
                 Furthermore, this example demonstrates a number of Coq design patterns, including well founded recursion, structural recursion, and dependent types.
               </p>
               <p>
