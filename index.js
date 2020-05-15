@@ -25,11 +25,9 @@ MODULE_LOAD_HANDLERS.add (
 
   $('#intro-video')
     .on ('play', function (event) {
-      alert ('playing');
       ga ('send', 'event', 'intro video', 'play');
     })
     .on ('ended', function (event) {
-      alert ('ended');
       ga ('send', 'event', 'intro video', 'ended');
     });
 
