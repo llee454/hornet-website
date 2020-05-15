@@ -236,7 +236,7 @@
                       Unfolding \(approx (n + 1)\), reduces our goal to: \(x \lt (approx (n) + \frac{b (n)}{2^n} + \frac{1}{2^n})^2\).
                     </p>
                     <p><strong><code>b (n) = 0</code></strong><p>
-                    <p>When \(b (n) = 0\) our goal follows algebraicly:</p>
+                    <p>When \(b (n) = 0\) our goal follows algebraically:</p>
                     <div class="eqn-labeled">
                       $$\begin{array}{rcl}<!--
                         -->x &amp;=&amp; approx (n)^2 + error (n)\\<!--
@@ -254,7 +254,7 @@
                       $$\mbox{Corollary 1.4:}\quad \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
                     </div>
                     <p><strong>Derivation</strong></p>
-                    <p>Corollary 1.4 follows algebraicly from Lemma 1.3:</p>
+                    <p>Corollary 1.4 follows algebraically from Lemma 1.3:</p>
                     <div class="eqn-labeled">
                       $$\begin{array}{rcl}<!--
                         -->x &amp;\lt&amp; (approx (n) + \frac{2}{2^n})^2 \\<!--
@@ -319,10 +319,7 @@
               <div class='section-body'>
                 <p>While working with SiFive, I was the lead developer for Kami Processor, an Open-Source RISC-V processor written in the modeling language Kami.</p>
                 <p>Kami Processor is a highly configurable RISC-V processor that implements a substantial fraction of the RISC-V feature set: including memory virtualization, compressed instruction encodings, floating point operations, and dynamic data widths.</p>
-                <p>As part of this work, I verified components used within Kami Processor and verified many of the Gallina functions used to generate the model.</p>
-                <ul class='links'>
-                  <li><a href='data/kami_proc_report.pdf'>Kami Processor: Status and Comparison</a></li>
-                </ul>
+                <p>I developed and verified most of the Gallina functions used to generate Kami Processor and contributed proofs to the Kami language project. Click on the down arrows below to read more about my work developing the Kami Processor, and my contributions to the Kami modeling language.</p>
                 <div id='portfolio-details' class="accordion_block">
                   <div class="accordion_item_block">
                     <div class="accordion_item_number">1</div>
@@ -330,11 +327,15 @@
                     <div class="accordion_item_body">
                       <h2>Overview</h2>
                       <p>SiFive started the Kami Processor project in 2018 intending to develop a canonical model of the RISC-V specification. While working at SiFive, I was the primary developer for Kami Processor.</p>
-                      <p>The Kami processor supports the following RISC-V extensions: I, M, A, D, F, C, S, U, Zifencei, and Zcsr. This means that the Kami processor supports the mandatory core set of integer arithmetic and logic instructions prescribed by the RISC-V ISA (I). In addition, it supports integer multiplication (M), atomic memory operations (A), 64 bit floating point operations (D), 32 bit floating pointoperations (F), compressed instruction encodings (C), multi threaded synchronization support (ZiFencei), and support for RISC-V's control status register operations (Zicsr).</p>
+                      <p>The Kami processor supports the following RISC-V extensions: I, M, A, D, F, C, S, U, Zifencei, and Zcsr. This means that the Kami processor supports the mandatory core set of integer arithmetic and logic instructions prescribed by the RISC-V ISA (I). In addition, it supports integer multiplication (M), atomic memory operations (A), 64 bit floating point operations (D), 32 bit floating point operations (F), compressed instruction encodings (C), multi threaded synchronization support (ZiFencei), and support for RISC-V's control status register operations (Zicsr).</p>
                       <p>The Kami Processor includes a page table walker which allows applications to translate between physical and virtual memory addresses. Kami Processor includes a translation look-aside buffer that caches address translations in a buffer that uses a pseudo-LRU allocation algorithm.</p>
                       <p>The RISC-V spec defines several virtual memory modes. These are denoted by a code that indicates the size of the words used to encode virtual addresses. For example, "sv39" indicates that the virtual addresses are 39 bits wide. The Kami Processor supports virtual address modes sv32, sv39, and sv48.</p>
                       <p>The RISC-V memory protection model prescribes a physical memory protection scheme based around physical protection control status registers (PMP CSRs). The Kami Processor supports the full suite of PMP CSRs and all of the RISC-V address matching schemes, namely: top of range (TOR), naturally aligned four-byte regions (NA4), and naturally aligned power of two regions (NAPOT). Its address granularity is configurable.</p>
                       <p>I wrote the Kami Processor to use the TileLink interchip communication protocol. The TileLink protocol defines a set of conformance levels. Kami Processor's device interface communicates using the TileLink Uncached Heavyweight (TL-UH) message protocol. This protocol extends the basic read and write messages provided by the TileLink Uncached Lightweight (TL-UL) message protocol by adding atomic memory operations. By supporting the TileLink protocol, the Kami Processor can be integrated into systems using a number of interchip bus protocols either directly or through a conversion bridge.</p>
+                      <p>Read the following report to learn more about the Kami Processor.</p>
+                      <ul class='links'>
+                        <li><a href='data/kami_proc_report.pdf'>Kami Processor: Status and Comparison</a></li>
+                      </ul>
                     </div>
                   </div>
                   <div class="accordion_item_block">
@@ -354,8 +355,8 @@
                     <div class="accordion_item_title">RISC-V</div>
                     <div class="accordion_item_body">
                       <h2>Overview</h2>
-                      <p>RISC-V is an open instruction set architecture (ISA) originally developed atBerkley and Stanford.</p>
-                      <p>As the name indicates, RISC-V is a reduced instruction set computer architec-ture.</p>
+                      <p>RISC-V is an open instruction set architecture (ISA) originally developed at Berkley and Stanford.</p>
+                      <p>As the name indicates, RISC-V is a reduced instruction set computer architecture.</p>
                       <p>Following the philosophy of other RISC architectures, RISC-V defines a small set of core processor instructions while eschewing the more complicated instructions provided by traditional complex instruction set computer (CISC) architectures.</p>
                       <p>RISC-V was designed to be an extensible RISC architecture. It includes provisions for adding specialized complex instructions and for standardizing sets of instructions critical to common applications.</p>
                     </div>
