@@ -23,9 +23,35 @@ MODULE_LOAD_HANDLERS.add (
     $('#mobile-menu-content').slideToggle ();
   })
 
-  setTimeout(function () {
-    $('#hero-video').play ();
-  }, 1500);
+  $('#intro-video')
+    .on ('play', function (event) {
+      alert ('playing');
+      ga ('send', 'event', 'intro video', 'play');
+    })
+    .on ('ended', function (event) {
+      alert ('ended');
+      ga ('send', 'event', 'intro video', 'ended');
+    });
+
+  var viewedCaseStudyDetails = false;
+  $('#case-study-details').on ('click', function () {
+    if (!viewedCaseStudyDetails) {
+      viewedCaseStudyDetails = true;
+      ga ('send', 'event', 'case study details', 'view');
+    }
+  });
+
+  var viewedPortfolioDetails = false;
+  $('#portfolio-details').on ('click', function () {
+    if (!viewedPortfolioDetails) {
+      viewedPortfolioDetails = true;
+      ga ('send', 'event', 'portfolio details', 'view');
+    }
+  });
+
+  $('#code-sample').on ('click', function () {
+    ga ('send', 'event', 'code sample', 'click');
+  });
 
   done (null);
 });
