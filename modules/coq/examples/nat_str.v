@@ -23,13 +23,20 @@ Section nat_string.
        | m :: ms => (radix * nat_decomp_nat radix ms) + m
        end.
 
+  (*
+    Accepts two arguments: x and ns; and multiplies every element
+    in ns by x.
+  *)
   Local Fixpoint nat_decomp_prod (x : nat) (ns : list nat) : list nat
     := match ns with
        | [] => []
        | m :: ms => x * m :: nat_decomp_prod x ms
        end.
 
-  (* 0 = Nat.div x y ==> x < y ==> x = x mod y *)
+  (*
+    Accepts two natural numbers: x and y; and proves that if x | y = 0,
+    and x < y, then x = x mod y.
+  *)
   Lemma div0_mod : forall x y : nat, y <> 0 -> 0 = Nat.div x y -> x = x mod y.
   Proof.
     exact
@@ -39,6 +46,15 @@ Section nat_string.
                (eq_sym H0)))).
   Qed.
 
+  (*
+    Accepts two arguments: radix and n; decomposes n into a sum of
+    powers of radix + 2; and returns the decomposition and a proof
+    of two assertions.
+
+    The first assertion asserts that every value in the decomposition
+    is less than radix + 2, whereas the second asserts that n equals
+    the sum of the decomposition.
+  *)
   Local Definition nat_decomp
     (radix : nat) (* radix minus 2 *)
     (n : nat)
@@ -117,7 +133,7 @@ Section nat_string.
                 eq_refl)%nat
          (lt_wf n).
 
-  (* Every function that has an inverse is injective. *)
+  (* Proves that every function that has an inverse is injective. *)
   Local Theorem inv_inj
     : forall (A B : Type) (f : A -> B) (g : B -> A),
         (forall x : A, g (f x) = x) ->
@@ -130,6 +146,7 @@ Section nat_string.
     reflexivity.
   Qed.
 
+  (* Proves that the decomposition function is injective. *)
   Local Theorem nat_decomp_inj
     (radix : nat) (* radix minus 2 *)
     :  forall n m : nat, proj1_sig (nat_decomp radix n) = proj1_sig (nat_decomp radix m) -> n = m.
@@ -143,6 +160,12 @@ Section nat_string.
 
   Local Open Scope char_scope.
 
+  (*
+    Accepts two arguments: encoding and ns; where encoding is
+    a finite map between natural numbers and ASCII characters;
+    and maps the decomposition values in ns onto ASCII characters
+    using encoding.
+  *)
   Local Fixpoint nat_decomp_chars
     (radix : nat) (* radix minus 2 *)
     (encoding : forall n, n < S (S radix) -> ascii)
@@ -156,10 +179,13 @@ Section nat_string.
                  [encoding m (Forall_inv H)]
        end.
 
+  (* Proves that the decomposition characters function is injective. *)
   Local Theorem nat_decomp_chars_inj
     (radix : nat)
     (encoding : forall n, n < S (S radix) -> ascii)
-    (encoding_inj : forall n m (Hn : n < S (S radix)) (Hm : m < S (S radix)), encoding n Hn = encoding m Hm -> n = m)
+    (encoding_inj :
+      forall n m (Hn : n < S (S radix)) (Hm : m < S (S radix)),
+        encoding n Hn = encoding m Hm -> n = m)
     : forall 
          (ns : list nat)
          (ms : list nat)
@@ -229,6 +255,15 @@ Section nat_string.
                        (Nat.eq_dec n m)))).
   Qed.
 
+  (*
+    Accepts three arguments: radix, encoding, and n; where encoding
+    is a finite map between natural numbers less than radix + 2;
+    and returns a list of the characters that comprise the string
+    representing n base radix + 2.
+
+    For example, [nat_chars 0 binary_encoding 5] will return a list
+    of characters that represent 5 as a binary string.
+  *)
   Local Definition nat_chars
     (radix : nat)
     (encoding : forall n, n < S (S radix) -> ascii)
@@ -238,10 +273,13 @@ Section nat_string.
          (proj1_sig (nat_decomp radix n))
          (proj1 (proj2_sig (nat_decomp radix n))).
 
+  (* Proves that nat_chars is injective. *)
   Local Theorem nat_chars_inj
     (radix : nat)
     (encoding : forall n, n < S (S radix) -> ascii)
-    (encoding_inj : forall n m (Hn : n < S (S radix)) (Hm : m < S (S radix)), encoding n Hn = encoding m Hm -> n = m)
+    (encoding_inj :
+      forall n m (Hn : n < S (S radix)) (Hm : m < S (S radix)),
+        encoding n Hn = encoding m Hm -> n = m)
     :  forall n m : nat, nat_chars radix encoding n = nat_chars radix encoding m -> n = m.
   Proof.
     intros n m H.
@@ -254,7 +292,12 @@ Section nat_string.
             H).
     apply (nat_decomp_inj radix n m H0).
   Qed.
-    
+
+  (*
+    Accepts three arguments: radix, encoding, and n; where encoding
+    is a finite map between natural numbers less than radix + 2;
+    and returns a string that represents n base radix + 2.
+  *)
   Local Definition nat_string
     (radix : nat)
     (encoding : forall n, n < S (S radix) -> ascii)
@@ -262,6 +305,10 @@ Section nat_string.
     :  string
     := string_of_list_ascii (nat_chars radix encoding n).
 
+  (*
+    Proves that an auxiliary function used by nat_string is
+    injective.
+  *)
   Local Lemma string_of_list_ascii_inj
     : forall xs ys : list ascii, string_of_list_ascii xs = string_of_list_ascii ys -> xs = ys.
   Proof.
@@ -272,6 +319,7 @@ Section nat_string.
         list_ascii_of_string_of_list_ascii).
   Qed.
 
+  (* Proves that nat_string is injective. *)
   Local Theorem nat_string_inj
     (radix : nat)
     (encoding : forall n, n < S (S radix) -> ascii)
@@ -291,8 +339,16 @@ Section nat_string.
     apply (nat_decomp_inj radix n m H1).
   Qed.
 
-  Local Ltac notIn H (* In x xs *) := repeat (destruct H; repeat (discriminate; assumption)).
+  (*
+    Given a reducible list, xs, and a reducible value, x, this
+    tatic accepts a false hypothesis, H : In x xs, and proves False.
+  *)
+  Local Ltac notIn H := repeat (destruct H; repeat (discriminate; assumption)).
 
+  (*
+    Accepts a reducible list, xs, that does not contain any duplicate
+    values; and proves [NoDup xs].
+  *)
   Local Ltac encoding_NoDup xs
     := lazymatch xs with
        | nil => exact (NoDup_nil ascii)
@@ -303,12 +359,24 @@ Section nat_string.
                 (ltac:(encoding_NoDup XS)))
        end.
 
-  Local Definition decode (encoding : list ascii) (n : nat) : ascii
+  (*
+    Accepts two arguments: encoding and n; and returns the character
+    that represents n in encoding.
+  *)
+  Local Definition encode (encoding : list ascii) (n : nat) : ascii
     := List.nth n encoding " "%char.
 
-  Local Definition decode_safe (encoding : list ascii) (n : nat) (_ : n < List.length encoding)
-    := decode encoding n.
+  (*
+    Accepts two arguments: encoding and n; and returns the character
+    that represents n in encoding.
+  *)
+  Local Definition encode_safe (encoding : list ascii) (n : nat) (_ : n < List.length encoding)
+    := encode encoding n.
 
+  (*
+    Accepts one argument: encoding : list ascii, and proves that
+    [encode encoding] is injective.
+  *)
   Local Ltac digit_encoding_inj encoding
     := exact
          (proj1 (NoDup_nth encoding " ") 
@@ -316,21 +384,28 @@ Section nat_string.
            : forall n m : nat,
                n < List.length encoding ->
                m < List.length encoding ->
-               decode encoding n = decode encoding m ->
+               encode encoding n = encode encoding m ->
                n = m).
 
-  Local Ltac encoding_inj radix encoding (* radix = encoding - 2 *)
+  (*
+    Accepts two arguments: radix : nat, and encoding : list ascii;
+    where radix = |encoding| - 2; and proves that [nat_string radix
+    encoding] is injective.
+  *)
+  Local Ltac encoding_inj radix encoding
     := exact
          (nat_string_inj
            radix
-           (decode_safe encoding)
+           (encode_safe encoding)
            (ltac:(digit_encoding_inj encoding))).
 
   Local Definition binary_encoding_list : list ascii := ["0"; "1"].
 
+  (* Accepts a number and returns an equivalent binary string. *)
   Definition natToBinStr : nat -> string
-    := nat_string 0 (decode_safe binary_encoding_list).
+    := nat_string 0 (encode_safe binary_encoding_list).
 
+  (* Proves that natToBinStr is injective. *)
   Definition natToBinStr_inj
     :  forall n m, natToBinStr n = natToBinStr m -> n = m
     := ltac:(encoding_inj 0 ["0"; "1"]%list).
@@ -338,9 +413,11 @@ Section nat_string.
   Local Definition decimal_encoding_list : list ascii
     := ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"].
 
+  (* Accepts a number and returns an equivalent decimal string. *)
   Definition natToDecStr : nat -> string
-    := nat_string 8 (decode_safe decimal_encoding_list).
-
+    := nat_string 8 (encode_safe decimal_encoding_list).
+  
+  (* Proves that natToDecStr is injective. *)
   Definition natToDecStr_inj
     :  forall n m, natToDecStr n = natToDecStr m -> n = m
     := ltac:(encoding_inj 8 ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"]%list).
@@ -348,9 +425,11 @@ Section nat_string.
   Local Definition hex_encoding_list : list ascii
     := ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "A"; "B"; "C"; "D"; "E"; "F"].
 
+  (* Accepts a number and returns an equivalent hexadecimal string. *)
   Definition natToHexStr : nat -> string
-    := nat_string 14 (decode_safe hex_encoding_list).
+    := nat_string 14 (encode_safe hex_encoding_list).
 
+  (* Proves that natToHexStr is injective *)
   Definition natToHexStr_inj
     :  forall n m, natToHexStr n = natToHexStr m -> n = m
     := ltac:(encoding_inj 14 ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "A"; "B"; "C"; "D"; "E"; "F"]%list).
