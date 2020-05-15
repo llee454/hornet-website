@@ -62,7 +62,7 @@
         <div id='hero-overlay-content'>
           <h1>Proven Ability &#8718;</h1>
           <p>
-            My name is Larry Lee and I am a software developer specializing in formal methods.
+            My name is <strong>Larry Lee</strong> and I am a software developer specializing in formal methods.
             My work includes formally verified hardware designs and real-world examples of applied mathematics.
           </p>
         </div>
@@ -104,9 +104,9 @@
               <h1><span class='section-start-icon'>&#8718;</span><br/>Industrial Results</h1>
             </div>
             <div class='section-body'>
-              <p>In 2018, SiFive, a Silicon Valley-based company specializing in the design of RISC-V processors, used an algorithm that they feared was incorrect.</p>
+              <p>SiFive is a Silicon Valley-based company specializing in the design of RISC-V processors.</p>
               <p>
-                They suspected that a register used within the floating point unit of their S-series processors was too small to store the intermediate values that it computed during square root and division operations.</p>
+                In 2018, they suspected that a register used within the floating point unit of their S-series processors was too small to store the intermediate values that it computed during square root and division operations.</p>
                 While the unit passed SiFive's test suite, They feared that a bug lurked in an edge case not covered by their tests.
               </p>
               <p>
@@ -150,16 +150,16 @@
                       And, let \(error(n)\) represent the \(n^{th}\) approximation error.
                       Then \(x\) is given by:
                     </p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$x = approx (n)^2 + error (n)$$</td><td class="eqn-label">1</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$x = approx (n)^2 + error (n)$$</td><td class="eqn-label">1</td></tr></tbody></table></div>
                     <p>Setting \(approx(0) = 0\), we will append a bit, \(b(n)\), onto the approximation at the end of each iteration.</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$$</td><td class="eqn-label">2</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$$</td><td class="eqn-label">2</td></tr></tbody></table></div>
                     <p>where:</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$$</td><td class="eqn-label">4</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$$</td><td class="eqn-label">4</td></tr></tbody></table></div>
                     <p>Using back substitution we can solve for \(error\) to derive the following recurrence relation:</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$$</td><td class="eqn-label">5</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$$</td><td class="eqn-label">5</td></tr></tbody></table></div>
                     <p>Using the above equations and the fact that \(1 &lt;= x &lt; 2\), we can derive the following corollaries:</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\forall n, 0 \le approx(n) \lt 2$$</td><td class="eqn-label">6</td></tr></tbody></table></div>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$$</td><td class="eqn-label">7</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\forall n, 0 \le approx(n) \lt 2$$</td><td class="eqn-label">6</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$$</td><td class="eqn-label">7</td></tr></tbody></table></div>
                   </div>
                 </div>
                 <div class="accordion_item_block">
@@ -171,9 +171,9 @@
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>We proceed using a proof by induction. When n = 0, substitution gives:</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$$</td><td class="eqn-label">8</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$$</td><td class="eqn-label">8</td></tr></tbody></table></div>
                     <p>When \(n \gt 0\), we have to prove:</p>
-                    <div class="eqn-labeled mustache"><table><tbody><tr><td class="eqn">$$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$$</td><td class="eqn-label">9</td></tr></tbody></table></div>
+                    <div class="eqn-labeled"><table><tbody><tr><td class="eqn">$$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$$</td><td class="eqn-label">9</td></tr></tbody></table></div>
                     <p>We proceed by case analysis. \(b (n)\) equals either 0 or 1.</p>
                     <p><strong><code>b (n) = 0</code></strong><p>
                     <p>When \(b (n) = 0\), our goal becomes: \(x \lt (approx (n) + \frac{1}{2^n})^2\). Expanding and rewriting \(error\) using (7) leads to:</p>
