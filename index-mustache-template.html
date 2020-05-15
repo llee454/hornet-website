@@ -150,18 +150,16 @@
                       And, let \(error(n)\) represent the \(n^{th}\) approximation error.
                       Then \(x\) is given by:
                     </p>
-                    <div class="curly_block">{{#eqn.labeled}}1: $$x = approx (n)^2 + error (n)$${{/eqn.labeled}}</div>
+                    [[#eqn]]1: $$x = approx (n)^2 + error (n)$$[[/eqn]]
                     <p>Setting \(approx(0) = 0\), we will append a bit, \(b(n)\), onto the approximation at the end of each iteration.</p>
-                    <div class="curly_block">{{#eqn.labeled}}2: $$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$${{/eqn.labeled}}</div>
+                    [[#eqn]]2: $$\begin{array}{rcl} approx (0) &amp;=&amp; 0 \\ \\ approx (n + 1) &amp;=&amp; approx (n) + \frac{b (n)}{2^n}\end{array}$$[[/eqn]]
                     <p>where:</p>
-                    <div class="curly_block">{{#eqn.labeled}}4: $$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$${{/eqn.labeled}}</div>
+                    [[#eqn]]4: $$b(n) = \begin{cases} 1, &amp; \mbox{if } \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \\ \\ 0, &amp; \mbox{otherwise}\end{cases}$$[[/eqn]]
                     <p>Using back substitution we can solve for \(error\) to derive the following recurrence relation:</p>
-                    <div class="curly_block">{{#eqn.labeled}}5: $$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$${{/eqn.labeled}}</div>
+                    [[#eqn]]5: $$\begin{array}{rcl} error (0) &amp;=&amp; x \\ \\ error (n + 1) &amp;=&amp; error (n) - \frac{b (n)}{2^n} (2\ approx (n) + \frac{b (n)}{2^n})\end{array}$$[[/eqn]]
                     <p>Using the above equations and the fact that \(1 &lt;= x &lt; 2\), we can derive the following corollaries:</p>
-                    <div class="curly_block">{{#eqn.labeled}}6: $$\forall n, 0 \le approx(n) \lt 2$${{/eqn.labeled}}</div>
-                    <div class="curly_block">
-                      {{#eqn.labeled}}7: $$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$${{/eqn.labeled}}
-                    </div>
+                    [[#eqn]]6: $$\forall n, 0 \le approx(n) \lt 2$$[[/eqn]]
+                    [[#eqn]]7: $$\begin{array}{rcl} \forall n, b (n) = 0 \implies error (n) \lt \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \\ \\ \forall n, b (n) = 1 \implies \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \le error (n) \end{array}$$[[/eqn]]
                   </div>
                 </div>
                 <div class="accordion_item_block">
@@ -173,9 +171,9 @@
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>We proceed using a proof by induction. When n = 0, substitution gives:</p>
-                    <div class="curly_block">{{#eqn.labeled}}8: $$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$${{/eqn.labeled}}</div>
+                    [[#eqn]]8: $$\begin{array}{rcl} x &amp;\lt&amp; (approx (0) + \frac{2}{2^0})^2 \\ x &amp;\lt&amp; 4\end{array}$$[[/eqn]]
                     <p>When \(n \gt 0\), we have to prove:</p>
-                    <div class="curly_block">{{#eqn.labeled}}9: $$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$${{/eqn.labeled}}</div>
+                    [[#eqn]]9: $$\begin{array}{l} \forall n, &amp;x \lt (approx (n) + \frac{2}{2^n})^2 \implies \\ &amp;x \lt (approx (n + 1) + \frac{1}{2^n})^2.\end{array}$$[[/eqn]]
                     <p>We proceed by case analysis. \(b (n)\) equals either 0 or 1.</p>
                     <p><strong><code>b (n) = 0</code></strong><p>
                     <p>When \(b (n) = 0\), our goal becomes: \(x \lt (approx (n) + \frac{1}{2^n})^2\). Expanding and rewriting \(error\) using (7) leads to:</p>

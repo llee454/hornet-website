@@ -46,7 +46,7 @@
     <module name="page"             enabled="true"  url="modules/page/page.js"/>
 
     <!-- level 2 modules -->
-    <module name="curly"            enabled="true"  url="modules/curly/curly.js"/>
+    <module name="curly"            enabled="false"  url="modules/curly/curly.js"/>
     <module name="search"           enabled="false"  url="modules/search/search.js"/>
 
     <!-- level 3 modules -->

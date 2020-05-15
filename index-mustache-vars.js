@@ -1,4 +1,4 @@
-{
+module.exports = {
   "endorsements?": [
       {
         "endorsement-name": "Murali Vijayaraghavan",
@@ -21,5 +21,20 @@
         "endorsement-quote": "Larry Lee is great knowledge of theorem proving as well as the ProcKami Risc V processor. He was always the one I talked to when I had a question on how something worked in the ProcKami processor or a question on the Kami language semantics. It was really enjoyable working with Larry Lee while I was at SiFive.",
         "endorsement-note": "Recieved May 14 2020 over LinkedIn."
       }
-    ]
-}
+    ],
+  "eqn": function () {
+    return function (text, render) {
+      var xs = (/([^:]*):(.*)/).exec (text.trim ()).map (function (x) {return x.trim (); });
+      return '<div class="eqn-labeled">' +
+        '<table>' +
+          '<tbody>' +
+            '<tr>' +
+              '<td class="eqn">' + xs [2] + '</td>' +
+              '<td class="eqn-label">' + xs [1] + '</td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+      '</div>';
+    }
+  }
+};
