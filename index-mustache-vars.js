@@ -18,7 +18,7 @@ module.exports = {
         "endorsement-name": "Kenneth Roe",
         "endorsement-title": "Proof Engineer",
         "endorsement-email": "http://www.cs.jhu.edu/~roe/",
-        "endorsement-quote": "Larry Lee is great knowledge of theorem proving as well as the ProcKami Risc V processor. He was always the one I talked to when I had a question on how something worked in the ProcKami processor or a question on the Kami language semantics. It was really enjoyable working with Larry Lee while I was at SiFive.",
+        "endorsement-quote": "Larry Lee [has] great knowledge of theorem proving as well as the ProcKami [RISC-V] processor. He was always the one I talked to when I had a question on how something worked in the ProcKami processor or a question on the Kami language semantics. It was really enjoyable working with Larry Lee while I was at SiFive.",
         "endorsement-note": "Recieved May 14 2020 over LinkedIn."
       }
     ],
