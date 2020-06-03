@@ -4,7 +4,7 @@
     <name>search</name>
     <!-- <lunrIndexURL>data/books_index.json</lunrIndexURL> -->
     <setIds>
-      <setId>book_search_source/book_book_page%2Fmodules%252Fbook%252Fdatabase.xml%2Feoffer_emod</setId>
+      <setId>faq</setId>
     </setIds>
   </index>
 </database>

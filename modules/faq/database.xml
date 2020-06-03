@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<database>
+  <entry>
+    <id>contact</id>
+    <title>Contact</title>
+    <keywords>name contact information email address phone number</keywords>
+    <url>mailto://llee454@gmail.com</url>
+    <body>
+      <p>Larry Darryl Lee Jr. llee454@gmail.com (410) 961 3395</p>
+    </body>
+  </entry>
+  <entry>
+    <id>degree</id>
+    <title>Degree</title>
+    <keywords>education degree college BA BS master phd</keywords>
+    <url></url>
+    <body>
+      <p>B.A., Goucher College, 2008</p>
+    </body>
+  </entry>
+  <entry>
+    <id>resume</id>
+    <title>Resume</title>
+    <keywords>resume cv</keywords>
+    <url>data/resume with cover letter.pdf</url>
+    <body>
+      <p>larrylee.tech/data/resume with cover letter.pdf</p>
+    </body>
+  </entry>
+  <entry>
+    <id>coq</id>
+    <title>Coq</title>
+    <keywords>coq programming language formal methods verification functional agda isabelle hol</keywords>
+    <url></url>
+    <body>
+      <![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Experience: 7 years<br/>
+          summary: Used to formally verify algorithms developed for SiFIve, contributed to the Coq Standard Library, and released packages on the Coq Package Index.
+        </p>
+      ]]>
+    </body>
+  </entry>
+  <entry>
+    <id>haskell</id>
+    <title>Haskell</title>
+    <keywords>haskell programming language functional</keywords>
+    <url></url>
+    <body>
+      <![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Experience: 7 years<br/>
+          summary: Used to model peripheral devices while developing processors at SiFive. Primary extraction target for programs written in Gallina.
+        </p>
+      ]]>
+    </body>
+  </entry>
+  <entry>
+    <id>riscv</id>
+    <title>RISC-V</title>
+    <keywords>riscv risc processors formal verification methods assembly</keywords>
+    <url></url>
+    <body>
+      <![CDATA[
+        <p>
+          Developed an open source RISC-V processor using the Kami modeling language at SiFive.
+        </p>
+      ]]>
+    </body>
+  </entry>
+  <entry>
+    <id>lisp</id>
+    <title>LISP</title>
+    <keywords>lisp scheme clojure programming language functional</keywords>
+    <url></url>
+    <body>
+      <![CDATA[
+        <p>
+          Level: Familiar<br/>
+          Informal Experience: 5 years<br/>
+          summary: Completed coursework covering the LISP dialect Scheme. Used in informal projects.
+        </p>
+      ]]>
+    </body>
+  </entry>
+</database>
