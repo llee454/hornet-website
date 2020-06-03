@@ -487,7 +487,7 @@ search_Interface.prototype.createPaginationPageLinkElement = function (index) {
   var radius = this.getPaginationRadius (index);
   linkElement.attr ('data-search-pagination-page-link-radius', radius);
   for (; radius <= maxRadius; radius ++) {
-    linkElement.addClass ('search_pagination_page_link_radius_' + radius);
+    linkElement.addClass ('search-pagination-page-link-radius-' + radius);
   }
   return linkElement;
 }
@@ -832,7 +832,7 @@ function search_Entry (id) {
 search_Entry.prototype.getResultElement = function (query, done) {
   done (null, $('<li></li>')
     .addClass ('search_result')
-    .addClass ('search_' + getContentType (this.id) + '_result')
+    .addClass ('search-' + getContentType (this.id) + '-result')
     .append ($('<div></div>')
       .addClass ('search_result_id')
       .append (getContentLink (this.id, this.id))));
@@ -880,6 +880,7 @@ function search_Interface (id, index, start, num) {
   this.num                 = num;
   this.results             = []; 
   this.searchEventHandlers = [];
+  this.lastQueryTime       = 0; // timestamp of the last query.
 }
 
 /*
@@ -973,6 +974,7 @@ search_Interface.prototype.search = function (query, done) {
     function (error, lunrIndex) {
       if (error) { done (error); }
 
+      self.lastQueryTime = Date.now ();
       self.results = lunrIndex.search (query);
       if (self.start >= self.results.length) { self.start = 0; }
       self.callSearchEventHandlers (done);
@@ -1393,7 +1395,7 @@ function search_getSearchURL (searchId, keywords) {
 Search Page
 -----------
 
-The Search module defines a page handler. This page handler accepts a Search Id and returns a list of search results. The page template is located in [templates/search_page.html.default](#Search Page "save:") and is presented below.
+The Search module defines a page handler. This page handler accepts a Search Id and returns a list of search results. The page template is located in [templates/search_page.html.default](#Search-Page "save:") and is presented below.
 
 ```html
 <div id='main_content'>
@@ -1410,7 +1412,7 @@ The Search module defines a page handler. This page handler accepts a Search Id 
 Example Database
 ----------------
 
-The Search Database file defines the search database and its indicies. An example database file can be found here: [database.xml.example](#Example Database "save:").
+The Search Database file defines the search database and its indicies. An example database file can be found here: [database.xml.example](#Example-Database "save:").
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1438,7 +1440,7 @@ The Search Database file defines the search database and its indicies. An exampl
 Database Schema
 ---------------
 
-The Search Database file is an XML file that must conform to the following XML Schema which can be found here: [database.xsd](#Database Schema "save:").
+The Search Database file is an XML file that must conform to the following XML Schema which can be found here: [database.xsd](#Database-Schema "save:").
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1481,7 +1483,6 @@ You can generate the Search module's source files using [Literate Programming](h
 `literate-programming Readme.md`
 from the command line.
 
-<!---
 ### Search.js
 ```
 _"Global Variables"
@@ -1505,4 +1506,3 @@ _"Lunr"
 _"Block Elements"
 ```
 [search.js](#Search.js "save:")
--->

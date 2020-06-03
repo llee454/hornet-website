@@ -51,6 +51,19 @@ MODULE_LOAD_HANDLERS.add (
     ga ('send', 'event', 'code sample', 'click');
   });
 
+  var searchCheckInterval = 1000;
+  var lastSendTime = 0;
+  setInterval (function () {
+    var currentTime = Date.now ();
+    Object.values (search_INTERFACES).forEach (function (interface) {
+      if (lastSendTime < interface.lastQueryTime &&
+          interface.lastQueryTime < currentTime - searchCheckInterval) {
+        lastSendTime = currentTime;
+        ga ('send', 'event', 'faq search', interface.query);
+      }
+    });
+  }, searchCheckInterval);
+
   done (null);
 });
 

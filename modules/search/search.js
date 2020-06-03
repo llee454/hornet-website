@@ -470,7 +470,7 @@ search_Interface.prototype.createPaginationPageLinkElement = function (index) {
   var radius = this.getPaginationRadius (index);
   linkElement.attr ('data-search-pagination-page-link-radius', radius);
   for (; radius <= maxRadius; radius ++) {
-    linkElement.addClass ('search_pagination_page_link_radius_' + radius);
+    linkElement.addClass ('search-pagination-page-link-radius-' + radius);
   }
   return linkElement;
 }
@@ -795,7 +795,7 @@ function search_Entry (id) {
 search_Entry.prototype.getResultElement = function (query, done) {
   done (null, $('<li></li>')
     .addClass ('search_result')
-    .addClass ('search_' + getContentType (this.id) + '_result')
+    .addClass ('search-' + getContentType (this.id) + '-result')
     .append ($('<div></div>')
       .addClass ('search_result_id')
       .append (getContentLink (this.id, this.id))));
@@ -838,6 +838,7 @@ function search_Interface (id, index, start, num) {
   this.num                 = num;
   this.results             = []; 
   this.searchEventHandlers = [];
+  this.lastQueryTime       = 0; // timestamp of the last query.
 }
 
 /*
@@ -931,6 +932,7 @@ search_Interface.prototype.search = function (query, done) {
     function (error, lunrIndex) {
       if (error) { done (error); }
 
+      self.lastQueryTime = Date.now ();
       self.results = lunrIndex.search (query);
       if (self.start >= self.results.length) { self.start = 0; }
       self.callSearchEventHandlers (done);
