@@ -91,7 +91,7 @@ module.exports = {
       "languageName": "JavaScript",
       "languageLevel": "Fluent",
       "languageKeywords": "web nodejs node",
-      "langaugeSummary": "Developed a JavaScript framework similar to REACT-JS. Professional experience developing NodeJS based applications, and integrating REACT-JS with Drupal's theme system."
+      "languageSummary": "Developed a JavaScript framework similar to REACT-JS. Professional experience developing NodeJS based applications, and integrating REACT-JS with Drupal's theme system."
     },
     {
       "languageId": "solidity",
