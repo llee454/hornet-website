@@ -5,21 +5,21 @@ module.exports = {
       "endorsement-title": "Proof Engineer",
       "endorsement-email": "vmurali@csail.mit.edu",
       "endorsement-quote": "I was Larry's supervisor at SiFive. There, he was instrumental in bringing up a formal specification of the RISC-V processor in Kami, which is a framework in Coq to specify hardware circuits using transactional semantics. The task was pretty complex, given the enormity of the RISC-V specification and the ability to understand, Kami, a new framework completely, in order to write programs in that framework. Larry was a quick learner and was highly motivated to perform this task. <b>He paid a lot of attention to detail and had excellent software engineering skills</b> - always coming up with unit test cases even for the smallest change made or feature added to the code base. Overall, I enjoyed working with Larry.",
-      "endorsement-note": "Recieved May 13 2020 over email."
+      "endorsement-note": "Received May 13 2020 over email."
     },
     {
       "endorsement-name": "Anthony Machado",
       "endorsement-title": "Proof Engineer",
       "endorsement-email": "tj.machado@gmail.com",
       "endorsement-quote": "Working with Larry for nearly two years at SiFive I have come to know him as a man with <b>[an] efficient and effective proof writing technique</b>. As evidenced by his work in the ProcKami repository, he also shows the great attention to detail and forward planning one associates with well-written COQ code.",
-      "endorsement-note": "Recieved May 13 2020 over LinkedIn."
+      "endorsement-note": "Received May 13 2020 over LinkedIn."
     },
     {
       "endorsement-name": "Kenneth Roe",
       "endorsement-title": "Proof Engineer",
       "endorsement-email": "http://www.cs.jhu.edu/~roe/",
       "endorsement-quote": "Larry Lee [has] great knowledge of theorem proving as well as the ProcKami [RISC-V] processor. He was always the one I talked to when I had a question on how something worked in the ProcKami processor or a question on the Kami language semantics. It was really enjoyable working with Larry Lee while I was at SiFive.",
-      "endorsement-note": "Recieved May 14 2020 over LinkedIn."
+      "endorsement-note": "Received May 14 2020 over LinkedIn."
     }
   ],
   "employers": [
@@ -29,7 +29,7 @@ module.exports = {
       "employerStart": 2018,
       "employerEnd":   2020,
       "employerPosition": "Sr. Engineer",
-      "employerSummary": "Developed an open source RISC-V processor, used Coq to formally verify components used within SiFive's S-series processors, and contributed to the developement of Kami, a hardware modeling language embedded within Coq."
+      "employerSummary": "Developed an open source RISC-V processor, used Coq to formally verify components used within SiFive's S-series processors, and contributed to the development of Kami, a hardware modeling language embedded within Coq."
     },
     {
       "employerId": "elucid",
@@ -41,7 +41,7 @@ module.exports = {
     },
     {
       "employerId": "jhu",
-      "employerName": "Johns Hopkins Univeristy",
+      "employerName": "Johns Hopkins University",
       "employerStart": 2015,
       "employerEnd":   2009,
       "employerPosition": "Sr. Programmer Analyst",
@@ -53,15 +53,15 @@ module.exports = {
       "systemId": "coq",
       "systemName": "Coq",
       "systemLevel": "Professional",
-      "systemKeywords": "formal verifification methods theorem proving gallina ltac",
-      "systemSummary": "Used to formally verify algorithms developed for SiFIve, contributed to the Coq Standard Library, and released packages on the Coq Package Index."
+      "systemKeywords": "formal verification methods theorem proving gallina ltac",
+      "systemSummary": "Used to formally verify algorithms developed for SiFive, contributed to the Coq Standard Library, and released packages on the Coq Package Index."
     },
     {
       "systemId": "riscv",
       "systemName": "RISC-V",
       "systemLevel": "Professional",
-      "systemKeywords": "hardware computer processor assembly formal verifification methods theorem proving",
-      "systemSummary": "Developed Kami Processor, an open source RISC-V processor. Formalized the RISC-V specification. Thoroughly knowledgable about the RISC-V specification."
+      "systemKeywords": "hardware computer processor assembly formal verification methods theorem proving",
+      "systemSummary": "Developed Kami Processor, an open source RISC-V processor. Formalized the RISC-V specification. Thoroughly knowledgeable about the RISC-V specification."
     },
     {
       "systemId": "drupal",
@@ -77,7 +77,7 @@ module.exports = {
       "languageName": "Gallina and Ltac",
       "languageLevel": "Fluent",
       "languageKeywords": "coq formal verification methods theorem proving agda isabelle hol",
-      "languageSummary": "Used to formally verify algorithms developed for SiFIve, contributed to the Coq Standard Library, and released packages on the Coq Package Index."
+      "languageSummary": "Used to formally verify algorithms developed for SiFive, contributed to the Coq Standard Library, and released packages on the Coq Package Index."
     },
     {
       "languageId": "haskell",
@@ -148,6 +148,20 @@ module.exports = {
       "languageLevel": "Familiar",
       "languageKeywords": "functional",
       "languageSummary": "Coursework included the ML variant SML. I am familiar with OCaml primarily through my interactions with Coq, which is written in OCaml. Additionally, I have read the OCaml language Specification."
+    },
+    {
+      "languageId": "bluespec",
+      "languageName": "BlueSpec",
+      "languageLevel": "Familiar",
+      "languageKeywords": "hardware",
+      "languageSummary": "Developed a RISC-V processor in Kami, a hardware modeling language whose syntax is heavily influenced by BlueSpec. Both languages share the same semantic concepts such as rules, actions, and expressions. Accordingly, I should be able to effectively acquire BlueSpec."
+    },
+    {
+      "languageId": "kami",
+      "languageName": "Kami",
+      "languageLevel": "Fluent",
+      "languageKeywords": "hardware",
+      "languageSummary": "Kami is a hardware modeling language embedded in Coq. It's syntax and semantics borrow heavily from BlueSpec. I am fully fluent in Kami and contributed to the Kami language project in addition to developing formally verified hardware designs in it."
     }
   ], 
 

@@ -45,6 +45,79 @@
       <p>larrylee.tech/data/resume with cover letter.pdf</p>
     </body>
   </entry>
+  <entry>
+    <id>travel</id>
+    <title>Travel/Relocation</title>
+    <keywords>travel relocation remote telework</keywords>
+    <url></url>
+    <body>
+      <p>When I joined SiFive, I relocated to San Mateo for two months to integrate with the SiFive team before transitioning to remote work. I am open to exploring similar arrangements involving temporary relocation, commuting, and remote collaboration with your team.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>performance</id>
+    <title>Performance</title>
+    <keywords>performance stress deadlines pressure</keywords>
+    <url></url>
+    <body>
+      <p>As my endorsements and portfolio demonstrate, I have successfully delivered results under demanding conditions. I have achieved these successes by being methodical, systematic, and disciplined. I've adapted ideas from several process improvement frameworks (such as CMMI) to develop a personal framework that I employ.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>interests</id>
+    <title>Interests</title>
+    <keywords>passion interests interest</keywords>
+    <url></url>
+    <body>
+      <p>My primary interest lies in applying formal methods to create trustworthy systems for vital applications. I believe that technology should empower people, and focused on open source projects throughout my career. This focus on open source reliable technology can be seen in my work on the Kami Processor project, my development of Lucidity, and my contributions to the Knowledge for Health project at Johns Hopkins University.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>agile</id>
+    <title>Methodology</title>
+    <keywords>agile methodology scrum</keywords>
+    <url></url>
+    <body>
+      <p>While at Elucid Solutions, I was instrumental in attaining CMMI (v1.3) level 3 certification. This involved instituting a formal development methodology for the company and generally systematizing our software development practice. I successfully advocated for Scrum, and subsequently advised other organizations on Agile development using Scrum.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>leadership</id>
+    <title>Leadership</title>
+    <keywords>leadership management lead team</keywords>
+    <url></url>
+    <body>
+      <p>At Elucid, I served as the technical team lead for several projects. During that time, I defined tasks and schedules, and oversaw developers. I adopted a structured management approach based around a combination of the CMMI process improvement framework and Scrum to define projects, identify tasks, track performance, and provide feedback. I emphasized transparency, communication, and empiricism while managing teams, and successfully maintained high morale while attaining production goals.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>remote</id>
+    <title>Working on Distributed Teams</title>
+    <keywords>remote telework distributed relocate office travel</keywords>
+    <url></url>
+    <body>
+      <p>In my 2019 annual review, Murali Vijayaraghavan wrote: "[Larry Lee] has been an example of successful remote collaboration." While working for SiFive, I took the initiative and rented an office at my own expense, established protocols for ensuring a timely response to all messages, and leveraged task tracking tools to provide full transparency into my daily activities. Using these methods, I ensured that I was able to collaborate seamlessly with the rest of the SiFive team, as attested by my supervisor's report.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>collaboration</id>
+    <title>Collaboration</title>
+    <keywords>team player together partner mentor</keywords>
+    <url></url>
+    <body>
+      <p>Throughout my career, I've collaborated with teams of engineers to deliver quality software. Whether as a team lead, or a developer on a team, I have established a track record of strong communication, robust morale, and technical competence. I believe that effective collaboration starts with communication and structured methodology. My code samples attests to my use of consistent documentation; my success attaining CMMI certification for Elucid Solutions demonstrates my commitment to structured methodology; and my endorsements speak to my effective communication.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>lead</id>
+    <title>Lead Time</title>
+    <keywords>available start date availability</keywords>
+    <url></url>
+    <body>
+      <p>2 weeks</p>
+    </body>
+  </entry>
+  
   {{#systems}}
     <entry>
       <id>{{{systemId}}}</id>
