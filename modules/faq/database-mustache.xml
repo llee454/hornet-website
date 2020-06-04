@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<database>
+  <entry>
+    <id>contact</id>
+    <title>Contact</title>
+    <keywords>name contact information email address phone number</keywords>
+    <url>mailto://llee454@gmail.com</url>
+    <body>
+      <p>Larry Darryl Lee Jr. llee454@gmail.com (410) 961 3395</p>
+    </body>
+  </entry>
+  <entry>
+    <id>degree</id>
+    <title>Degree</title>
+    <keywords>education degree college school university BA BS master phd</keywords>
+    <url></url>
+    <body>
+      <p>B.A., Goucher College, 2008</p>
+    </body>
+  </entry>
+  <entry>
+    <id>github</id>
+    <title>GitHub</title>
+    <keywords>contact information code samples work examples</keywords>
+    <url>https://github.com/llee454</url>
+    <body>
+      <p>https://github.com/llee454</p>
+    </body>
+  </entry>
+  <entry>
+    <id>resume</id>
+    <title>Resume</title>
+    <keywords>resume cv</keywords>
+    <url>data/resume with cover letter.pdf</url>
+    <body>
+      <p>larrylee.tech/data/resume with cover letter.pdf</p>
+    </body>
+  </entry>
+  {{#systems}}
+    <entry>
+      <id>{{{systemId}}}</id>
+      <title>{{{systemName}}}</title>
+      <keywords>{{{systemKeywords}}}</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: {{{systemLevel}}}<br/>
+          Summary: {{{systemSummary}}}
+        </p>
+      ]]></body>
+    </entry>
+  {{/systems}}
+  {{#languages}}
+    <entry>
+      <id>{{{languageId}}}</id>
+      <title>{{{languageName}}}</title>
+      <keywords>{{{languageKeywords}}} programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: {{{languageLevel}}}<br/>
+          Summary: {{{languageSummary}}}
+        </p>
+      ]]></body>
+    </entry>
+  {{/languages}}
+  {{#employers}}
+    <entry>
+      <id>{{{employerId}}}</id>
+      <title>{{{employerName}}}</title>
+      <keywords>work history employer company companies</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Years: {{{employerStart}}} - {{{employerEnd}}}<br/>
+          Position: {{{employerPosition}}}<br/>
+          Summary: {{{employerSummary}}}
+        </p>
+      ]]></body>
+    </entry>
+  {{/employers}}
+</database>
