@@ -121,7 +121,7 @@
     <entry>
       <id>coq</id>
       <title>Coq</title>
-      <keywords>formal verification methods theorem proving gallina ltac</keywords>
+      <keywords>coq formal verification methods theorem proving gallina ltac</keywords>
       <url></url>
       <body><![CDATA[
         <p>
@@ -133,7 +133,7 @@
     <entry>
       <id>riscv</id>
       <title>RISC-V</title>
-      <keywords>hardware computer processor assembly formal verification methods theorem proving</keywords>
+      <keywords>riscv hardware computer processor assembly formal verification methods theorem proving</keywords>
       <url></url>
       <body><![CDATA[
         <p>

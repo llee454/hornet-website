@@ -53,14 +53,14 @@ module.exports = {
       "systemId": "coq",
       "systemName": "Coq",
       "systemLevel": "Professional",
-      "systemKeywords": "formal verification methods theorem proving gallina ltac",
+      "systemKeywords": "coq formal verification methods theorem proving gallina ltac",
       "systemSummary": "Used to formally verify algorithms developed for SiFive, contributed to the Coq Standard Library, and released packages on the Coq Package Index."
     },
     {
       "systemId": "riscv",
       "systemName": "RISC-V",
       "systemLevel": "Professional",
-      "systemKeywords": "hardware computer processor assembly formal verification methods theorem proving",
+      "systemKeywords": "riscv hardware computer processor assembly formal verification methods theorem proving",
       "systemSummary": "Developed Kami Processor, an open source RISC-V processor. Formalized the RISC-V specification. Thoroughly knowledgeable about the RISC-V specification."
     },
     {
