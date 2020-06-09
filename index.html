@@ -225,10 +225,10 @@
                   <div class="accordion_item_title">A Scaling Upper Bound for \(error\)</div>
                   <div class="accordion_item_body">
                     <div class="eqn-labeled">
-                      $$\mbox{Corollary 1.4:}\quad \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
+                      $$\mbox{Corollary 1.3:}\quad \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
                     </div>
                     <p><strong>Derivation</strong></p>
-                    <p>Corollary 1.4 follows algebraically from Lemma 1.3:</p>
+                    <p>Corollary 1.4 follows algebraically from Lemma 1.1:</p>
                     <div class="eqn-labeled">
                       $$\begin{array}{rcl}<!--
                         -->x &amp;\lt&amp; (approx (n) + \frac{2}{2^n})^2 \\<!--
@@ -244,12 +244,12 @@
                   <div class="accordion_item_title">Conclusion</div>
                   <div class="accordion_item_body">
                     <div class="eqn-labeled">
-                      $$\mbox{Theorem 1.5:}\quad \forall n, error (n) \lt \frac{8}{2^n}$$
+                      $$\mbox{Theorem 1.4:}\quad \forall n, error (n) \lt \frac{8}{2^n}$$
                     </div>
                     <p><strong>Proof</strong></p>
                     <p>
                       We will proceed using induction over \(n\).
-                      When \(n = 0\), \(error (0) = x \lt 2\) and Theorem 1.5 follows immediately.
+                      When \(n = 0\), \(error (0) = x \lt 2\) and Theorem 1.4 follows immediately.
                       Hence, we only need to consider the case where \(n \ge 1\).
                     </p>
                     <p>Observe that:</p>
@@ -261,7 +261,7 @@
                       -->\end{array}$$
                     </div>
                     <p>
-                      We can substitute this upper bound into the scaling upper bound we derived in Corollary 1.4.
+                      We can substitute this upper bound into the scaling upper bound we derived in Corollary 1.3.
                       Doing so leads to:
                     </p>
                     <div class="eqn-labeled">
