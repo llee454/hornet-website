@@ -225,31 +225,6 @@
                   <div class="accordion_item_title">A Scaling Upper Bound for \(error\)</div>
                   <div class="accordion_item_body">
                     <div class="eqn-labeled">
-                      $$\mbox{Lemma 1.3:}\quad \forall n, x \lt (approx (n) + \frac{2}{2^n})^2$$
-                    </div>
-                    <p><strong>Proof</strong></p>
-                    <p>
-                      We will proceed by induction over \(n\).
-                      When \(n = 0\), Lemma 1.3 follows immediately as \((approx (0) + \frac{2}{2^0})^2 = 4\) and \(x \lt 2\).
-                      When \(n \ge 1\), our goal becomes: \(x \lt (approx (n) + \frac{2}{2^n})^2 \implies\)\(x \lt (approx (n + 1) + \frac {2}{2^{n + 1}})^2\).
-                      Unfolding \(approx (n + 1)\), reduces our goal to: \(x \lt (approx (n) + \frac{b (n)}{2^n} + \frac{1}{2^n})^2\).
-                    </p>
-                    <p><strong><code>b (n) = 0</code></strong><p>
-                    <p>When \(b (n) = 0\) our goal follows algebraically:</p>
-                    <div class="eqn-labeled">
-                      $$\begin{array}{rcl}<!--
-                        -->x &amp;=&amp; approx (n)^2 + error (n)\\<!--
-                        -->&amp;\lt&amp; approx (n)^2 + \frac{1}{2^n} (2\ approx (n) + \frac{1}{2^n}) \qquad \mbox {by (7)}\\<!--
-                        -->&amp;\lt&amp; (approx (n) + \frac{1}{2^n})^2\\<!--
-                      -->\end{array}$$
-                    </div>
-                    <p><strong><code>b (n) = 1</code></strong><p>
-                    <p> 
-                      When \(b (n) = 1\) our goal equals the inductive hypothesis.
-                      &#8718;
-                    </p>
-                    <hr/>
-                    <div class="eqn-labeled">
                       $$\mbox{Corollary 1.4:}\quad \forall n, error (n) \lt \frac{4}{2^n} (approx (n) + \frac{1}{2^n})$$
                     </div>
                     <p><strong>Derivation</strong></p>
